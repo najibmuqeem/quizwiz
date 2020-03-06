@@ -1,4 +1,11 @@
+/******** Customizations ********/
+$orange-light: #e67e22;
+
+$primary: $orange-light;
+
+/******** Bulma ********/
 @import "../node_modules/bulma/sass/utilities/_all.sass";
 @import "../node_modules/bulma/sass/base/_all.sass";
 
 @import "../node_modules/bulma/sass/elements/title.sass";
+@import "../node_modules/bulma/sass/elements/button.sass";
