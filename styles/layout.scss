@@ -1,9 +1,2 @@
-// See: https://sass-lang.com/
-
-body {
-  background-color: #EEE;
-
-  h1 {
-    color: #244751;
-  }
-}
+@charset "utf-8";
+@import "../node_modules/bulma/bulma.sass";
