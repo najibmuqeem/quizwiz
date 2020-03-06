@@ -239,6 +239,7 @@ const insertScore = function(quiz_id, user_id, score) {
 };
 exports.insertScore = insertScore;
 
+//
 // will implement later if time permits
 //
 // const makeQuery = function(queryString, queryParams) {
