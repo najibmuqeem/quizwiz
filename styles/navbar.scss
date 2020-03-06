@@ -1,3 +1,9 @@
+/******** Customizations ********/
+$orange-light: #e67e22;
+
+$link: $orange-light;
+$scheme-invert: $orange-light;
+
 /******** Bulma ********/
 @import "../node_modules/bulma/sass/utilities/_all.sass";
 
