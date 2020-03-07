@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const database = require('../db/database');
 
-module.exports = (db) => {
+module.exports = () => {
 // Get quizzes
   router.get('/', (req, res) => {
     database.getQuizzes().then(data => {
@@ -27,7 +27,6 @@ module.exports = (db) => {
       number_of_questions: req.body.number_of_questions,
       user_id: req.body.user_id
     })
-
       .then(data => {
         const quizzes = data.rows;
         res.json(quizzes);
@@ -37,8 +36,6 @@ module.exports = (db) => {
       });
   });
 
-
-
   //Get a single quiz
 
   router.get('/:id', (req, res) => {
@@ -47,7 +44,7 @@ module.exports = (db) => {
       res.json(quiz);
     })
       .catch(err => {
-        res.json({ error: err.message});
+        res.status(500).json({ error: err.message});
       });
   });
 

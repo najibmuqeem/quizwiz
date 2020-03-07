@@ -21,5 +21,8 @@ module.exports = (db) => {
           .json({ error: err.message });
       });
   });
+
+  //Create Routes for Quizzes
+
   return router;
 };

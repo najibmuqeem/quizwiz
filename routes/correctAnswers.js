@@ -1,13 +1,13 @@
 const express = require('express');
 const router = express.Router();
 const database = require('../db/database');
-module.exports = (db) => {
-//Get answers
+module.exports = () => {
+//Get correct answers
 
   router.get('/:id', (req, res) => {
     database.getCorrectOptionsForQuiz(req.params.id).then(data => {
-      const answers = data.rows;
-      res.json(answers);
+      const correctAnswers = data.rows;
+      res.json(correctAnswers);
     })
       .catch(err => {
         res.json({error: err.message});
@@ -16,3 +16,6 @@ module.exports = (db) => {
 
   return router;
 };
+
+
+
