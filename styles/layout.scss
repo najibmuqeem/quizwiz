@@ -8,6 +8,11 @@ $info: $orange-dark;
 
 .hero {
   margin-bottom: 30px;
+
+  &.question {
+    padding-bottom: 29px;
+  }
+
 }
 
 .box {
