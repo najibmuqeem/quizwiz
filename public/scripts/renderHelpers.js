@@ -1,7 +1,15 @@
 /*
-*
-All the functions used to render items on the page dynamically
-*
+|_________________________________________________________________
+| All the functions used to render items on the page dynamically  |
+|_________________________________________________________________|
+|
+*/
+
+/*
+|
+| AUXILIARY FUNCTIONS
+|
+|___________________________________________
 */
 
 // Escapes unsafe characters and returns safe html. To prevent XSS
@@ -11,73 +19,62 @@ const escape = str => {
   return div.innerHTML;
 };
 
-// Render quizzes into <main> element
+/*
+|
+| BUILDING FUNCTIONS
+|
+|___________________________________________
+*/
+
+// Builds rows of quizzes to be used in renderQuizzes
+const buildQuizRows = (quizzes) => {
+  let quizRows = `
+  <div class="tile is-ancestor">
+  `;
+
+  quizzes = quizzes.filter(quiz => quiz.is_public)
+
+  quizzes.forEach((quiz, index, quizzes) => {
+    if (index % 3 === 0 && index !== 0) {
+      quizRows += `
+      </div>
+      <div class="tile is-ancestor">
+      `;
+    }
+
+    quizRows += `
+      <div class="tile is-parent">
+        <article class="tile is-child box" style="background-image: linear-gradient(180deg, rgba(255,255,255,0.7) 40%, rgba(255,255,255,0.3) 70%, rgba(255,255,255,0) 100%), url(${escape(quiz.picture_url)});">
+          <a href=""><p class="title">${escape(quiz.title)}</p></a>
+          <p class="subtitle">${escape(quiz.description)}</p>
+          <div class="content">
+            <p>${escape(quiz.number_of_questions)} questions</p>
+          </div>
+        </article>
+      </div>
+    `;
+
+    if (index === quizzes.length - 1) {
+      quizRows += `
+      </div>
+      `
+    }
+  });
+
+  return quizRows;
+}
+
+/*
+|
+| RENDERING FUNCTIONS
+|
+|___________________________________________
+*/
+
+// Renders quizzes into <main> element
 const renderQuizzes = function(quizzes) {
   console.log("rendered",quizzes);
-
-  const allQuizzes = `
-  <div class="tile is-ancestor">
-    <div class="tile is-parent">
-      <article class="tile is-child box">
-        <a href=""><p class="title">${escape(quizzes[0].title)}</p></a>
-        <p class="subtitle">Who is Leonardo da Vinci?</p>
-        <div class="content">
-          <p>5 questions</p>
-        </div>
-      </article>
-    </div>
-    <div class="tile is-parent">
-      <article class="tile is-child box">
-        <p class="title">History Quiz</p>
-        <p class="subtitle">When did World War 2 happen?</p>
-        <div class="content">
-          <p>5 questions</p>
-        </div>
-      </article>
-    </div>
-    <div class="tile is-parent">
-      <article class="tile is-child box">
-        <p class="title">Football Quiz</p>
-        <p class="subtitle">Who won the 34th Super Bowl?</p>
-        <div class="content">
-          <p>5 questions</p>
-        </div>
-      </article>
-    </div>
-  </div>
-
-  <div class="tile is-ancestor">
-    <div class="tile is-parent">
-      <article class="tile is-child box">
-        <p class="title">Movie Quiz</p>
-        <p class="subtitle">How many Oscars did Meryl Streep win?</p>
-        <div class="content">
-          <p>5 questions</p>
-        </div>
-      </article>
-    </div>
-    <div class="tile is-parent">
-      <article class="tile is-child box">
-        <p class="title">Tennis Quiz</p>
-        <p class="subtitle">How old was Roger Federer when he won his second Grand Slam?</p>
-        <div class="content">
-          <p>5 questions</p>
-        </div>
-      </article>
-    </div>
-    <div class="tile is-parent">
-      <article class="tile is-child box">
-        <p class="title">Music Quiz</p>
-        <p class="subtitle">What does the fox say?</p>
-        <div class="content">
-          <p>5 questions</p>
-        </div>
-      </article>
-    </div>
-  </div>
-  `
-
-  $('main').append(allQuizzes);
+  $('main').append(buildQuizRows(quizzes));
 };
 
 
