@@ -1,5 +1,5 @@
 // Get quizzes
-const fetchQuizzes = function() {
+const fetchAndRenderQuizzes = function() {
   $.ajax({
     type:"GET",
     url:"/api/quizzes",
