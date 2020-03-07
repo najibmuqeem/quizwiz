@@ -3,13 +3,22 @@ $orange-light: #e67e22;
 
 $primary: $orange-light;
 
+.hero {
+  margin-bottom: 30px;
+}
+
+.box {
+  height: 250px;
+}
+
 /******** Bulma ********/
 @import "../node_modules/bulma/sass/utilities/_all.sass";
 @import "../node_modules/bulma/sass/base/_all.sass";
 
 @import "../node_modules/bulma/sass/elements/button.sass";
+@import "../node_modules/bulma/sass/elements/box.sass";
 @import "../node_modules/bulma/sass/elements/container.sass";
 @import "../node_modules/bulma/sass/elements/title.sass";
+@import "../node_modules/bulma/sass/grid/tiles.sass";
 @import "../node_modules/bulma/sass/layout/hero.sass";
 @import "../node_modules/bulma/sass/layout/section.sass";
-
