@@ -88,6 +88,7 @@ $(() => {
     const numOptions = $(".option").length;
     const quizID = Number($("#quiz-id").val());
 
+    let isCorrect = false;
     let question = "";
     let options = [];
     let counter = 1;
@@ -100,6 +101,11 @@ $(() => {
         j < (counter * numOptions) / numQuestions;
         j++
       ) {
+        if ($(".option")[j].hasClass("correct")) {
+          isCorrect = true;
+        } else {
+          isCorrect = false;
+        }
         options.push($(".option")[j].val());
         addOptionToQuestion(questionID, options[j], isCorrect);
       }
