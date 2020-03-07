@@ -17,9 +17,7 @@ module.exports = () => {
   //Post quiz
 
   router.post('/', (req,res) => {
-
-    console.log('req',req.body);
-    console.log('req1',req.body.title);
+    console.log({ body: req.body });
     database.createNewQuiz({
       title: req.body.title,
       description: req.body.description,
@@ -47,7 +45,5 @@ module.exports = () => {
         res.status(500).json({ error: err.message});
       });
   });
-
-
   return router;
 };

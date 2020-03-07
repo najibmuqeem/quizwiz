@@ -1,5 +1,6 @@
-const database = require('../../db/database');
+/* const database = require('../../db/database');
 
+//Add question
 const addQuestion = function(req, res, next) {
   database.addQuestionToQuiz(req.body.quiz_id,req.body.question)
     .then(() => next())
@@ -7,6 +8,7 @@ const addQuestion = function(req, res, next) {
 
 };
 
+//Add options
 const addOptions = function(req, res) {
   let options = req.body.options;
   for (let i = 0; i < options.length; i++) {
@@ -17,10 +19,14 @@ const addOptions = function(req, res) {
   res.json();
 };
 
+
+
+
+
 module.exports = {
   addQuestion,
   addOptions
 };
 
-
+ */
 

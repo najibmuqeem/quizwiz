@@ -3,23 +3,22 @@ const router = express.Router();
 const database = require('../db/database');
 
 module.exports = () => {
-
-  // Add question
+  // Add  options
   router.post('/', (req, res) =>  {
-    database.addQuestionToQuiz(req.body.quizId,req.body.question).then(data => {
-      const question = data.rows[0];
-      res.json(question);
+    database.addOptionToQuestion(req.body.questionId,req.body.option, req.body.isCorrect).then(data => {
+      const option = data.rows[0];
+      res.json(option);
     })
       .catch(err => {
         res.status(500).json({error: err.message});
       });
   });
 
-  // Get questions
+  // Get Options
   router.get('/:id', (req, res) => {
-    database.getQuestionsForQuiz(req.params.id).then(data => {
-      const questions = data.rows;
-      res.json(questions);
+    database.getOptionsForQuestion(req.params.id).then(data => {
+      const options = data.rows;
+      res.json(options);
     })
       .catch(err => {
         res.status(500).json({error: err.message});
