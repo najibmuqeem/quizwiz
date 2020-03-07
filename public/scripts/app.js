@@ -5,6 +5,8 @@ $(() => {
     $(".navbar-burger").toggleClass("is-active");
     $(".navbar-menu").toggleClass("is-active");
   });
+  
+   fetchAndRenderQuizzes();
 
   //submit quiz
   $("#create-quiz").on("submit", e => {
@@ -114,14 +116,4 @@ $(() => {
     }
   });
 
-  $.ajax({
-    method: "GET",
-    url: "/api/users"
-  }).done(users => {
-    for (user of users) {
-      $("<div>")
-        .text(user.name)
-        .appendTo($("body"));
-    }
-  });
 });

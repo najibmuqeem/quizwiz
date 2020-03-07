@@ -1,5 +1,5 @@
 // Get quizzes
-const fetchQuizzes = function() {
+const fetchAndRenderQuizzes = function() {
   $.ajax({
     type: "GET",
     url: "/api/quizzes",
@@ -27,10 +27,3 @@ const fetchSingleQuiz = function() {
   });
 };
 
-// Function to render quizzes
-const renderQuizzes = function(quizzes) {
-  console.log("rendered", quizzes);
-};
-
-// render specific quiz
-const renderQuiz = function(quiz) {};
