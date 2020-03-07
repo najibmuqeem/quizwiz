@@ -2,7 +2,7 @@
 const fetchQuizzes = function() {
   $.ajax({
     type:"GET",
-    url:"/quizzes",
+    url:"/api/quizzes",
     success: renderQuizzes,
     dataType: "json"
   });
