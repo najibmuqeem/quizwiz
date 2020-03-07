@@ -1,7 +1,7 @@
 /******** Customizations ********/
 .container {
 
-  &.start-quiz {
+  &.start-end-quiz {
     min-height: 80vh;
     padding-bottom: 5rem;
     border-radius: 50px;
@@ -16,7 +16,7 @@
     }
 
     .button {
-      margin-bottom: 2rem;
+      margin: 0 .7rem 2rem;
     }
 
     .previous-attempts {
