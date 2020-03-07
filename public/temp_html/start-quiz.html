@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" class="has-navbar-fixed-top">
+
+  <!--***************** HEAD *****************-->
+  <head>
+    <!-- Title -->
+    <title>QuizWiz</title>
+
+    <!-- Meta information -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Font icons -->
+    <script src="https://kit.fontawesome.com/0a7ed7867a.js" crossorigin="anonymous"></script>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/take-quiz.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/start-quiz.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+
+    <!-- JS scripts -->
+    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+    <script type="text/javascript" src="/scripts/app.js"></script>
+  </head>
+
+  <!--***************** BODY *****************-->
+  <body>
+
+    <!-- /////// Navbar /////// -->
+    <nav class="navbar is-dark is-fixed-top" role="navigation" aria-label="main navigation">
+
+      <!-- Brand logo and nav burger -->
+      <div class="navbar-brand">
+        <a class="navbar-item" href="/">
+          <h1 class="title is-1 has-text-info"><i class="far fa-times-circle"></i></h1>
+        </a>
+      </div>
+
+    </nav>
+
+    <!-- /////// Main content /////// -->
+    <main class="section">
+
+      <section class="container quiz-background start-quiz has-text-centered">
+
+        <!-- Quiz info -->
+        <h1 class="title is-1 has-text-white ">
+          Arts Quiz
+        </h1>
+        <p class="is-size-3 has-text-black">This is a quiz testing your knowledge in arts. How well do you know the Renaissance, the Classical Era, and Modern Arts?</p>
+        <p class="is-size-4"><em><span class="total-question-number">5</span> Questions</em></p>
+
+        <!-- Start button -->
+        <a class="button is-primary is-inverted is-large" href="./take-quiz.html">
+          <strong>Start Quiz</strong>
+        </a>
+
+        <!-- Previous scores -->
+        <div class="previous-attempts">
+          <h3 class="title is-4 has-text-white">Your previous attempts at this quiz:</h3>
+          <ul class="is-size-4">
+            <li>4/5</li>
+            <li>3/5</li>
+          </ul>
+        </div>
+
+      </section>
+
+    </main>
+
+
+
+  </body>
+</html>
