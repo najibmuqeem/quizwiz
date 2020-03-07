@@ -5,8 +5,8 @@ $(() => {
     $(".navbar-burger").toggleClass("is-active");
     $(".navbar-menu").toggleClass("is-active");
   });
-  
-   fetchAndRenderQuizzes();
+
+  fetchAndRenderQuizzes();
 
   //submit quiz
   $("#create-quiz").on("submit", e => {
@@ -23,6 +23,7 @@ $(() => {
     }
     const numQuestions = $("#create-quiz")[0].questions.value;
     const numOptions = $("#create-quiz")[0].options.value;
+
     $("#description").val("");
     $("#picture-url").val("");
     $("#title").val("");
@@ -45,40 +46,46 @@ $(() => {
     let html = ``;
 
     for (let i = 1; i <= numQuestions; i++) {
-      html += `<div class="field">
-      <label class="label">Question ${i}</label>
-      <div class="control">
-        <input type="text" class="input question" />
-      </div>
-    </div>`;
+      html += `
+              <div class="field">
+                <label class="label">Question ${i}</label>
+                <div class="control">
+                  <input type="text" class="input question" />
+                </div>
+              </div>`;
       for (let j = 1; j <= numOptions; j++) {
         if (j === 1) {
-          html += `<div class="field">
-          <label class="label">Option ${j}</label>
-          <div class="control">
-            <input type="text" class="input correct option" placeholder="Correct option"/>
-          </div>
-        </div>`;
+          html += `
+                  <div class="field">
+                    <label class="label">Option ${j}</label>
+                    <div class="control">
+                      <input type="text" class="input correct option" placeholder="Correct option"/>
+                    </div>
+                  </div>`;
         } else {
-          html += `<div class="field">
-        <label class="label">Option ${j}</label>
-        <div class="control">
-          <input type="text" class="input option" placeholder="Incorrect option" />
-        </div>
-      </div>`;
+          html += `
+                  <div class="field">
+                    <label class="label">Option ${j}</label>
+                    <div class="control">
+                      <input type="text" class="input option" placeholder="Incorrect option" />
+                    </div>
+                  </div>`;
         }
       }
       html += `<br>`;
     }
-    html += `<div class="field is-grouped">
-    <div class="control">
-      <button id="submit-questions" class="button is-primary">Submit</button>
-      <button class="button is-link is-light">Cancel</button>
-    </div>
-  </div>
-  <div>
-    Quiz ID: <span id="quiz-id">${quizID}</span>
-  </div>`;
+
+    html += `
+            <div class="field is-grouped">
+              <div class="control">
+                <button id="submit-questions" class="button is-primary">Submit</button>
+                <button class="button is-link is-light">Cancel</button>
+              </div>
+            </div>
+            <div>
+              Quiz ID:
+              <span id="quiz-id">${quizID}</span>
+            </div>`;
     $("#questions").append(html);
   });
 
@@ -115,5 +122,4 @@ $(() => {
       counter += numOptions / numQuestions;
     }
   });
-
 });
