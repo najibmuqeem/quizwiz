@@ -7,5 +7,6 @@ CREATE TABLE quizzes (
   picture_url VARCHAR(255),
   number_of_questions INTEGER NOT NULL,
   number_of_plays INTEGER DEFAULT 0,
-  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE
+  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+  is_public BOOLEAN DEFAULT true
 );

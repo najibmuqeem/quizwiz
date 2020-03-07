@@ -73,7 +73,7 @@ exports.getUsersWithPlaysOnQuiz = getUsersWithPlaysOnQuiz;
 
 // Quizzes
 
-//returns array of QUIZ objects with keys id, title, description, picture_url, number_of_questions, number_of_plays, user_id (use res.rows)
+//returns array of QUIZ objects with keys id, title, description, picture_url, number_of_questions, number_of_plays, user_id, is_public (use res.rows)
 const getQuizzes = function(user_id) {
   let queryString = `SELECT * FROM quizzes`;
   if (user_id) {
@@ -86,7 +86,20 @@ const getQuizzes = function(user_id) {
 };
 exports.getQuizzes = getQuizzes;
 
-//adds a new quiz to quizzes database and returns QUIZ Object with keys id, title, description, picture_url, number_of_questions, number_of_plays, user_id (use res.rows[0])
+//returns QUIZ object with keys id, title, description, picture_url, number_of_questions, number_of_plays, user_id, is_public (use res.rows[0])
+const getQuiz = function(quiz_id) {
+  return pool.query(
+    `
+    SELECT *
+    FROM quizzes
+    WHERE id = $1
+    `,
+    [quiz_id]
+  );
+};
+exports.getQuiz = getQuiz;
+
+//adds a new quiz to quizzes database and returns id key of created QUIZ object (use res.rows[0])
 const createNewQuiz = function(quiz) {
   return pool.query(
     `
@@ -97,8 +110,8 @@ const createNewQuiz = function(quiz) {
         number_of_questions,
         user_id
       )
-      VALUES ($1, $2, $3, $4, $5);
-      RETURNING *;
+      VALUES ($1, $2, $3, $4, $5)
+      RETURNING id;
       `,
     [
       quiz.title,
@@ -113,12 +126,13 @@ exports.createNewQuiz = createNewQuiz;
 
 // Questions
 
-//adds a new question to questions database and returns QUESTION object with keys id, quiz_id, question, number_of_answers
+//adds a new question to questions database and returns id key of created QUESTION object
 const addQuestionToQuiz = function(quiz_id, question) {
   return pool.query(
     `
       INSERT INTO questions (quiz_id, question)
-      VALUES ($1, $2);
+      VALUES ($1, $2)
+      RETURNING id;
       `,
     [quiz_id, question]
   );
@@ -140,13 +154,13 @@ exports.getQuestionsForQuiz = getQuestionsForQuiz;
 
 // Options
 
-//adds a new option to the options database and returns OPTION object with keys id, question_id, option, is_correct
+//adds a new option to the options database and returns id of created OPTION object
 const addOptionToQuestion = function(question_id, option, is_correct) {
   return pool.query(
     `
       INSERT INTO options (question_id, option, is_correct)
       VALUES ($1, $2, $3)
-      RETURNING *;
+      RETURNING id;
       `,
     [question_id, option, is_correct]
   );
@@ -198,13 +212,35 @@ const insertScore = function(quiz_id, user_id, score) {
 };
 exports.insertScore = insertScore;
 
-//
-// will implement later if time permits
-//
-// const makeQuery = function(queryString, queryParams) {
-//   if (queryParams) {
-//     return pool.query(queryString, queryParams);
-//   } else {
-//     return pool.query(queryString);
-//   }
-// };
+//accepts two parameters. First parameter must be user_id and the second must be quiz_id.
+//to get user attempts on all quizzes, pass null as second parameter
+//to get user attempts on a specific quiz, pass actual values to both parameters
+//to get all user's attempts on a specific quiz, pass null as first parameter
+const getUserQuizAttempts = function(user_id, quiz_id) {
+  let queryString = `SELECT users.name, count(*) as number_of_quiz_attempts`;
+  let queryParams = [];
+  if (!user_id) {
+    queryString += ` FROM user_scores
+    JOIN quizzes ON quizzes.id = quiz_id
+    JOIN users on users.id = user_scores.user_id
+    GROUP BY user_scores.quiz_id, users.name
+    HAVING user_scores.quiz_id = $1;`;
+    queryParams.push(quiz_id);
+  } else {
+    queryString += `, quizzes.title
+      FROM user_scores
+      JOIN quizzes ON quizzes.id = quiz_id
+      JOIN users on users.id = user_scores.user_id
+      GROUP BY user_scores.user_id, users.name, quizzes.title
+      HAVING user_scores.user_id = $1`;
+    queryParams.push(user_id);
+    if (quiz_id) {
+      queryString += ` AND user_scores.quiz_id = $2;`;
+      queryParams.push(quiz_id);
+    } else {
+      queryString += `;`;
+    }
+  }
+  return pool.query(queryString, queryParams);
+};
+exports.getUserQuizAttempts = getUserQuizAttempts;
