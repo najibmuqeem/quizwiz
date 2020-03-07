@@ -73,7 +73,7 @@ exports.getUsersWithPlaysOnQuiz = getUsersWithPlaysOnQuiz;
 
 // Quizzes
 
-//returns array of QUIZ objects with keys id, title, description, picture_url, number_of_questions, number_of_plays, user_id (use res.rows)
+//returns array of QUIZ objects with keys id, title, description, picture_url, number_of_questions, number_of_plays, user_id, is_public (use res.rows)
 const getQuizzes = function(user_id) {
   let queryString = `SELECT * FROM quizzes`;
   if (user_id) {
@@ -85,6 +85,19 @@ const getQuizzes = function(user_id) {
   }
 };
 exports.getQuizzes = getQuizzes;
+
+//returns QUIZ object with keys id, title, description, picture_url, number_of_questions, number_of_plays, user_id, is_public (use res.rows[0])
+const getQuiz = function(quiz_id) {
+  return pool.query(
+    `
+    SELECT *
+    FROM quizzes
+    WHERE id = $1
+    `,
+    [quiz_id]
+  );
+};
+exports.getQuiz = getQuiz;
 
 //adds a new quiz to quizzes database and returns id key of created QUIZ object (use res.rows[0])
 const createNewQuiz = function(quiz) {
