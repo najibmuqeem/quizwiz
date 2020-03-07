@@ -40,6 +40,8 @@ const quizzesRoutes = require("./routes/quizzes");
 
 const correctAnswersRoutes = require("./routes/correctAnswers");
 const scoresRoutes = require("./routes/scores");
+const questionsRoutes = require("./routes/questions");
+const optionsRoutes = require("./routes/options");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -48,6 +50,8 @@ app.use("/api/widgets", widgetsRoutes(db));
 app.use("/api/quizzes", quizzesRoutes());
 app.use("/api/correctAnswers", correctAnswersRoutes());
 app.use("/api/scores", scoresRoutes());
+app.use("/api/questions", questionsRoutes());
+app.use("/api/options", optionsRoutes());
 //app.use("/api/scores", scoresRoutes(db));
 // Note: mount other resources here, using the same pattern above
 
