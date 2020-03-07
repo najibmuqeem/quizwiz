@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" class="has-navbar-fixed-top">
+
+  <!--***************** HEAD *****************-->
+  <head>
+    <!-- Title -->
+    <title>QuizWiz</title>
+
+    <!-- Meta information -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Font icons -->
+    <script src="https://kit.fontawesome.com/0a7ed7867a.js" crossorigin="anonymous"></script>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/take-quiz.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/start-quiz.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+
+    <!-- JS scripts -->
+    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+    <script type="text/javascript" src="/scripts/app.js"></script>
+  </head>
+
+  <!--***************** BODY *****************-->
+  <body>
+
+    <!-- /////// Navbar /////// -->
+    <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+
+      <!-- Brand logo and nav burger -->
+      <div class="navbar-brand">
+        <a class="navbar-item" href="/">
+          <h1 class="title is-3 has-text-info">QUIZ WIZ</h1>
+        </a>
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+
+
+      <!-- Left side nav items -->
+      <div class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item" href="/">
+            Home
+          </a>
+
+          <a class="navbar-item">
+            Create Your Own Quiz
+          </a>
+
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">
+              Categories
+            </a>
+
+            <div class="navbar-dropdown">
+              <a class="navbar-item">
+                Arts
+              </a>
+              <a class="navbar-item">
+                History
+              </a>
+              <a class="navbar-item">
+                Movies
+              </a>
+              <a class="navbar-item">
+                Music
+              </a>
+              <a class="navbar-item">
+                Sports
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right side nav items -->
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="buttons">
+              <a class="button is-primary">
+                <strong>Sign up</strong>
+              </a>
+              <a class="button is-light">
+                Log in
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- /////// Main content /////// -->
+    <main class="section">
+
+      <section class="container quiz-end-background start-end-quiz has-text-centered">
+
+        <!-- Quiz info -->
+        <h1 class="title is-1 has-text-white ">
+          You completed Art Quiz!
+        </h1>
+        <p class="is-size-3 has-text-black">You scored 4/5</p>
+
+        <!-- Share/Home button -->
+        <a class="button is-primary is-inverted is-medium" href="">
+          <strong>Share Your Result</strong>
+        </a>
+        <a class="button is-primary is-inverted is-outlined is-medium" href="/">
+          <strong>Back To Home</strong>
+        </a>
+
+        <!-- Previous scores -->
+        <div class="previous-attempts">
+          <h3 class="title is-4 has-text-white">Your previous attempts at this quiz:</h3>
+          <ul class="is-size-4">
+            <li>4/5</li>
+            <li>3/5</li>
+          </ul>
+        </div>
+
+      </section>
+
+    </main>
+
+
+
+  </body>
+</html>
