@@ -199,7 +199,39 @@ const insertScore = function(quiz_id, user_id, score) {
 };
 exports.insertScore = insertScore;
 
-//
+//accepts two parameters. First parameter must be user_id and the second must be quiz_id.
+//to get user attempts on all quizzes, pass null as second parameter
+//to get user attempts on a specific quiz, pass actual values to both parameters
+//to get all user's attempts on a specific quiz, pass null as first parameter
+const getUserQuizAttempts = function(user_id, quiz_id) {
+  let queryString = `SELECT users.name, count(*) as number_of_quiz_attempts`;
+  let queryParams = [];
+  if (!user_id) {
+    queryString += ` FROM user_scores
+    JOIN quizzes ON quizzes.id = quiz_id
+    JOIN users on users.id = user_scores.user_id
+    GROUP BY user_scores.quiz_id, users.name
+    HAVING user_scores.quiz_id = $1;`;
+    queryParams.push(quiz_id);
+  } else {
+    queryString += `, quizzes.title
+      FROM user_scores
+      JOIN quizzes ON quizzes.id = quiz_id
+      JOIN users on users.id = user_scores.user_id
+      GROUP BY user_scores.user_id, users.name, quizzes.title
+      HAVING user_scores.user_id = $1`;
+    queryParams.push(user_id);
+    if (quiz_id) {
+      queryString += ` AND user_scores.quiz_id = $2;`;
+      queryParams.push(quiz_id);
+    } else {
+      queryString += `;`;
+    }
+  }
+  return pool.query(queryString, queryParams);
+};
+exports.getUserQuizAttempts = getUserQuizAttempts;
+
 // will implement later if time permits
 //
 // const makeQuery = function(queryString, queryParams) {
