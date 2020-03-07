@@ -231,13 +231,3 @@ const getUserQuizAttempts = function(user_id, quiz_id) {
   return pool.query(queryString, queryParams);
 };
 exports.getUserQuizAttempts = getUserQuizAttempts;
-
-// will implement later if time permits
-//
-// const makeQuery = function(queryString, queryParams) {
-//   if (queryParams) {
-//     return pool.query(queryString, queryParams);
-//   } else {
-//     return pool.query(queryString);
-//   }
-// };
