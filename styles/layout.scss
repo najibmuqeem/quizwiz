@@ -5,25 +5,11 @@ $orange-dark: #db5e0b;
 
 $primary: $orange-light;
 $info: $orange-dark;
-
-@media screen and (min-width: 768px) {
-  html {
-    height: 100%;
-  }
-}
-
-.take-quiz {
-  background-color: $primary;
-  background-image: linear-gradient(141deg, #ca450b 0%, #e67e22 71%, #eeaa33 100%);
-}
+$link: $orange-light;
+$scheme-invert: $orange-light;
 
 .hero {
   margin-bottom: 30px;
-
-  &.question {
-    padding-bottom: 29px;
-  }
-
 }
 
 .box {
@@ -34,6 +20,7 @@ $info: $orange-dark;
 @import "../node_modules/bulma/sass/utilities/_all.sass";
 @import "../node_modules/bulma/sass/base/_all.sass";
 
+@import "../node_modules/bulma/sass/components/navbar.sass";
 @import "../node_modules/bulma/sass/elements/button.sass";
 @import "../node_modules/bulma/sass/elements/box.sass";
 @import "../node_modules/bulma/sass/elements/container.sass";
