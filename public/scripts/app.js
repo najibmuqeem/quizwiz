@@ -94,8 +94,7 @@ $(() => {
   $("#questions").on("submit", e => {
     e.preventDefault();
 
-    const number_of_questions = $(".question").length;
-    const number_of_options = $(".option").length;
+    const optionsPerQuestion = $(".option").length / $(".question").length;
     const quiz_id = Number($("#quiz-id").val());
 
     let is_correct = false;
@@ -106,11 +105,7 @@ $(() => {
     for (let i = 0; i < number_of_questions; i++) {
       question = $(".question")[i].val();
       let question_id = addQuestionToQuiz(quiz_id, question);
-      for (
-        let j = counter - 1;
-        j < (counter * number_of_options) / number_of_questions;
-        j++
-      ) {
+      for (let j = counter - 1; j < counter * optionsPerQuestion; j++) {
         if ($(".option")[j].hasClass("correct")) {
           is_correct = true;
         } else {
@@ -120,7 +115,7 @@ $(() => {
         addOptionToQuestion(question_id, options[j], is_correct);
       }
       options = [];
-      counter += number_of_options / number_of_questions;
+      counter += optionsPerQuestion;
     }
   });
 });

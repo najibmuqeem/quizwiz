@@ -108,9 +108,10 @@ const createNewQuiz = function(quiz) {
         description,
         picture_url,
         number_of_questions,
-        user_id
+        user_id,
+        is_public
       )
-      VALUES ($1, $2, $3, $4, $5)
+      VALUES ($1, $2, $3, $4, $5, $6)
       RETURNING id;
       `,
     [
@@ -118,7 +119,8 @@ const createNewQuiz = function(quiz) {
       quiz.description,
       quiz.picture_url,
       quiz.number_of_questions,
-      quiz.user_id
+      quiz.user_id,
+      quiz.is_public
     ]
   );
 };
