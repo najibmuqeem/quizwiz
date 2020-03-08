@@ -11,7 +11,6 @@ $(() => {
   //submit quiz
   $("#create-quiz").on("submit", e => {
     e.preventDefault();
-    e.stopPropagation();
 
     const title = $("#create-quiz")[0].title.value;
     const description = $("#create-quiz")[0].description.value;
@@ -30,6 +29,7 @@ $(() => {
     $("#title").val("");
     $("#num-questions").val("");
     $("#num-options").val("");
+    $("#public").prop("checked", false);
 
     $("#create-quiz").hide();
 
