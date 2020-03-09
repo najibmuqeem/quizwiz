@@ -32,12 +32,11 @@ const fetchSingleQuiz = function() {
 };
 
 // Gets all the questions for a specific quiz
-// Renders question # 1 to start the quiz
 const fetchQuestions = (quizId) => {
   $.ajax({
     type: "GET",
     url: `/api/questions/${quizId}`,
-    success: renderQuestion(1),
+    success: renderQuestion,
     dataType: "json"
   })
 }
