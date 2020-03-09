@@ -1,4 +1,4 @@
-// Get quizzes
+// Gets individual quizzes to show on home page
 const fetchAndRenderQuizzes = function() {
   $.ajax({
     type: "GET",
@@ -30,3 +30,14 @@ const fetchSingleQuiz = function() {
     dataType: "json"
   });
 };
+
+// Gets all the questions for a specific quiz
+// Renders question # 1 to start the quiz
+const fetchQuestions = () => {
+  $.ajax({
+    type: "GET",
+    url: "/api/questions/:id",
+    success: renderQuestion(1),
+    dataType: "json"
+  })
+}
