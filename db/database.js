@@ -183,6 +183,7 @@ const getOptionsForQuestion = function(question_id) {
 };
 exports.getOptionsForQuestion = getOptionsForQuestion;
 
+//returns array of objects containing questions and options for a particular quiz
 const getQuizData = function(quiz_id) {
   return pool.query(
     `
