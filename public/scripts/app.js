@@ -59,16 +59,16 @@ $(() => {
   });
 
   // Checks if user chose correct answer, increments score accordingly
-  $('.option').click(event => {
-    const correctAnswer = currentOptions.filter(option => option.is_correct);
-    console.log('hallooo');
+  $('body').on('click', '.option', () => {
+    const userAnswer = event.target.innerText;
+    const correctAnswer = currentOptions.filter(option => option.is_correct)[0].option;
 
-    if (event.target.text() === correctAnswer.option) {
+    if (userAnswer === correctAnswer) {
       currentScore++;
     }
 
-    event.target.css('backgroundColor', 'red');
-    $('.option').filter(elem => elem.text() === correctAnswer.option).css('backgroundColor', 'green');
+    $(`.option:contains('${userAnswer}')`).css('backgroundColor', 'red');
+    $(`.option:contains('${correctAnswer}')`).css('backgroundColor', 'green');
   });
 
 });
