@@ -44,7 +44,7 @@ module.exports = () => {
     database
       .getQuiz(req.params.id)
       .then(data => {
-        const quiz = data.rows;
+        const quiz = data.rows[0];
         res.json(quiz);
       })
       .catch(err => {
