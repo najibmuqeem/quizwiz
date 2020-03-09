@@ -180,7 +180,11 @@ const renderQuizzes = function(quizzes) {
 
 // Renders a question and associated options
 const renderQuestion = (questionAndOptions) => {
-  console.log(questionAndOptions);
+  if (questionAndOptions.length === 0) {
+    console.log('zerooo');
+    return;
+  }
+
   const divisionPoint = questionAndOptions[0].number_of_answers;
 
   currentOptions = questionAndOptions.slice(0, divisionPoint);
