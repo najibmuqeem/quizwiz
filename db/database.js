@@ -246,3 +246,16 @@ const getUserQuizAttempts = function(user_id, quiz_id) {
   return pool.query(queryString, queryParams);
 };
 exports.getUserQuizAttempts = getUserQuizAttempts;
+
+//returns score as integer (use res.rows[0])
+const getScores = function(user_id, quiz_id) {
+  return pool.query(
+    `
+    SELECT score
+    FROM user_scores
+    WHERE user_id = $1 AND quiz_id = $2;
+    `,
+    [user_id, quiz_id]
+  );
+};
+exports.getScores = getScores;
