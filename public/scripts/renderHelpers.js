@@ -136,7 +136,6 @@ const renderQuizzes = function(quizzes) {
 };
 
 // render specific quiz
-const renderQuiz = function(quiz) {};
 
 // Renders a question and associated options
 const renderQuestion = (questionAndOptions) => {
@@ -147,11 +146,11 @@ const renderQuestion = (questionAndOptions) => {
   $('main').empty().append(buildQuestionPage(currentOptions));
 
   quizData = questionAndOptions.slice(divisionPoint);
-=======
+}
+
 const renderQuiz = function(quiz) {
   // Render single quiz
   $('main').replaceWith(buildQuiz(quiz));
-
 };
 
 // To build quiz interface for user
