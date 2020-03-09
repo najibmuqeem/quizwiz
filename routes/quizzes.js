@@ -42,7 +42,7 @@ module.exports = () => {
 
   router.get("/:id", (req, res) => {
     database
-      .getQuizzes(req.params.id)
+      .getQuiz(req.params.id)
       .then(data => {
         const quiz = data.rows;
         res.json(quiz);
