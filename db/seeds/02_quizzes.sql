@@ -1,6 +1,6 @@
-INSERT INTO quizzes (title, description, picture_url, number_of_questions, user_id) VALUES ('hello', 'my', 'name', 5, 1);
+INSERT INTO quizzes (title, description, picture_url, number_of_questions, user_id) VALUES ('First Quiz', 'The first of many.', 'https://images.unsplash.com/photo-1494253109108-2e30c049369b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80', 5, 1);
 
-INSERT INTO quizzes (title, description, picture_url, number_of_questions, user_id) VALUES ('is', 'berk', 'ozer', 5, 2);
+INSERT INTO quizzes (title, description, picture_url, number_of_questions, user_id) VALUES ('Second Quiz', 'Exactly what it sounds like.', 'https://cdn.ebaumsworld.com/mediaFiles/picture/1035099/85708057.jpg', 5, 2);
 
 INSERT INTO quizzes (title, description, picture_url, number_of_questions, user_id) VALUES ('Najibs Nuts', 'Enjoy this amazing quiz on Najibs favorite nuts!', 'https://media.npr.org/assets/img/2019/09/27/nuts-1_custom-61cfca772f4f991e157977ffe42febcb8c23d7dc-s800-c85.jpg', 5, 3);
 

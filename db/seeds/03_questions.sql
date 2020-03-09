@@ -1,14 +1,14 @@
-INSERT INTO questions (quiz_id, question) VALUES (1, 'first1');
-INSERT INTO questions (quiz_id, question) VALUES (1, 'first2');
-INSERT INTO questions (quiz_id, question) VALUES (1, 'first3');
-INSERT INTO questions (quiz_id, question) VALUES (1, 'first4');
-INSERT INTO questions (quiz_id, question) VALUES (1, 'first5');
+INSERT INTO questions (quiz_id, question) VALUES (1, 'Which is truthy?');
+INSERT INTO questions (quiz_id, question) VALUES (1, 'Which is different?');
+INSERT INTO questions (quiz_id, question) VALUES (1, 'Which character does not appear in all five Pirates of the Caribbean movies?');
+INSERT INTO questions (quiz_id, question) VALUES (1, 'Which number is best?');
+INSERT INTO questions (quiz_id, question) VALUES (1, 'Which answer is correct?');
 
-INSERT INTO questions (quiz_id, question) VALUES (2, 'second1');
-INSERT INTO questions (quiz_id, question) VALUES (2, 'second2');
-INSERT INTO questions (quiz_id, question) VALUES (2, 'second3');
-INSERT INTO questions (quiz_id, question) VALUES (2, 'second4');
-INSERT INTO questions (quiz_id, question) VALUES (2, 'second5');
+INSERT INTO questions (quiz_id, question) VALUES (2, 'Which answer is correct?');
+INSERT INTO questions (quiz_id, question) VALUES (2, 'Which is the best way?');
+INSERT INTO questions (quiz_id, question) VALUES (2, 'Choose the correct answer.');
+INSERT INTO questions (quiz_id, question) VALUES (2, 'Think a little and the answer will come to you.');
+INSERT INTO questions (quiz_id, question) VALUES (2, 'You got this one.');
 
 INSERT INTO questions (quiz_id, question) VALUES (3, 'What type of nut is best?');
 INSERT INTO questions (quiz_id, question) VALUES (3, 'Which nuts shell has similarities to poison ivy?');

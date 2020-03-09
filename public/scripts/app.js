@@ -11,18 +11,20 @@ $(() => {
   //submit quiz
   $("#create-quiz").on("submit", e => {
     e.preventDefault();
+    const form = $("#create-quiz")[0];
 
-    const title = $("#create-quiz")[0].title.value;
-    const description = $("#create-quiz")[0].description.value;
-    const picture_url = $("#create-quiz")[0].picture.value;
+    const title = form.title.value;
+    const description = form.description.value;
+    const picture_url = form.picture.value;
+    const number_of_questions = form.questions.value;
+    const number_of_options = form.options.value;
     let is_public;
     if ($("#public").prop("checked")) {
       is_public = true;
     } else {
       is_public = false;
     }
-    const number_of_questions = $("#create-quiz")[0].questions.value;
-    const number_of_options = $("#create-quiz")[0].options.value;
+
     const quiz = {
       title,
       description,
@@ -48,15 +50,17 @@ $(() => {
     const number_of_answers = $(".option").length / $(".question").length;
     const quiz_id = Number($("#quiz-id")[0].innerText);
 
-    $(".question-container").each(function(i) {
+    $(".question-container").each(function() {
       let $this = $(this);
       $(this)
         .find(".question")
-        .each(function(i) {
+        .each(function() {
           addQuestion($this, quiz_id, $(this)[0].value, number_of_answers);
         });
     });
+    fetchSingleQuiz(quiz_id);
   });
+
 
   // Checks if user chose correct answer, increments score accordingly, goes to next question
   $('body').on('click', '.option', () => {
@@ -81,7 +85,6 @@ $(() => {
       renderQuestion(quizData);
     }, 1000);
   });
-
 });
 
 // Keeps score of current quiz
