@@ -7,7 +7,7 @@
 
 /*
 |
-| AUXILIARY FUNCTIONS
+| AUXILIARY FUNCTIONS AND VARIABLES
 |
 |___________________________________________
 */
@@ -18,6 +18,9 @@ const escape = str => {
   div.appendChild(document.createTextNode(str));
   return div.innerHTML;
 };
+
+// Holds all the questions and options for a quiz
+const quizQuestionsAndOptions = [];
 
 /*
 |
@@ -83,3 +86,4 @@ const renderQuizzes = function(quizzes) {
 const renderQuiz = function(quiz) {
 
 };
+
