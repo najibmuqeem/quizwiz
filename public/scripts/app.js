@@ -56,6 +56,7 @@ $(() => {
           addQuestion($this, quiz_id, $(this)[0].value, number_of_answers);
         });
     });
+    fetchSingleQuiz(quiz_id);
   });
 
   // Checks if user chose correct answer, increments score accordingly
