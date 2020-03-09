@@ -42,51 +42,51 @@ $(() => {
       user_id: 1
     };
 
-    const quiz_id = createQuiz(quiz);
-
     let html = ``;
+
+    createQuiz(quiz);
 
     for (let i = 1; i <= number_of_questions; i++) {
       html += `
-              <div class="field">
-                <label class="label">Question ${i}</label>
-                <div class="control">
-                  <input type="text" class="input question" />
-                </div>
-              </div>`;
+                <div class="field">
+                  <label class="label">Question ${i}</label>
+                  <div class="control">
+                    <input type="text" class="input question" />
+                  </div>
+                </div>`;
       for (let j = 1; j <= number_of_options; j++) {
         if (j === 1) {
           html += `
-                  <div class="field">
-                    <label class="label">Option ${j}</label>
-                    <div class="control">
-                      <input type="text" class="input correct option" placeholder="Correct option"/>
-                    </div>
-                  </div>`;
+                    <div class="field">
+                      <label class="label">Option ${j}</label>
+                      <div class="control">
+                        <input type="text" class="input correct option" placeholder="Correct option"/>
+                      </div>
+                    </div>`;
         } else {
           html += `
-                  <div class="field">
-                    <label class="label">Option ${j}</label>
-                    <div class="control">
-                      <input type="text" class="input option" placeholder="Incorrect option" />
-                    </div>
-                  </div>`;
+                    <div class="field">
+                      <label class="label">Option ${j}</label>
+                      <div class="control">
+                        <input type="text" class="input option" placeholder="Incorrect option" />
+                      </div>
+                    </div>`;
         }
       }
       html += `<br>`;
     }
 
     html += `
-            <div class="field is-grouped">
-              <div class="control">
-                <button id="submit-questions" class="button is-primary">Submit</button>
-                <button class="button is-link is-light">Cancel</button>
+              <div class="field is-grouped">
+                <div class="control">
+                  <button id="submit-questions" class="button is-primary">Submit</button>
+                  <button class="button is-link is-light">Cancel</button>
+                </div>
               </div>
-            </div>
-            <div>
-              Quiz ID:
-              <span id="quiz-id">${quiz_id}</span>
-            </div>`;
+              <div>
+                Quiz ID:
+                <span id="quiz-id"></span>
+              </div>`;
     $("#questions").append(html);
   });
 
@@ -102,7 +102,7 @@ $(() => {
     let options = [];
     let counter = 1;
 
-    for (let i = 0; i < number_of_questions; i++) {
+    for (let i = 0; i < $(".question").length; i++) {
       question = $(".question")[i].val();
       let question_id = addQuestionToQuiz(quiz_id, question);
       for (let j = counter - 1; j < counter * optionsPerQuestion; j++) {
