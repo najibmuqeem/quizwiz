@@ -19,7 +19,7 @@ let quizData;
 let currentOptions;
 
 // Keeps track of the question number during a quiz
-let questionNumber = 0
+let questionNumber = 0;
 
 // Escapes unsafe characters and returns safe html. To prevent XSS
 const escape = str => {
@@ -53,7 +53,9 @@ const buildQuizRows = quizzes => {
 
     quizRows += `
       <div class="tile is-parent">
-        <article class="tile is-child box" style="background-image: linear-gradient(180deg, rgba(255,255,255,0.7) 40%, rgba(255,255,255,0.3) 70%, rgba(255,255,255,0) 100%), url(${escape(quiz.picture_url)});" onclick="fetchSingleQuiz(${quiz.id})">
+        <article class="tile is-child box" style="background-image: linear-gradient(180deg, rgba(255,255,255,0.7) 40%, rgba(255,255,255,0.3) 70%, rgba(255,255,255,0) 100%), url(${escape(
+          quiz.picture_url
+        )});" onclick="fetchSingleQuiz(${quiz.id})">
           <p class="title">${escape(quiz.title)}</p>
           <p class="subtitle">${escape(quiz.description)}</p>
           <div class="content">
@@ -74,8 +76,8 @@ const buildQuizRows = quizzes => {
 };
 
 // Builds a quiz question page with associated options
-const buildQuestionPage = (questionAndOptions) => {
-  $('html').addClass('quiz-background');
+const buildQuestionPage = questionAndOptions => {
+  $("html").addClass("quiz-background");
 
   let questionPage = `
   <!-- Question header -->
@@ -99,7 +101,7 @@ const buildQuestionPage = (questionAndOptions) => {
         <p class="title">${element.option}</p>
       </article>
     </div>
-    `
+    `;
 
     if (index === array.length - 1) {
       questionPage += `
@@ -111,7 +113,9 @@ const buildQuestionPage = (questionAndOptions) => {
   questionPage += `
   <div class="content has-text-right is-size-3">
     <p>
-      Question <strong>${++questionNumber}</strong> of <strong>${questionAndOptions[0].number_of_questions}</strong>
+      Question <strong>${++questionNumber}</strong> of <strong>${
+    questionAndOptions[0].number_of_questions
+  }</strong>
     </p>
   </div>
   `;
@@ -135,23 +139,21 @@ const renderQuizzes = function(quizzes) {
   $("#home").append(buildQuizRows(quizzes));
 };
 
-// render specific quiz
-const renderQuiz = function(quiz) {};
-
 // Renders a question and associated options
-const renderQuestion = (questionAndOptions) => {
+const renderQuestion = questionAndOptions => {
   console.log(questionAndOptions);
   const divisionPoint = questionAndOptions[0].number_of_answers;
 
   currentOptions = questionAndOptions.slice(0, divisionPoint);
-  $('main').empty().append(buildQuestionPage(currentOptions));
+  $("main")
+    .empty()
+    .append(buildQuestionPage(currentOptions));
 
   quizData = questionAndOptions.slice(divisionPoint);
-=======
+};
 const renderQuiz = function(quiz) {
   // Render single quiz
-  $('main').replaceWith(buildQuiz(quiz));
-
+  $("main").replaceWith(buildQuiz(quiz));
 };
 
 // To build quiz interface for user
@@ -179,7 +181,6 @@ const buildQuiz = function(quiz) {
 
  </section>`;
   return singleQuiz;
-
 };
 
 // To render scores for a user
