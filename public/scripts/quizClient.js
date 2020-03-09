@@ -21,12 +21,18 @@ const createQuiz = function(data) {
   });
 };
 
+
+
 // Get single quiz
-const fetchSingleQuiz = function() {
+const fetchSingleQuiz = function(id) {
   $.ajax({
     type: "GET",
-    url: "/api/quizzes/:id",
-    success: renderQuiz,
+    url: `/api/quizzes/${id}`,
+    success: (data) => {
+      renderQuiz(data);
+      getScores(data);
+
+    },
     dataType: "json"
   });
 };
