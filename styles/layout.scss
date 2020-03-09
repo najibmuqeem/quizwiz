@@ -36,11 +36,7 @@ $scheme-invert: $orange-light;
 }
 
 .tile {
-  & a {
-    all: inherit;
-    padding: 0;
-    cursor: pointer;
-  }
+  cursor: pointer;
 }
 
 /******** Bulma ********/
