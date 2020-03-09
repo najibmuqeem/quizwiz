@@ -31,29 +31,18 @@ const fetchSingleQuiz = function() {
   });
 };
 
-// Gets all the questions for a specific quiz
-const fetchQuestions = (quizId) => {
+// Get all the questions and options for a quiz
+const fetchQuizData = (quizId) => {
   $.ajax({
     type: "GET",
     url: `/api/questions/${quizId}`,
-    success: questions => {
-      questions.forEach(question => {
-        fetchOptions(question);
-      });
+    success: quizData => {
+      quizQuestionsAndOptions.push(quizData);
+      renderQuestion(quizQuestionsAndOptions);
     },
     dataType: "json"
   })
 };
-
-// Gets all the options for a question
-const fetchOptions = (question) => {
-  $.ajax({
-    type: "GET",
-    url: `/api/options/${question.id}`,
-    success: options => quizQuestionsAndOptions.push(question, options),
-    dataType: "json"
-  })
-}
 
 // Post question to quiz
 const addQuestion = function(quiz_id, question, number_of_answers) {
