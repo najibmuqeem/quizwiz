@@ -69,7 +69,7 @@ const buildQuizRows = quizzes => {
       `;
     }
   });
-  console.log(quizRows);
+
   return quizRows;
 };
 
@@ -136,7 +136,7 @@ const buildQuiz = function(quiz) {
       <p class="is-size-4"><em><span class="total-question-number">${escape(quiz.number_of_questions)}</span> Questions</em></p>
 
       <!-- Start button -->
-      <a class="button is-primary is-inverted is-large" href="./take-quiz.html">
+      <a class="button is-primary is-inverted is-large" onclick="fetchQuizData(${quiz.id})">
         <strong>Start Quiz</strong>
       </a>
 
