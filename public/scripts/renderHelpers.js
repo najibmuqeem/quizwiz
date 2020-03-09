@@ -71,7 +71,7 @@ const buildQuizRows = quizzes => {
       `;
     }
   });
-  console.log(quizRows);
+
   return quizRows;
 };
 
@@ -127,6 +127,49 @@ const buildQuestionPage = questionAndOptions => {
   return questionPage;
 };
 
+// Builds the starting quiz page
+const buildQuiz = function(quiz) {
+  let singleQuiz = `
+  <main class="section">
+    <section class="container quiz-background start-end-quiz has-text-centered">
+      <!-- Quiz info -->
+      <h1 class="title is-1 has-text-white ">
+        ${escape(quiz.title)}
+      </h1>
+      <p class="is-size-3 has-text-black">${escape(quiz.description)}</p>
+      <p class="is-size-4"><em><span class="total-question-number">${escape(quiz.number_of_questions)}</span> Questions</em></p>
+
+      <!-- Start button -->
+      <a class="button is-primary is-inverted is-large" onclick="fetchQuizData(${quiz.id})">
+        <strong>Start Quiz</strong>
+      </a>
+
+      <!-- Previous scores -->
+      <div class="previous-attempts">
+        <h3 class="title is-4 has-text-white">Your previous attempts at this quiz:</h3>
+        <ul class="is-size-4">
+        </ul>
+      </div>
+    </section>
+  </main>
+    `;
+
+  return singleQuiz;
+};
+
+// Builds the dark navbar which is used in starting quiz and taking quiz (question) pages
+const buildDarkNavbar = () => {
+  return `
+  <nav class="navbar is-dark is-fixed-top" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/">
+        <h1 class="title is-1 has-text-info"><i class="far fa-times-circle"></i></h1>
+      </a>
+    </div>
+  </nav>
+  `
+};
+
 /*
 |
 | RENDERING FUNCTIONS
@@ -140,8 +183,12 @@ const renderQuizzes = function(quizzes) {
 };
 
 // Renders a question and associated options
-const renderQuestion = questionAndOptions => {
-  console.log(questionAndOptions);
+const renderQuestion = (questionAndOptions) => {
+  if (questionAndOptions.length === 0) {
+    console.log('zerooo');
+    return;
+  }
+
   const divisionPoint = questionAndOptions[0].number_of_answers;
 
   currentOptions = questionAndOptions.slice(0, divisionPoint);
@@ -150,37 +197,14 @@ const renderQuestion = questionAndOptions => {
     .append(buildQuestionPage(currentOptions));
 
   quizData = questionAndOptions.slice(divisionPoint);
-};
+}
+
+// Renders single quiz start page
 const renderQuiz = function(quiz) {
-  // Render single quiz
-  $("main").replaceWith(buildQuiz(quiz));
-};
-
-// To build quiz interface for user
-const buildQuiz = function(quiz) {
-  let singleQuiz = `<section class="container quiz-background start-end-quiz has-text-centered">
-
-   <!-- Quiz info -->
-   <h1 class="title is-1 has-text-white ">
-     ${quiz.title}
-   </h1>
-   <p class="is-size-3 has-text-black">${quiz.description}</p>
-   <p class="is-size-4"><em><span class="total-question-number">${quiz.number_of_questions}</span> Questions</em></p>
-
-   <!-- Start button -->
-   <a class="button is-primary is-inverted is-large" href="./take-quiz.html">
-     <strong>Start Quiz</strong>
-   </a>
-
-   <!-- Previous scores -->
-   <div class="previous-attempts">
-     <h3 class="title is-4 has-text-white">Your previous attempts at this quiz:</h3>
-     <ul class="is-size-4">
-      </ul>
-   </div>
-
- </section>`;
-  return singleQuiz;
+  $('body').empty();
+  $('body').append(buildDarkNavbar());
+  $('body').append(buildQuiz(quiz));
+=======
 };
 
 // To render scores for a user
