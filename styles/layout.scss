@@ -25,7 +25,12 @@ $scheme-invert: $orange-light;
   transition: all 0.5s;
 
   &:hover {
-    box-shadow: 0px 2px 18px 3px rgba(230, 126, 34,1.0);
+    box-shadow: 0px 2px 18px 3px rgba(230, 126, 34,.8);
+    transition: all 0.5s;
+  }
+
+  &.option:hover {
+    box-shadow: 0px 2px 18px 9px rgba(230, 230, 230,.8);
     transition: all 0.5s;
   }
 }
