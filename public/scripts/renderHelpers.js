@@ -155,30 +155,31 @@ const renderQuiz = function(quiz) {
 
 // To build quiz interface for user
 const buildQuiz = function(quiz) {
-  let singleQuiz = `<section class="container quiz-background start-end-quiz has-text-centered">
+  let singleQuiz = `
+  <section class="container quiz-background start-end-quiz has-text-centered">
 
-   <!-- Quiz info -->
-   <h1 class="title is-1 has-text-white ">
-     ${quiz.title}
-   </h1>
-   <p class="is-size-3 has-text-black">${quiz.description}</p>
-   <p class="is-size-4"><em><span class="total-question-number">${quiz.number_of_questions}</span> Questions</em></p>
+    <!-- Quiz info -->
+    <h1 class="title is-1 has-text-white ">
+      ${escape(quiz.title)}
+    </h1>
+    <p class="is-size-3 has-text-black">${escape(quiz.description)}</p>
+    <p class="is-size-4"><em><span class="total-question-number">${escape(quiz.number_of_questions)}</span> Questions</em></p>
 
-   <!-- Start button -->
-   <a class="button is-primary is-inverted is-large" href="./take-quiz.html">
-     <strong>Start Quiz</strong>
-   </a>
+    <!-- Start button -->
+    <a class="button is-primary is-inverted is-large" href="./take-quiz.html">
+      <strong>Start Quiz</strong>
+    </a>
 
-   <!-- Previous scores -->
-   <div class="previous-attempts">
-     <h3 class="title is-4 has-text-white">Your previous attempts at this quiz:</h3>
-     <ul class="is-size-4">
+    <!-- Previous scores -->
+    <div class="previous-attempts">
+      <h3 class="title is-4 has-text-white">Your previous attempts at this quiz:</h3>
+      <ul class="is-size-4">
       </ul>
-   </div>
+    </div>
 
- </section>`;
+  </section>`;
+
   return singleQuiz;
-
 };
 
 // To render scores for a user
