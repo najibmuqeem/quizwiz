@@ -69,11 +69,11 @@ $(() => {
 
     $('.option').filter(function() {
       return $(this).children().text() === userAnswer;
-    }).css('backgroundColor', 'red');
+    }).css('backgroundColor', '#e74c3c');
 
     $('.option').filter(function() {
       return $(this).children().text() === correctAnswer;
-    }).css('backgroundColor', 'green');
+    }).css('backgroundColor', '#2ecc71');
 
     $('.option').css('pointer-events', 'none');
 
