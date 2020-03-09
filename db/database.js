@@ -128,13 +128,13 @@ exports.createNewQuiz = createNewQuiz;
 
 // Questions
 
-//adds a new question to questions database and returns id key of created QUESTION object
+//adds a new question to questions database and returns keys id, question, and number_of_answers of created QUESTION object
 const addQuestionToQuiz = function(quiz_id, question, number_of_answers) {
   return pool.query(
     `
       INSERT INTO questions (quiz_id, question, number_of_answers)
       VALUES ($1, $2, $3)
-      RETURNING id;
+      RETURNING *;
       `,
     [quiz_id, question, number_of_answers]
   );

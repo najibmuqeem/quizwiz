@@ -19,16 +19,17 @@ module.exports = () => {
   //Post quiz
 
   router.post("/", (req, res) => {
-    console.log({ body: req.body });
+    const params = {
+      title: req.body.title,
+      description: req.body.description,
+      picture_url: req.body.picture_url,
+      number_of_questions: req.body.number_of_questions,
+      user_id: req.body.user_id,
+      is_public: req.body.is_public
+    };
+
     database
-      .createNewQuiz({
-        title: req.body.title,
-        description: req.body.description,
-        picture_url: req.body.picture_url,
-        number_of_questions: req.body.number_of_questions,
-        user_id: req.body.user_id,
-        is_public: req.body.is_public
-      })
+      .createNewQuiz(params)
       .then(data => {
         const quizzes = data.rows;
         res.json(quizzes);
