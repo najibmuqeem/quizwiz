@@ -204,7 +204,6 @@ const renderQuiz = function(quiz) {
   $('body').empty();
   $('body').append(buildDarkNavbar());
   $('body').append(buildQuiz(quiz));
-=======
 };
 
 // To render scores for a user
