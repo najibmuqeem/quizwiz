@@ -23,6 +23,9 @@ const escape = str => {
 // Has a value when user starts a quiz
 let quizData;
 
+// Keeps track of the question number during a quiz
+let questionNumber = 0
+
 /*
 |
 | BUILDING FUNCTIONS
@@ -71,7 +74,54 @@ const buildQuizRows = quizzes => {
 };
 
 // Builds a quiz question page with associated options
+const buildQuestionPage = (questionsAndOptions) => {
+  $('html').addClass('quiz-background');
 
+  let questionPage = `
+  <!-- Question header -->
+  <section class="hero question">
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <h1 class="title is-2 has-text-white">
+          ${escape(questionsAndOptions[0].question)}
+        </h1>
+      </div>
+    </div>
+  </section>
+
+  <div class="tile is-ancestor has-text-centered">
+  `;
+
+  questionsAndOptions.forEach((element, index, array) => {
+    questionPage += `
+    <div class="tile is-parent">
+      <article class="tile is-child box option" onclick="renderQuestion(quizData)">
+        <p class="title">${element.option}</p>
+      </article>
+    </div>
+    `
+
+    if (index === array.length - 1) {
+      questionPage += `
+      </div>
+      `;
+    }
+  });
+
+  questionPage += `
+  <div class="content has-text-right is-size-3">
+    <p>
+      Question <strong>${++questionNumber}</strong> of <strong>${questionsAndOptions[0].number_of_questions}</strong>
+    </p>
+  </div>
+  `;
+
+  if (questionNumber === questionsAndOptions[0].number_of_questions) {
+    questionNumber = 0;
+  }
+
+  return questionPage;
+};
 
 /*
 |
@@ -89,11 +139,11 @@ const renderQuizzes = function(quizzes) {
 const renderQuiz = function(quiz) {};
 
 // Renders a question and associated options
-const renderQuestion = (quizData) => {
-  console.log(quizData);
-  const divisionPoint = quizData[0].number_of_answers;
+const renderQuestion = (questionAndOptions) => {
+  console.log(questionAndOptions);
+  const divisionPoint = questionAndOptions[0].number_of_answers;
 
-  $('main').empty().append(buildQuestionPage(quizData.slice(0, divisionPoint)));
+  $('main').empty().append(buildQuestionPage(questionAndOptions.slice(0, divisionPoint)));
 
-  quizData = quizData.slice(divisionPoint);
+  quizData = questionAndOptions.slice(divisionPoint);
 };
