@@ -10,9 +10,21 @@ module.exports = () => {
       res.json(scores);
     })
       .catch(err => {
-        res.json({error: err.message});
+        res.status(500).json({error: err.message});
       });
   });
+
+  // Get scores
+  router.get('/', (req, res) => {
+    database.getScores(req.body.user_id,req.body.quiz_id).then(data => {
+      const scores = data.rows;
+      res.json(scores);
+    })
+      .catch(err => {
+        res.status(500).json({error: err.message});
+      });
+  });
+
 
   return router;
 };
