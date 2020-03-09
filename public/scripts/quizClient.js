@@ -13,7 +13,11 @@ const createQuiz = function(data) {
   $.ajax({
     type: "POST",
     url: "/api/quizzes",
-    data: data
+    data: data,
+    success: data => {
+      document.getElementById("quiz-id").innerHTML = data[0].id;
+    },
+    dataType: "json"
   });
 };
 
@@ -26,4 +30,3 @@ const fetchSingleQuiz = function() {
     dataType: "json"
   });
 };
-
