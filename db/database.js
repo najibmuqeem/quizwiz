@@ -108,9 +108,10 @@ const createNewQuiz = function(quiz) {
         description,
         picture_url,
         number_of_questions,
-        user_id
+        user_id,
+        is_public
       )
-      VALUES ($1, $2, $3, $4, $5)
+      VALUES ($1, $2, $3, $4, $5, $6)
       RETURNING id;
       `,
     [
@@ -118,7 +119,8 @@ const createNewQuiz = function(quiz) {
       quiz.description,
       quiz.picture_url,
       quiz.number_of_questions,
-      quiz.user_id
+      quiz.user_id,
+      quiz.is_public
     ]
   );
 };
@@ -127,14 +129,14 @@ exports.createNewQuiz = createNewQuiz;
 // Questions
 
 //adds a new question to questions database and returns id key of created QUESTION object
-const addQuestionToQuiz = function(quiz_id, question) {
+const addQuestionToQuiz = function(quiz_id, question, number_of_answers) {
   return pool.query(
     `
-      INSERT INTO questions (quiz_id, question)
-      VALUES ($1, $2)
+      INSERT INTO questions (quiz_id, question, number_of_answers)
+      VALUES ($1, $2, $3)
       RETURNING id;
       `,
-    [quiz_id, question]
+    [quiz_id, question, number_of_answers]
   );
 };
 exports.addQuestionToQuiz = addQuestionToQuiz;
