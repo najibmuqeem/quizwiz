@@ -53,6 +53,8 @@ const fetchOptions = (question) => {
     success: options => quizQuestionsAndOptions.push(question, options),
     dataType: "json"
   })
+}
+
 // Post question to quiz
 const addQuestion = function(quiz_id, question, number_of_answers) {
   $.ajax({
@@ -89,4 +91,4 @@ const addOptionToQuestion = function(question_id, option, is_correct) {
     data: { question_id, option, is_correct },
     dataType: "json"
   });
-}};
+};
