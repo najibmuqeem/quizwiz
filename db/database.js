@@ -156,13 +156,13 @@ exports.getQuestionsForQuiz = getQuestionsForQuiz;
 
 // Options
 
-//adds a new option to the options database and returns id of created OPTION object
+//adds a new option to the options database and returns all keys of created OPTION object
 const addOptionToQuestion = function(question_id, option, is_correct) {
   return pool.query(
     `
       INSERT INTO options (question_id, option, is_correct)
       VALUES ($1, $2, $3)
-      RETURNING id;
+      RETURNING *;
       `,
     [question_id, option, is_correct]
   );

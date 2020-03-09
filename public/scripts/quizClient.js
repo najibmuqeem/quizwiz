@@ -21,12 +21,18 @@ const createQuiz = function(data) {
   });
 };
 
+
+
 // Get single quiz
-const fetchSingleQuiz = function() {
+const fetchSingleQuiz = function(id) {
   $.ajax({
     type: "GET",
-    url: "/api/quizzes/:id",
-    success: renderQuiz,
+    url: `/api/quizzes/${id}`,
+    success: (data) => {
+      renderQuiz(data);
+      getScores(data);
+
+    },
     dataType: "json"
   });
 };
@@ -45,30 +51,39 @@ const fetchQuizData = (quizId) => {
 };
 
 // Post question to quiz
-const addQuestion = function(quiz_id, question, number_of_answers) {
+const addQuestion = function(
+  questionElem,
+  quiz_id,
+  question,
+  number_of_answers
+) {
   $.ajax({
     type: "POST",
     url: "/api/questions",
     data: { quiz_id, question, number_of_answers },
     success: data => {
-      addOptions(data.id, number_of_answers);
+      addOptions(questionElem, data.id, number_of_answers);
     },
     dataType: "json"
   });
 };
 
-const addOptions = function(question_id, number_of_answers) {
+const addOptions = function(questionElem, question_id, number_of_answers) {
   let options = [];
-  for (const option of $(".option")) {
-    options.push(option.value);
-  }
-  for (let i = 1; i <= number_of_answers; i++) {
-    if ($(`#option${i}`).hasClass("correct")) {
-      is_correct = true;
+  let is_correct = [];
+
+  questionElem.find(".option").each(function(i) {
+    options.push($(this)[0].value);
+
+    if ($(this)[0].className.includes("correct")) {
+      is_correct.push(true);
     } else {
-      is_correct = false;
+      is_correct.push(false);
     }
-    addOptionToQuestion(question_id, options[i], is_correct);
+  });
+
+  for (let i = 0; i < number_of_answers; i++) {
+    addOptionToQuestion(question_id, options[i], is_correct[i]);
   }
 };
 

@@ -52,7 +52,7 @@ app.use("/api/correctAnswers", correctAnswersRoutes());
 app.use("/api/scores", scoresRoutes());
 app.use("/api/questions", questionsRoutes());
 app.use("/api/options", optionsRoutes());
-//app.use("/api/scores", scoresRoutes(db));
+
 // Note: mount other resources here, using the same pattern above
 
 

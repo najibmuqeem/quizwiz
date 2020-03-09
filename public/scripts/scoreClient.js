@@ -1,11 +1,23 @@
 // Post score
-const createQuiz = function() {
+const storeScore = function() {
   let data = null;
   $.ajax({
     type: "POST",
-    url: "/scores",
+    url: "/api/scores",
     data: data,
-    success: postTest;
+    success: () => {}
+  });
+};
+
+// Get scores
+const getScores = function(quiz) {
+  console.log("quiz=",quiz);
+  $.ajax({
+    type: "GET",
+    url: `/api/scores/${quiz.user_id}/${quiz.id}`,
+    success: renderScores
   }
   );
 };
+
+

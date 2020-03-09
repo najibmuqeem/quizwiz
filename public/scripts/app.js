@@ -48,9 +48,14 @@ $(() => {
     const number_of_answers = $(".option").length / $(".question").length;
     const quiz_id = Number($("#quiz-id")[0].innerText);
 
-    for (const question of $(".question")) {
-      addQuestion(quiz_id, question.value, number_of_answers);
-    }
+    $(".question-container").each(function(i) {
+      let $this = $(this);
+      $(this)
+        .find(".question")
+        .each(function(i) {
+          addQuestion($this, quiz_id, $(this)[0].value, number_of_answers);
+        });
+    });
   });
 
   // Checks if user chose correct answer, increments score accordingly
@@ -72,11 +77,8 @@ $(() => {
 let currentScore = 0;
 
 const clearInputValues = function() {
-  $("#description").val("");
-  $("#picture-url").val("");
-  $("#title").val("");
-  $("#num-questions").val("");
-  $("#num-options").val("");
+  $("input").val("");
+  $("textarea").val("");
   $("#public").prop("checked", false);
 };
 
@@ -84,7 +86,7 @@ const createHTML = function(number_of_questions, number_of_options) {
   let html = ``;
 
   for (let i = 1; i <= number_of_questions; i++) {
-    html += `
+    html += `<div class="question-container">
                 <div class="field">
                   <label class="label">Question ${i}</label>
                   <div class="control">
@@ -110,7 +112,7 @@ const createHTML = function(number_of_questions, number_of_options) {
                     </div>`;
       }
     }
-    html += `<br>`;
+    html += `</div><br>`;
   }
 
   html += `
