@@ -128,13 +128,13 @@ exports.createNewQuiz = createNewQuiz;
 
 // Questions
 
-//adds a new question to questions database and returns id key of created QUESTION object
+//adds a new question to questions database and returns keys id, question, and number_of_answers of created QUESTION object
 const addQuestionToQuiz = function(quiz_id, question, number_of_answers) {
   return pool.query(
     `
       INSERT INTO questions (quiz_id, question, number_of_answers)
       VALUES ($1, $2, $3)
-      RETURNING id;
+      RETURNING *;
       `,
     [quiz_id, question, number_of_answers]
   );
@@ -182,6 +182,20 @@ const getOptionsForQuestion = function(question_id) {
   );
 };
 exports.getOptionsForQuestion = getOptionsForQuestion;
+
+//returns array of objects containing questions and options for a particular quiz
+const getQuizData = function(quiz_id) {
+  return pool.query(
+    `
+    SELECT *
+    FROM options
+    JOIN questions ON questions.id = question_id join quizzes on quizzes.id = quiz_id
+    WHERE quiz_id = $1;
+    `,
+    [quiz_id]
+  );
+};
+exports.getQuizData = getQuizData;
 
 //returns array of OPTION objects with keys id, question_id, option, is_correct
 const getCorrectOptionsForQuiz = function(quiz_id) {

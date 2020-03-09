@@ -14,7 +14,7 @@
 
 // Escapes unsafe characters and returns safe html. To prevent XSS
 const escape = str => {
-  const div = document.createElement('div');
+  const div = document.createElement("div");
   div.appendChild(document.createTextNode(str));
   return div.innerHTML;
 };
@@ -27,7 +27,7 @@ const escape = str => {
 */
 
 // Builds rows of quizzes to be used in renderQuizzes
-const buildQuizRows = (quizzes) => {
+const buildQuizRows = quizzes => {
   let quizRows = `
   <div class="tile is-ancestor">
   `;
@@ -73,11 +73,8 @@ const buildQuizRows = (quizzes) => {
 
 // Renders quizzes into <main> element
 const renderQuizzes = function(quizzes) {
-  console.log("rendered",quizzes);
-  $('main').append(buildQuizRows(quizzes));
+  $("#home").append(buildQuizRows(quizzes));
 };
-
-
 
 // render specific quiz
 const renderQuiz = function(quiz) {
