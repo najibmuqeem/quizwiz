@@ -6,7 +6,7 @@ $(() => {
     $(".navbar-menu").toggleClass("is-active");
   });
 
-  // fetchAndRenderQuizzes();
+  fetchAndRenderQuizzes();
 
   //submit quiz
   $("#create-quiz").on("submit", e => {
@@ -23,16 +23,6 @@ $(() => {
     }
     const number_of_questions = $("#create-quiz")[0].questions.value;
     const number_of_options = $("#create-quiz")[0].options.value;
-
-    $("#description").val("");
-    $("#picture-url").val("");
-    $("#title").val("");
-    $("#num-questions").val("");
-    $("#num-options").val("");
-    $("#public").prop("checked", false);
-
-    $("#create-quiz").hide();
-
     const quiz = {
       title,
       description,
@@ -42,41 +32,71 @@ $(() => {
       user_id: 1
     };
 
-    let html = ``;
+    clearInputValues();
+
+    $("#create-quiz").hide();
 
     createQuiz(quiz);
 
-    for (let i = 1; i <= number_of_questions; i++) {
-      html += `
+    $("#questions").append(createHTML(number_of_questions, number_of_options));
+  });
+
+  // submit questions
+  $("#questions").on("submit", e => {
+    e.preventDefault();
+
+    const number_of_answers = $(".option").length / $(".question").length;
+    const quiz_id = Number($("#quiz-id")[0].innerText);
+
+    for (const question of $(".question")) {
+      addQuestion(quiz_id, question.value, number_of_answers);
+    }
+  });
+});
+
+const clearInputValues = function() {
+  $("#description").val("");
+  $("#picture-url").val("");
+  $("#title").val("");
+  $("#num-questions").val("");
+  $("#num-options").val("");
+  $("#public").prop("checked", false);
+};
+
+const createHTML = function(number_of_questions, number_of_options) {
+  let html = ``;
+
+  for (let i = 1; i <= number_of_questions; i++) {
+    html += `
                 <div class="field">
                   <label class="label">Question ${i}</label>
                   <div class="control">
-                    <input type="text" class="input question" />
+                    <input type="text" id="question${i}" class="input question" />
                   </div>
                 </div>`;
-      for (let j = 1; j <= number_of_options; j++) {
-        if (j === 1) {
-          html += `
+    for (let j = 1; j <= number_of_options; j++) {
+      if (j === 1) {
+        html += `
                     <div class="field">
                       <label class="label">Option ${j}</label>
                       <div class="control">
-                        <input type="text" class="input correct option" placeholder="Correct option"/>
+                        <input type="text" id="option${j}" class="input correct option" placeholder="Correct option"/>
                       </div>
                     </div>`;
-        } else {
-          html += `
+      } else {
+        html += `
                     <div class="field">
                       <label class="label">Option ${j}</label>
                       <div class="control">
-                        <input type="text" class="input option" placeholder="Incorrect option" />
+                        <input type="text" id="option${j}" class="input option" placeholder="Incorrect option" />
                       </div>
                     </div>`;
-        }
       }
-      html += `<br>`;
     }
+    html += `<br>`;
+  }
 
-    html += `
+  html += `
               <div class="field is-grouped">
                 <div class="control">
                   <button id="submit-questions" class="button is-primary">Submit</button>
@@ -86,36 +106,8 @@ $(() => {
               <div>
                 Quiz ID:
                 <span id="quiz-id"></span>
-              </div>`;
-    $("#questions").append(html);
-  });
+              </div>
+            `;
 
-  // submit questions
-  $("#questions").on("submit", e => {
-    e.preventDefault();
-
-    const optionsPerQuestion = $(".option").length / $(".question").length;
-    const quiz_id = Number($("#quiz-id").val());
-
-    let is_correct = false;
-    let question = "";
-    let options = [];
-    let counter = 1;
-
-    for (let i = 0; i < $(".question").length; i++) {
-      question = $(".question")[i].val();
-      let question_id = addQuestionToQuiz(quiz_id, question);
-      for (let j = counter - 1; j < counter * optionsPerQuestion; j++) {
-        if ($(".option")[j].hasClass("correct")) {
-          is_correct = true;
-        } else {
-          is_correct = false;
-        }
-        options.push($(".option")[j].val());
-        addOptionToQuestion(question_id, options[j], is_correct);
-      }
-      options = [];
-      counter += optionsPerQuestion;
-    }
-  });
-});
+  return html;
+};
