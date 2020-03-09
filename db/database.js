@@ -183,6 +183,20 @@ const getOptionsForQuestion = function(question_id) {
 };
 exports.getOptionsForQuestion = getOptionsForQuestion;
 
+//returns array of objects containing questions and options for a particular quiz
+const getQuizData = function(quiz_id) {
+  return pool.query(
+    `
+    SELECT *
+    FROM options
+    JOIN questions ON questions.id = question_id join quizzes on quizzes.id = quiz_id
+    WHERE quiz_id = $1;
+    `,
+    [quiz_id]
+  );
+};
+exports.getQuizData = getQuizData;
+
 //returns array of OPTION objects with keys id, question_id, option, is_correct
 const getCorrectOptionsForQuiz = function(quiz_id) {
   return pool.query(
