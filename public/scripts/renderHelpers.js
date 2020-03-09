@@ -20,7 +20,8 @@ const escape = str => {
 };
 
 // Holds all the questions and options for a quiz
-const quizQuestionsAndOptions = [];
+// Has a value when user starts a quiz
+let quizData;
 
 /*
 |
@@ -83,3 +84,8 @@ const renderQuizzes = function(quizzes) {
 
 // render specific quiz
 const renderQuiz = function(quiz) {};
+
+// Renders a question and associated options
+const renderQuestion = (quizData) => {
+  console.log(quizData);
+};
