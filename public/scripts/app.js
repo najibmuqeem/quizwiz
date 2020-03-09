@@ -6,7 +6,7 @@ $(() => {
     $(".navbar-menu").toggleClass("is-active");
   });
 
-  // fetchAndRenderQuizzes();
+  fetchAndRenderQuizzes();
 
   //submit quiz
   $("#create-quiz").on("submit", e => {
@@ -23,16 +23,6 @@ $(() => {
     }
     const number_of_questions = $("#create-quiz")[0].questions.value;
     const number_of_options = $("#create-quiz")[0].options.value;
-
-    $("#description").val("");
-    $("#picture-url").val("");
-    $("#title").val("");
-    $("#num-questions").val("");
-    $("#num-options").val("");
-    $("#public").prop("checked", false);
-
-    $("#create-quiz").hide();
-
     const quiz = {
       title,
       description,
@@ -42,53 +32,13 @@ $(() => {
       user_id: 1
     };
 
-    let html = ``;
+    clearInputValues();
+
+    $("#create-quiz").hide();
 
     createQuiz(quiz);
 
-    for (let i = 1; i <= number_of_questions; i++) {
-      html += `
-                <div class="field">
-                  <label class="label">Question ${i}</label>
-                  <div class="control">
-                    <input type="text" id="question${i}" class="input question" />
-                  </div>
-                </div>`;
-      for (let j = 1; j <= number_of_options; j++) {
-        if (j === 1) {
-          html += `
-                    <div class="field">
-                      <label class="label">Option ${j}</label>
-                      <div class="control">
-                        <input type="text" id="option${j}" class="input correct option" placeholder="Correct option"/>
-                      </div>
-                    </div>`;
-        } else {
-          html += `
-                    <div class="field">
-                      <label class="label">Option ${j}</label>
-                      <div class="control">
-                        <input type="text" id="option${j}" class="input option" placeholder="Incorrect option" />
-                      </div>
-                    </div>`;
-        }
-      }
-      html += `<br>`;
-    }
-
-    html += `
-              <div class="field is-grouped">
-                <div class="control">
-                  <button id="submit-questions" class="button is-primary">Submit</button>
-                  <button class="button is-link is-light">Cancel</button>
-                </div>
-              </div>
-              <div>
-                Quiz ID:
-                <span id="quiz-id"></span>
-              </div>
-            `;
-    $("#questions").append(html);
+    $("#questions").append(createHTML(number_of_questions, number_of_options));
   });
 
   // submit questions
@@ -103,3 +53,61 @@ $(() => {
     }
   });
 });
+
+const clearInputValues = function() {
+  $("#description").val("");
+  $("#picture-url").val("");
+  $("#title").val("");
+  $("#num-questions").val("");
+  $("#num-options").val("");
+  $("#public").prop("checked", false);
+};
+
+const createHTML = function(number_of_questions, number_of_options) {
+  let html = ``;
+
+  for (let i = 1; i <= number_of_questions; i++) {
+    html += `
+                <div class="field">
+                  <label class="label">Question ${i}</label>
+                  <div class="control">
+                    <input type="text" id="question${i}" class="input question" />
+                  </div>
+                </div>`;
+    for (let j = 1; j <= number_of_options; j++) {
+      if (j === 1) {
+        html += `
+                    <div class="field">
+                      <label class="label">Option ${j}</label>
+                      <div class="control">
+                        <input type="text" id="option${j}" class="input correct option" placeholder="Correct option"/>
+                      </div>
+                    </div>`;
+      } else {
+        html += `
+                    <div class="field">
+                      <label class="label">Option ${j}</label>
+                      <div class="control">
+                        <input type="text" id="option${j}" class="input option" placeholder="Incorrect option" />
+                      </div>
+                    </div>`;
+      }
+    }
+    html += `<br>`;
+  }
+
+  html += `
+              <div class="field is-grouped">
+                <div class="control">
+                  <button id="submit-questions" class="button is-primary">Submit</button>
+                  <button class="button is-link is-light">Cancel</button>
+                </div>
+              </div>
+              <div>
+                Quiz ID:
+                <span id="quiz-id"></span>
+              </div>
+            `;
+
+  return html;
+};
