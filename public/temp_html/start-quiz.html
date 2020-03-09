@@ -22,6 +22,8 @@
 
     <!-- JS scripts -->
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+    <script type="text/javascript" src="/scripts/renderHelpers.js"></script>
+    <script type="text/javascript" src="/scripts/quizClient.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
   </head>
 
@@ -53,7 +55,7 @@
         <p class="is-size-4"><em><span class="total-question-number">5</span> Questions</em></p>
 
         <!-- Start button -->
-        <a class="button is-primary is-inverted is-large" href="./take-quiz.html">
+        <a class="button is-primary is-inverted is-large" onclick="fetchQuizData(3)">
           <strong>Start Quiz</strong>
         </a>
 

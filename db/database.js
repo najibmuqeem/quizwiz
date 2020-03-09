@@ -99,7 +99,7 @@ const getQuiz = function(quiz_id) {
 };
 exports.getQuiz = getQuiz;
 
-//adds a new quiz to quizzes database and returns id key of created QUIZ object (use res.rows[0])
+//adds a new quiz to quizzes database and returns all keys of created QUIZ object (use res.rows[0])
 const createNewQuiz = function(quiz) {
   return pool.query(
     `
@@ -112,7 +112,7 @@ const createNewQuiz = function(quiz) {
         is_public
       )
       VALUES ($1, $2, $3, $4, $5, $6)
-      RETURNING id;
+      RETURNING *;
       `,
     [
       quiz.title,
@@ -156,13 +156,13 @@ exports.getQuestionsForQuiz = getQuestionsForQuiz;
 
 // Options
 
-//adds a new option to the options database and returns id of created OPTION object
+//adds a new option to the options database and returns all keys of created OPTION object
 const addOptionToQuestion = function(question_id, option, is_correct) {
   return pool.query(
     `
       INSERT INTO options (question_id, option, is_correct)
       VALUES ($1, $2, $3)
-      RETURNING id;
+      RETURNING *;
       `,
     [question_id, option, is_correct]
   );
@@ -215,7 +215,7 @@ exports.getCorrectOptionsForQuiz = getCorrectOptionsForQuiz;
 
 // User Scores
 
-//adds a new score to the scores database and returns OPTION object with keys id, question_id, option, is_correct
+//adds a new score to the scores database and returns all keys of OPTION object
 const insertScore = function(quiz_id, user_id, score) {
   return pool.query(
     `
@@ -267,7 +267,9 @@ const getScores = function(user_id, quiz_id) {
     `
     SELECT score
     FROM user_scores
-    WHERE user_id = $1 AND quiz_id = $2;
+    WHERE user_id = $1 AND quiz_id = $2
+    ORDER BY id DESC
+    LIMIT 5;
     `,
     [user_id, quiz_id]
   );
