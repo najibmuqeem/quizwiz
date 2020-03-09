@@ -9,7 +9,7 @@ module.exports = () => {
       res.json(correctAnswers);
     })
       .catch(err => {
-        res.json({error: err.message});
+        res.status(500).json({error: err.message});
       });
   });
 
