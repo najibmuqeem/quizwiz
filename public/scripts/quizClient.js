@@ -1,4 +1,4 @@
-// Get quizzes
+// Gets individual quizzes to show on home page
 const fetchAndRenderQuizzes = function() {
   $.ajax({
     type: "GET",
@@ -35,6 +35,19 @@ const fetchSingleQuiz = function(id) {
     },
     dataType: "json"
   });
+};
+
+// Get all the questions and options for a quiz
+const fetchQuizData = (quizId) => {
+  $.ajax({
+    type: "GET",
+    url: `/api/questions/${quizId}`,
+    success: data => {
+      quizData = data;
+      renderQuestion(quizData);
+    },
+    dataType: "json"
+  })
 };
 
 // Post question to quiz

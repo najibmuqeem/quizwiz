@@ -7,10 +7,19 @@
 
 /*
 |
-| AUXILIARY FUNCTIONS
+| AUXILIARY FUNCTIONS AND VARIABLES
 |
 |___________________________________________
 */
+
+// Holds all the questions and options for a quiz
+let quizData;
+
+// Holds current question's options
+let currentOptions;
+
+// Keeps track of the question number during a quiz
+let questionNumber = 0
 
 // Escapes unsafe characters and returns safe html. To prevent XSS
 const escape = str => {
@@ -64,6 +73,56 @@ const buildQuizRows = quizzes => {
   return quizRows;
 };
 
+// Builds a quiz question page with associated options
+const buildQuestionPage = (questionAndOptions) => {
+  $('html').addClass('quiz-background');
+
+  let questionPage = `
+  <!-- Question header -->
+  <section class="hero question">
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <h1 class="title is-2 has-text-white">
+          ${escape(questionAndOptions[0].question)}
+        </h1>
+      </div>
+    </div>
+  </section>
+
+  <div class="tile is-ancestor has-text-centered">
+  `;
+
+  questionAndOptions.forEach((element, index, array) => {
+    questionPage += `
+    <div class="tile is-parent">
+      <article class="tile is-child box option">
+        <p class="title">${element.option}</p>
+      </article>
+    </div>
+    `
+
+    if (index === array.length - 1) {
+      questionPage += `
+      </div>
+      `;
+    }
+  });
+
+  questionPage += `
+  <div class="content has-text-right is-size-3">
+    <p>
+      Question <strong>${++questionNumber}</strong> of <strong>${questionAndOptions[0].number_of_questions}</strong>
+    </p>
+  </div>
+  `;
+
+  if (questionNumber === questionAndOptions[0].number_of_questions) {
+    questionNumber = 0;
+  }
+
+  return questionPage;
+};
+
 /*
 |
 | RENDERING FUNCTIONS
@@ -77,6 +136,18 @@ const renderQuizzes = function(quizzes) {
 };
 
 // render specific quiz
+const renderQuiz = function(quiz) {};
+
+// Renders a question and associated options
+const renderQuestion = (questionAndOptions) => {
+  console.log(questionAndOptions);
+  const divisionPoint = questionAndOptions[0].number_of_answers;
+
+  currentOptions = questionAndOptions.slice(0, divisionPoint);
+  $('main').empty().append(buildQuestionPage(currentOptions));
+
+  quizData = questionAndOptions.slice(divisionPoint);
+=======
 const renderQuiz = function(quiz) {
   // Render single quiz
   $('main').replaceWith(buildQuiz(quiz));

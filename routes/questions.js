@@ -23,10 +23,10 @@ module.exports = () => {
   // Get questions
   router.get("/:id", (req, res) => {
     database
-      .getQuestionsForQuiz(req.params.id)
+      .getQuizData(req.params.id)
       .then(data => {
-        const questions = data.rows;
-        res.json(questions);
+        const quizData = data.rows;
+        res.json(quizData);
       })
       .catch(err => {
         res.status(500).json({ error: err.message });
