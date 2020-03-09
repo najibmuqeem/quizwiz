@@ -70,6 +70,9 @@ const buildQuizRows = quizzes => {
   return quizRows;
 };
 
+// Builds a quiz question page with associated options
+
+
 /*
 |
 | RENDERING FUNCTIONS
@@ -88,4 +91,9 @@ const renderQuiz = function(quiz) {};
 // Renders a question and associated options
 const renderQuestion = (quizData) => {
   console.log(quizData);
+  const divisionPoint = quizData[0].number_of_answers;
+
+  $('main').empty().append(buildQuestionPage(quizData.slice(0, divisionPoint)));
+
+  quizData = quizData.slice(divisionPoint);
 };
