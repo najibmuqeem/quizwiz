@@ -51,7 +51,7 @@ $(() => {
                 <div class="field">
                   <label class="label">Question ${i}</label>
                   <div class="control">
-                    <input type="text" class="input question" />
+                    <input type="text" id="question${i}" class="input question" />
                   </div>
                 </div>`;
       for (let j = 1; j <= number_of_options; j++) {
@@ -60,7 +60,7 @@ $(() => {
                     <div class="field">
                       <label class="label">Option ${j}</label>
                       <div class="control">
-                        <input type="text" class="input correct option" placeholder="Correct option"/>
+                        <input type="text" id="option${j}" class="input correct option" placeholder="Correct option"/>
                       </div>
                     </div>`;
         } else {
@@ -68,7 +68,7 @@ $(() => {
                     <div class="field">
                       <label class="label">Option ${j}</label>
                       <div class="control">
-                        <input type="text" class="input option" placeholder="Incorrect option" />
+                        <input type="text" id="option${j}" class="input option" placeholder="Incorrect option" />
                       </div>
                     </div>`;
         }
@@ -86,7 +86,8 @@ $(() => {
               <div>
                 Quiz ID:
                 <span id="quiz-id"></span>
-              </div>`;
+              </div>
+            `;
     $("#questions").append(html);
   });
 
@@ -94,28 +95,11 @@ $(() => {
   $("#questions").on("submit", e => {
     e.preventDefault();
 
-    const optionsPerQuestion = $(".option").length / $(".question").length;
-    const quiz_id = Number($("#quiz-id").val());
+    const number_of_answers = $(".option").length / $(".question").length;
+    const quiz_id = Number($("#quiz-id")[0].innerText);
 
-    let is_correct = false;
-    let question = "";
-    let options = [];
-    let counter = 1;
-
-    for (let i = 0; i < $(".question").length; i++) {
-      question = $(".question")[i].val();
-      let question_id = addQuestionToQuiz(quiz_id, question);
-      for (let j = counter - 1; j < counter * optionsPerQuestion; j++) {
-        if ($(".option")[j].hasClass("correct")) {
-          is_correct = true;
-        } else {
-          is_correct = false;
-        }
-        options.push($(".option")[j].val());
-        addOptionToQuestion(question_id, options[j], is_correct);
-      }
-      options = [];
-      counter += optionsPerQuestion;
+    for (const question of $(".question")) {
+      addQuestion(quiz_id, question.value, number_of_answers);
     }
   });
 });
