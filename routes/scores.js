@@ -14,9 +14,10 @@ module.exports = () => {
       });
   });
 
+
   // Get scores
-  router.get('/', (req, res) => {
-    database.getScores(req.body.user_id,req.body.quiz_id).then(data => {
+  router.get('/:id/:qid', (req, res) => {
+    database.getScores(req.params.id,req.params.qid).then(data => {
       const scores = data.rows;
       res.json(scores);
     })
