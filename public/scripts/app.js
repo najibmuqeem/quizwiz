@@ -52,7 +52,24 @@ $(() => {
       addQuestion(quiz_id, question.value, number_of_answers);
     }
   });
+
+  // Checks if user chose correct answer, increments score accordingly
+  $('.option').click(event => {
+    const correctAnswer = currentOptions.filter(option => option.is_correct);
+    console.log('hallooo');
+
+    if (event.target.text() === correctAnswer.option) {
+      currentScore++;
+    }
+
+    event.target.css('backgroundColor', 'red');
+    $('.option').filter(elem => elem.text() === correctAnswer.option).css('backgroundColor', 'green');
+  });
+
 });
+
+// Keeps score of current quiz
+let currentScore = 0;
 
 const clearInputValues = function() {
   $("#description").val("");
