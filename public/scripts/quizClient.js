@@ -36,7 +36,21 @@ const fetchQuestions = (quizId) => {
   $.ajax({
     type: "GET",
     url: `/api/questions/${quizId}`,
-    success: renderQuestion,
+    success: questions => {
+      questions.forEach(question => {
+        fetchOptions(question);
+      });
+    },
     dataType: "json"
   })
-}
+};
+
+// Gets all the options for a question
+const fetchOptions = (question) => {
+  $.ajax({
+    type: "GET",
+    url: `/api/options/${question.id}`,
+    success: options => quizQuestionsAndOptions.push(question, options),
+    dataType: "json"
+  })
+};
