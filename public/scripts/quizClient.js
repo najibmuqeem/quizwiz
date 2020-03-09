@@ -36,9 +36,9 @@ const fetchQuizData = (quizId) => {
   $.ajax({
     type: "GET",
     url: `/api/questions/${quizId}`,
-    success: quizData => {
-      quizQuestionsAndOptions.push(quizData);
-      renderQuestion(quizQuestionsAndOptions);
+    success: data => {
+      quizData = data;
+      renderQuestion(quizData);
     },
     dataType: "json"
   })
