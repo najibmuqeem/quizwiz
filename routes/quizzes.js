@@ -5,6 +5,7 @@ const database = require("../db/database");
 module.exports = () => {
   // Get quizzes
   router.get("/", (req, res) => {
+    req.session.user_id = 1;
     database
       .getQuizzes()
       .then(data => {
