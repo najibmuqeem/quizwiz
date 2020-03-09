@@ -12,19 +12,21 @@
 |___________________________________________
 */
 
+// Holds all the questions and options for a quiz
+let quizData;
+
+// Holds current question's options
+let currentOptions;
+
+// Keeps track of the question number during a quiz
+let questionNumber = 0
+
 // Escapes unsafe characters and returns safe html. To prevent XSS
 const escape = str => {
   const div = document.createElement("div");
   div.appendChild(document.createTextNode(str));
   return div.innerHTML;
 };
-
-// Holds all the questions and options for a quiz
-// Has a value when user starts a quiz
-let quizData;
-
-// Keeps track of the question number during a quiz
-let questionNumber = 0
 
 /*
 |
@@ -74,7 +76,7 @@ const buildQuizRows = quizzes => {
 };
 
 // Builds a quiz question page with associated options
-const buildQuestionPage = (questionsAndOptions) => {
+const buildQuestionPage = (questionAndOptions) => {
   $('html').addClass('quiz-background');
 
   let questionPage = `
@@ -83,7 +85,7 @@ const buildQuestionPage = (questionsAndOptions) => {
     <div class="hero-body">
       <div class="container has-text-centered">
         <h1 class="title is-2 has-text-white">
-          ${escape(questionsAndOptions[0].question)}
+          ${escape(questionAndOptions[0].question)}
         </h1>
       </div>
     </div>
@@ -92,10 +94,10 @@ const buildQuestionPage = (questionsAndOptions) => {
   <div class="tile is-ancestor has-text-centered">
   `;
 
-  questionsAndOptions.forEach((element, index, array) => {
+  questionAndOptions.forEach((element, index, array) => {
     questionPage += `
     <div class="tile is-parent">
-      <article class="tile is-child box option" onclick="renderQuestion(quizData)">
+      <article class="tile is-child box option">
         <p class="title">${element.option}</p>
       </article>
     </div>
@@ -111,12 +113,12 @@ const buildQuestionPage = (questionsAndOptions) => {
   questionPage += `
   <div class="content has-text-right is-size-3">
     <p>
-      Question <strong>${++questionNumber}</strong> of <strong>${questionsAndOptions[0].number_of_questions}</strong>
+      Question <strong>${++questionNumber}</strong> of <strong>${questionAndOptions[0].number_of_questions}</strong>
     </p>
   </div>
   `;
 
-  if (questionNumber === questionsAndOptions[0].number_of_questions) {
+  if (questionNumber === questionAndOptions[0].number_of_questions) {
     questionNumber = 0;
   }
 
@@ -143,7 +145,8 @@ const renderQuestion = (questionAndOptions) => {
   console.log(questionAndOptions);
   const divisionPoint = questionAndOptions[0].number_of_answers;
 
-  $('main').empty().append(buildQuestionPage(questionAndOptions.slice(0, divisionPoint)));
+  currentOptions = questionAndOptions.slice(0, divisionPoint);
+  $('main').empty().append(buildQuestionPage(currentOptions));
 
   quizData = questionAndOptions.slice(divisionPoint);
 };
