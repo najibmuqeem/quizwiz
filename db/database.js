@@ -267,7 +267,9 @@ const getScores = function(user_id, quiz_id) {
     `
     SELECT score
     FROM user_scores
-    WHERE user_id = $1 AND quiz_id = $2;
+    WHERE user_id = $1 AND quiz_id = $2
+    ORDER BY id DESC
+    LIMIT 5;
     `,
     [user_id, quiz_id]
   );
