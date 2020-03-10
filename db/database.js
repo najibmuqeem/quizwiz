@@ -5,20 +5,7 @@ const pool = new Pool(dbParams);
 
 // Users
 
-//returns USER object with keys id, name, username (use res.rows[0])
-const getUserWithName = function(name) {
-  return pool.query(
-    `
-      SELECT *
-      FROM users
-      WHERE name = $1;
-      `,
-    [name]
-  );
-};
-exports.getUserWithName = getUserWithName;
-
-//returns USER object with keys id, name, username (use res.rows[0])
+//returns USER object with keys id, username (use res.rows[0])
 const getUserWithUsername = function(username) {
   return pool.query(
     `
@@ -31,7 +18,7 @@ const getUserWithUsername = function(username) {
 };
 exports.getUserWithUsername = getUserWithUsername;
 
-//returns USER object with keys id, name, username (use res.rows[0])
+//returns USER object with keys id, username (use res.rows[0])
 const getUserWithId = function(id) {
   return pool.query(
     `
