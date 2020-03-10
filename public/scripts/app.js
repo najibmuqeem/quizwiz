@@ -1,4 +1,13 @@
 $(() => {
+
+  // Grab any url query params. To be used when sharing quizzes
+  $.urlParam = function(name){
+    var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+    return results[1] || 0;
+  }
+
+  console.log($.urlParam('quiz'));
+
   // Open/close nav menu when navbar-burger is clicked
   // For mobile only
   $(".navbar-burger").click(() => {
