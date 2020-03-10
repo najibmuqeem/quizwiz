@@ -31,20 +31,20 @@ const getUserWithId = function(id) {
 };
 exports.getUserWithId = getUserWithId;
 
-//adds a new user to users database and returns USER object with keys id, name, username (use res.rows[0])
-const addUser = function(user) {
+//adds a new user to users database and returns USER object with keys id, username (use res.rows[0])
+const addUser = function(username) {
   return pool.query(
     `
-      INSERT INTO users (name, username)
-      VALUES ($1, $2)
+      INSERT INTO users (username)
+      VALUES ($1)
       RETURNING *;
       `,
-    [user.name, user.username]
+    [username]
   );
 };
 exports.addUser = addUser;
 
-//returns array of USER objects with keys id, name, username (use res.rows)
+//returns array of USER objects with keys id, username (use res.rows)
 const getUsersWithPlaysOnQuiz = function(quiz_id) {
   return pool.query(
     `
