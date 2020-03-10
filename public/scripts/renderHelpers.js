@@ -437,7 +437,7 @@ const buildNavbar = () => {
 
   if (loggedInUser) {
     navHTML += `<div class="navbar-item" id="loggedIn">
-        <p>${loggedInUser}</p> &nbsp; <button id="logoutButton" class="button is-success" action="renderLoginNav()">Logout</button>
+        <p>Welcome, ${loggedInUser}</p> &nbsp; <button id="logoutButton" class="button is-success" action="renderLoginNav()">Logout</button>
          </div>
        </div>`;
   } else {
@@ -602,7 +602,7 @@ const userLoginForm = function() {
 //On successful login
 const userLoggedIn = function(data) {
   const loggedIn = `<div class="navbar-item" id="loggedIn">
- <p>${data}</p> &nbsp; <button id="logoutButton" class="button is-success" action="renderLoginNav()">Logout</button>
+ <p>Welcome, ${data}</p> &nbsp; <button id="logoutButton" class="button is-success" action="renderLoginNav()">Logout</button>
   </div>
 </div>`;
   $("#loginForm").replaceWith(loggedIn);
