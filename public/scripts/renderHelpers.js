@@ -589,7 +589,7 @@ const userLoginForm = function() {
    <form class="box" id="loginForm">
    <div class="field">
      <label class="label">Username</label>
-    <input id="username" type="text" class="input is-medium" placeholder="username">
+    <input required="required" id="username" type="text" class="input is-medium" placeholder="username">
    </div>
    <button class="button is-success" id="login" type="submit">Login</button>
     <!-- <button class="button is-success" id="logout" type="submit">Logout</button> -->
