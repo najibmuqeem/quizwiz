@@ -39,116 +39,172 @@ const escape = str => {
 */
 
 const buildQuizForm = () => {
-  return `<main class="section">
-                <section class="hero is-primary is-bold">
-                  <div class="hero-body">
-                    <div class="container">
-                      <h1 class="title is-2">
-                        Quiz Creation
-                      </h1>
-                      <h2 class="subtitle">
-                        Unleash your imagination.
-                      </h2>
-                    </div>
-                  </div>
-                </section>
+  return `
+  <main class="section">
+    <section class="hero is-primary is-bold">
+      <div class="hero-body">
+        <div class="container">
+          <h1 class="title is-2">
+            Quiz Creation
+          </h1>
+          <h2 class="subtitle">
+            Unleash your imagination.
+          </h2>
+        </div>
+      </div>
+    </section>
 
-                <form id="create-quiz">
-                  <div class="field">
-                    <label class="label">Title</label>
-                    <div class="control">
-                      <input
-                        name="title"
-                        id="title"
-                        class="input"
-                        type="text"
-                        required="required"
-                        placeholder="E.g. Sea Creatures"
-                      />
-                    </div>
-                  </div>
+    <form id="create-quiz">
+      <div class="field">
+        <label class="label">Title</label>
+        <div class="control">
+          <input
+            name="title"
+            id="title"
+            class="input"
+            type="text"
+            required="required"
+            placeholder="E.g. Sea Creatures"
+          />
+        </div>
+      </div>
 
-                  <div class="field">
-                    <label class="label">Description</label>
-                    <div class="control">
-                      <textarea
-                        name="description"
-                        id="description"
-                        class="textarea"
-                        required="required"
-                        placeholder="Tell us about your quiz!"
-                      ></textarea>
-                    </div>
-                  </div>
+      <div class="field">
+        <label class="label">Description</label>
+        <div class="control">
+          <textarea
+            name="description"
+            id="description"
+            class="textarea"
+            required="required"
+            placeholder="Tell us about your quiz!"
+          ></textarea>
+        </div>
+      </div>
 
-                  <div class="field">
-                    <label class="label">Picture</label>
-                    <div class="control">
-                      <input
-                        name="picture"
-                        id="picture-url"
-                        type="text"
-                        class="input"
-                        placeholder="URL of a relevant image"
-                      />
-                    </div>
-                  </div>
+      <div class="field">
+        <label class="label">Picture</label>
+        <div class="control">
+          <input
+            name="picture"
+            id="picture-url"
+            type="text"
+            class="input"
+            placeholder="URL of a relevant image"
+          />
+        </div>
+      </div>
 
-                  <div class="field">
-                    <label class="label">Number of questions</label>
-                    <div class="control">
-                      <input
-                        name="questions"
-                        id="num-questions"
-                        type="number"
-                        required="required"
-                        min="1"
-                      />
-                    </div>
-                  </div>
+      <div class="field">
+        <label class="label">Number of questions</label>
+        <div class="control">
+          <input
+            name="questions"
+            id="num-questions"
+            type="number"
+            required="required"
+            min="1"
+          />
+        </div>
+      </div>
 
-                  <div class="field">
-                    <label class="label">Number of options per question</label>
-                    <div class="control">
-                      <input
-                        name="options"
-                        id="num-options"
-                        type="number"
-                        required="required"
-                        min="2"
-                      />
-                    </div>
-                  </div>
+      <div class="field">
+        <label class="label">Number of options per question</label>
+        <div class="control">
+          <input
+            name="options"
+            id="num-options"
+            type="number"
+            required="required"
+            min="2"
+          />
+        </div>
+      </div>
 
-                  <div class="field">
-                    <div class="control">
-                      <label class="checkbox">
-                        <input
-                          name="public"
-                          id="public"
-                          class="input"
-                          type="checkbox"
-                        />
-                        Public
-                      </label>
-                    </div>
-                  </div>
+      <div class="field">
+        <div class="control">
+          <label class="checkbox">
+            <input
+              name="public"
+              id="public"
+              class="input"
+              type="checkbox"
+            />
+            Public
+          </label>
+        </div>
+      </div>
 
-                  <div class="field is-grouped">
-                    <div class="control">
-                      <button id="submit-quiz" class="button is-primary">
-                        Submit
-                      </button>
-                      <button id="cancel-quiz" class="button is-link is-light">
-                        Cancel
-                      </button>
-                    </div>
-                  </div>
-                </form>
+      <div class="field is-grouped">
+        <div class="control">
+          <button id="submit-quiz" class="button is-primary">
+            Submit
+          </button>
+          <button id="cancel-quiz" class="button is-link is-light">
+            Cancel
+          </button>
+        </div>
+      </div>
+    </form>
 
-                <form id="questions">
-                </form>
-              </main>`;
+    <form id="questions">
+    </form>
+  </main>
+  `;
+};
+
+const buildQuizQuestionsForm = function(number_of_questions, number_of_options) {
+  let quizQuestionsForm = ``;
+
+  for (let i = 1; i <= number_of_questions; i++) {
+    quizQuestionsForm += `
+    <div class="question-container">
+      <div class="field">
+        <label class="label">Question ${i}</label>
+        <div class="control">
+          <input type="text" required="required" id="question${i}" class="input question" />
+        </div>
+      </div>`;
+
+    for (let j = 1; j <= number_of_options; j++) {
+
+      if (j === 1) {
+        quizQuestionsForm += `
+        <div class="field">
+          <label class="label">Option ${j}</label>
+          <div class="control">
+            <input type="text" required="required" id="option${j}" class="input correct optionInput" placeholder="Correct option"/>
+          </div>
+        </div>`;
+
+      } else {
+        quizQuestionsForm += `
+        <div class="field">
+          <label class="label">Option ${j}</label>
+          <div class="control">
+            <input type="text" required="required" id="option${j}" class="input optionInput" placeholder="Incorrect option" />
+          </div>
+        </div>`;
+      }
+    }
+
+    quizQuestionsForm += `</div><br>`;
+  }
+
+  quizQuestionsForm +=
+  `
+  <div class="field is-grouped">
+    <div class="control buttons">
+      <button id="submit-questions" class="button is-primary">Submit</button>
+    </div>
+  </div>
+  <div>
+    Quiz ID:
+    <span id="quiz-id"></span>
+  </div>
+  `;
+
+  return quizQuestionsForm;
 };
 
 // Builds rows of quizzes to be used in renderQuizzes
