@@ -572,7 +572,6 @@ const renderQuizForm = () => {
 
 // on click of login
 const userLoginForm = function() {
-  console.log('login form');
   const loginForm = `<div class="navbar-item" id="loginFormContainer">
    <form class="box" id="loginForm">
    <div class="field">
