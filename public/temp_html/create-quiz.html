@@ -128,6 +128,7 @@
               id="title"
               class="input"
               type="text"
+              required="required"
               placeholder="E.g. Sea Creatures"
             />
           </div>
@@ -140,6 +141,7 @@
               name="description"
               id="description"
               class="textarea"
+              required="required"
               placeholder="Tell us about your quiz!"
             ></textarea>
           </div>
@@ -161,14 +163,14 @@
         <div class="field">
           <label class="label">Number of questions</label>
           <div class="control">
-            <input name="questions" id="num-questions" type="number" />
+            <input name="questions" id="num-questions" type="number" min="1" />
           </div>
         </div>
 
         <div class="field">
           <label class="label">Number of options per question</label>
           <div class="control">
-            <input name="options" id="num-options" type="number" />
+            <input name="options" id="num-options" type="number" min="2" />
           </div>
         </div>
 
