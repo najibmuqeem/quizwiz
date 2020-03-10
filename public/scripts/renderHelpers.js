@@ -142,11 +142,14 @@ const buildQuiz = function(quiz) {
         quiz.number_of_questions
       )}</span> Questions</em></p>
 
-      <!-- Start button -->
+      <!-- Start/share button -->
       <a class="button is-primary is-inverted is-large" onclick="fetchQuizData(${
         quiz.id
       })">
         <strong>Start Quiz</strong>
+      </a>
+      <a class="button is-primary is-inverted is-outlined is-large" href="/">
+        <strong>Share This Quiz</strong>
       </a>
 
       <!-- Previous scores -->
