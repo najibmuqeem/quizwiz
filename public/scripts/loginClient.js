@@ -1,21 +1,33 @@
 const login = function() {
 
-  $("#login").click((e) => {
 
+  // on login
+  $("body").on("submit",function(e) {
     e.preventDefault();
     const userName = $("#username").val();
     console.log('username:', userName);
-  $.ajax({
+    $.ajax({
       type:"POST",
       url:"/api/login",
       data: {userName},
-      success: (data) => console.log(data),
+      success: userLoggedIn,
       dataType: "json"
 
     });
   });
-};
+  // on logout
+  $("body").on("click",'#logoutButton',function(e) {
+    e.preventDefault();
 
+    $.ajax({
+      type:"POST",
+      url:"/api/logout",
+      data: {},
+      success: renderLoginNav,
+      dataType: "json"
+    });
+  });
+};
 
 $(() => {
   login();
