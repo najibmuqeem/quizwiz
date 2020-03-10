@@ -126,6 +126,17 @@ const createNewQuiz = function(quiz) {
 };
 exports.createNewQuiz = createNewQuiz;
 
+const removeQuiz = function(quiz_id) {
+  return pool.query(
+    `
+    DELETE FROM quizzes
+    WHERE id = $1
+    `,
+    [quiz_id]
+  );
+};
+exports.removeQuiz = removeQuiz;
+
 // Questions
 
 //adds a new question to questions database and returns keys id, question, and number_of_answers of created QUESTION object

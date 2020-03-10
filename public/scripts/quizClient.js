@@ -21,24 +21,21 @@ const createQuiz = function(data) {
   });
 };
 
-
-
 // Get single quiz
 const fetchSingleQuiz = function(id) {
   $.ajax({
     type: "GET",
     url: `/api/quizzes/${id}`,
-    success: (data) => {
+    success: data => {
       renderQuiz(data);
       getScores(data);
-
     },
     dataType: "json"
   });
 };
 
 // Get all the questions and options for a quiz
-const fetchQuizData = (quizId) => {
+const fetchQuizData = quizId => {
   $.ajax({
     type: "GET",
     url: `/api/questions/${quizId}`,
@@ -47,7 +44,16 @@ const fetchQuizData = (quizId) => {
       renderQuestion(quizData);
     },
     dataType: "json"
-  })
+  });
+};
+
+// Removes quiz from database
+const removeQuiz = quiz_id => {
+  $.ajax({
+    type: "DELETE",
+    url: `/api/quizzes/delete/${quiz_id}`,
+    dataType: "json"
+  });
 };
 
 // Post question to quiz

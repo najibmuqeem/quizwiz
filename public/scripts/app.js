@@ -6,10 +6,21 @@ $(() => {
     $(".navbar-menu").toggleClass("is-active");
   });
 
-  fetchAndRenderQuizzes();
+  // cancel quiz button
+  $("body").on("click", "#cancel-quiz", e => {
+    e.preventDefault();
+    clearInputValues();
+    fetchAndRenderQuizzes();
+  });
 
-  //submit quiz
-  $("#create-quiz").on("submit", e => {
+  // cancel questions button
+  $("body").on("click", "#cancel-questions", e => {
+    e.preventDefault();
+    removeQuiz(Number($("#quiz-id")[0].innerText));
+    fetchAndRenderQuizzes();
+  });
+
+  $("body").on("submit", "#create-quiz", e => {
     e.preventDefault();
     const form = $("#create-quiz")[0];
 
@@ -37,64 +48,84 @@ $(() => {
     clearInputValues();
 
     $("#create-quiz").hide();
+    $("#cancel-quiz").hide();
 
     createQuiz(quiz);
 
     $("#questions").append(createHTML(number_of_questions, number_of_options));
+    $("#questions").append(
+      `<button id="cancel-questions" class="button is-link is-light">Cancel</button>`
+    );
   });
 
+  fetchAndRenderQuizzes();
+
   // submit questions
-  $("#questions").on("submit", e => {
+  $("body").on("submit", "#questions", e => {
     e.preventDefault();
 
     const number_of_answers = $(".option").length / $(".question").length;
     const quiz_id = Number($("#quiz-id")[0].innerText);
 
     $(".question-container").each(function() {
-      let $this = $(this);
+      let $questionElem = $(this);
       $(this)
         .find(".question")
         .each(function() {
-          addQuestion($this, quiz_id, $(this)[0].value, number_of_answers);
+          addQuestion(
+            $questionElem,
+            quiz_id,
+            $(this)[0].value,
+            number_of_answers
+          );
         });
     });
     fetchSingleQuiz(quiz_id);
   });
 
+  // Checks if user chose correct answer, increments score accordingly
+  $(".option").click(event => {
+    const correctAnswer = currentOptions.filter(option => option.is_correct);
+    console.log("hallooo");
+  });
 
   // Checks if user chose correct answer, increments score accordingly, goes to next question
-  $('body').on('click', '.option', () => {
+  $("body").on("click", ".option", () => {
     const userAnswer = event.target.innerText;
-    const correctAnswer = currentOptions.filter(option => option.is_correct)[0].option;
+    const correctAnswer = currentOptions.filter(option => option.is_correct)[0]
+      .option;
 
     if (userAnswer === correctAnswer) {
       currentScore++;
     }
 
-    $('.option').filter(function() {
-      return $(this).children().text() === userAnswer;
-    }).css('backgroundColor', '#e74c3c');
+    $(".option")
+      .filter(function() {
+        return (
+          $(this)
+            .children()
+            .text() === userAnswer
+        );
+      })
+      .css("backgroundColor", "#e74c3c");
 
-    $('.option').filter(function() {
-      return $(this).children().text() === correctAnswer;
-    }).css('backgroundColor', '#2ecc71');
+    $(".option")
+      .filter(function() {
+        return (
+          $(this)
+            .children()
+            .text() === correctAnswer
+        );
+      })
+      .css("backgroundColor", "#2ecc71");
 
-    $('.option').css('pointer-events', 'none');
+    $(".option").css("pointer-events", "none");
 
     setTimeout(() => {
       renderQuestion(quizData);
     }, 1000);
   });
 });
-
-// Keeps score of current quiz
-let currentScore = 0;
-
-const clearInputValues = function() {
-  $("input").val("");
-  $("textarea").val("");
-  $("#public").prop("checked", false);
-};
 
 const createHTML = function(number_of_questions, number_of_options) {
   let html = ``;
@@ -104,7 +135,7 @@ const createHTML = function(number_of_questions, number_of_options) {
                 <div class="field">
                   <label class="label">Question ${i}</label>
                   <div class="control">
-                    <input type="text" id="question${i}" class="input question" />
+                    <input type="text" required="required" id="question${i}" class="input question" />
                   </div>
                 </div>`;
     for (let j = 1; j <= number_of_options; j++) {
@@ -113,7 +144,7 @@ const createHTML = function(number_of_questions, number_of_options) {
                     <div class="field">
                       <label class="label">Option ${j}</label>
                       <div class="control">
-                        <input type="text" id="option${j}" class="input correct option" placeholder="Correct option"/>
+                        <input type="text" required="required" id="option${j}" class="input correct option" placeholder="Correct option"/>
                       </div>
                     </div>`;
       } else {
@@ -121,7 +152,7 @@ const createHTML = function(number_of_questions, number_of_options) {
                     <div class="field">
                       <label class="label">Option ${j}</label>
                       <div class="control">
-                        <input type="text" id="option${j}" class="input option" placeholder="Incorrect option" />
+                        <input type="text" required="required" id="option${j}" class="input option" placeholder="Incorrect option" />
                       </div>
                     </div>`;
       }
@@ -133,7 +164,6 @@ const createHTML = function(number_of_questions, number_of_options) {
               <div class="field is-grouped">
                 <div class="control">
                   <button id="submit-questions" class="button is-primary">Submit</button>
-                  <button class="button is-link is-light">Cancel</button>
                 </div>
               </div>
               <div>
@@ -143,4 +173,10 @@ const createHTML = function(number_of_questions, number_of_options) {
             `;
 
   return html;
+};
+
+const clearInputValues = function() {
+  $("input").val("");
+  $("textarea").val("");
+  $("#public").prop("checked", false);
 };
