@@ -313,8 +313,6 @@ const renderQuestion = (questionAndOptions) => {
     return;
   }
 
-  console.log(questionAndOptions);
-
   const divisionPoint = questionAndOptions[0].number_of_answers;
   currentOptions = questionAndOptions.slice(0, divisionPoint);
 
