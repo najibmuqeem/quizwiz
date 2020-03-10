@@ -12,8 +12,12 @@ $(() => {
   }
 
   // Render a specific quiz page if a quiz query was in the URL
+  // Otherwise, render home page
   if ($.urlParam('quiz')) {
     fetchSingleQuiz($.urlParam('quiz'));
+    return;
+  } else {
+    fetchAndRenderQuizzes();
   }
 
   // Open/close nav menu when navbar-burger is clicked
@@ -30,8 +34,6 @@ $(() => {
   $('body').on('click', '.share-button', () => {
     alert('Copied to clipboard!\nPaste anywhere to share this quiz!');
   })
-
-  fetchAndRenderQuizzes();
 
   // cancel quiz button
   $("body").on("click", "#cancel-quiz", e => {
