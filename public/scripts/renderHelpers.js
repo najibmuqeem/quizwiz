@@ -207,9 +207,10 @@ const renderQuestion = (questionAndOptions) => {
 
 // Renders single quiz start page
 const renderQuiz = function(quiz) {
-  $('body').empty();
-  $('body').append(buildDarkNavbar());
-  $('body').append(buildQuiz(quiz));
+  $('body')
+    .empty()
+    .append(buildDarkNavbar())
+    .append(buildQuiz(quiz));
 };
 
 // To render scores for a user
@@ -217,4 +218,9 @@ const renderScores = function(scores) {
   for (let scoreObject of scores) {
     $(".previous-attempts > ul").append(`<li>${scoreObject.score}/5</li>`);
   }
+};
+
+// Renders the end page shown after user completes a quiz
+const renderEndPage = (quizData) => {
+
 };
