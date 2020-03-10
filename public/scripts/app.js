@@ -15,8 +15,14 @@ $(() => {
   };
 
   // Render a specific quiz page if a quiz query was in the URL
-  if ($.urlParam("quiz")) {
-    fetchSingleQuiz($.urlParam("quiz"));
+
+  // Otherwise, render home page
+  if ($.urlParam('quiz')) {
+    fetchSingleQuiz($.urlParam('quiz'));
+    return;
+  } else {
+    fetchAndRenderQuizzes();
+
   }
 
   // Open/close nav menu when navbar-burger is clicked
@@ -30,9 +36,11 @@ $(() => {
   new ClipboardJS(".share-button");
 
   // Notify user when sharing info is copied to clipboard
-  $("body").on("click", ".share-button", () => {
-    alert("Copied to clipboard!\nPaste anywhere to share this quiz!");
-  });
+
+  $('body').on('click', '.share-button', () => {
+    alert('Copied to clipboard!\nPaste anywhere to share this quiz!');
+  })
+
 
   // cancel quiz button
   $("body").on("click", "#cancel-quiz", e => {
