@@ -256,13 +256,13 @@ exports.insertScore = insertScore;
 //to get user attempts on a specific quiz, pass actual values to both parameters
 //to get all user's attempts on a specific quiz, pass null as first parameter
 const getUserQuizAttempts = function(user_id, quiz_id) {
-  let queryString = `SELECT users.name, count(*) as number_of_quiz_attempts`;
+  let queryString = `SELECT users.username, count(*) as number_of_quiz_attempts`;
   let queryParams = [];
   if (!user_id) {
     queryString += ` FROM user_scores
     JOIN quizzes ON quizzes.id = quiz_id
     JOIN users on users.id = user_scores.user_id
-    GROUP BY user_scores.quiz_id, users.name
+    GROUP BY user_scores.quiz_id, users.username
     HAVING user_scores.quiz_id = $1;`;
     queryParams.push(quiz_id);
   } else {
@@ -270,7 +270,7 @@ const getUserQuizAttempts = function(user_id, quiz_id) {
       FROM user_scores
       JOIN quizzes ON quizzes.id = quiz_id
       JOIN users on users.id = user_scores.user_id
-      GROUP BY user_scores.user_id, users.name, quizzes.title
+      GROUP BY user_scores.user_id, users.username, quizzes.title
       HAVING user_scores.user_id = $1`;
     queryParams.push(user_id);
     if (quiz_id) {
