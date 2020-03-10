@@ -61,7 +61,6 @@ $(() => {
     fetchSingleQuiz(quiz_id);
   });
 
-
   // Checks if user chose correct answer, increments score accordingly, goes to next question
   $('body').on('click', '.option', () => {
     const userAnswer = event.target.innerText;
@@ -86,9 +85,6 @@ $(() => {
     }, 1000);
   });
 });
-
-// Keeps score of current quiz
-let currentScore = 0;
 
 const clearInputValues = function() {
   $("input").val("");
