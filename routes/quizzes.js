@@ -39,6 +39,18 @@ module.exports = () => {
       });
   });
 
+  //Delete quiz
+  router.get("/delete/:id", (req, res) => {
+    database
+      .removeQuiz(req.params.id)
+      .then(() => {
+        res.redirect("/");
+      })
+      .catch(err => {
+        res.status(500).json({ error: err.message });
+      });
+  });
+
   //Get a single quiz
 
   router.get("/:id", (req, res) => {
