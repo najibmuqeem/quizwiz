@@ -179,7 +179,7 @@ const buildEndPage = (quizInfo) => {
       <p class="is-size-3 has-text-black">You scored ${currentScore}/${quizInfo.number_of_questions}</p>
 
       <!-- Share/Home button -->
-      <a class="button is-primary is-inverted is-medium" href="">
+      <a class="button is-primary is-inverted is-medium share-button" data-clipboard-text="I scored ${currentScore}/${quizInfo.number_of_questions} on this quiz:  http://localhost:8080?quiz=${quizInfo.id} See if you can beat me!">
         <strong>Share Your Result</strong>
       </a>
       <a class="button is-primary is-inverted is-outlined is-medium" href="/">
