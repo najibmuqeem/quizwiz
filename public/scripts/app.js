@@ -97,12 +97,6 @@ $(() => {
   //   $("#create-quiz").show();
   // });
 
-  // Checks if user chose correct answer, increments score accordingly
-  $(".option").click(event => {
-    const correctAnswer = currentOptions.filter(option => option.is_correct);
-    console.log("hallooo");
-  });
-
   // Checks if user chose correct answer, increments score accordingly, goes to next question
   $("body").on("click", ".option", () => {
     const userAnswer = event.target.innerText;
