@@ -51,11 +51,11 @@ $(() => {
     const quiz_id = Number($("#quiz-id")[0].innerText);
 
     $(".question-container").each(function() {
-      let $this = $(this);
+      let $questionElem = $(this);
       $(this)
         .find(".question")
         .each(function() {
-          addQuestion($this, quiz_id, $(this)[0].value, number_of_answers);
+          addQuestion($questionElem, quiz_id, $(this)[0].value, number_of_answers);
         });
     });
     fetchSingleQuiz(quiz_id);
