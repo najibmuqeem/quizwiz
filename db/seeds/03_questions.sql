@@ -34,3 +34,24 @@ INSERT INTO questions (quiz_id, question) VALUES (6, 'Who made a cameo in Home A
 INSERT INTO questions (quiz_id, question) VALUES (6, 'Who was the POTUS when Qasem Soleimani was killed?');
 INSERT INTO questions (quiz_id, question) VALUES (6, 'Who is the spouse of Melania Trump?');
 
+INSERT INTO questions (quiz_id, question) VALUES (7, 'In which anime does the protagonist''s sister turn into a demon?');
+INSERT INTO questions (quiz_id, question) VALUES (7, 'Which anime character makes use of a technique called ''Rasengan?''');
+INSERT INTO questions (quiz_id, question) VALUES (7, 'What is the name of Yagami Light''s shinigami?');
+INSERT INTO questions (quiz_id, question) VALUES (7, 'In which anime do the protagonists attempt to escape from an orphanage?');
+INSERT INTO questions (quiz_id, question) VALUES (7, 'Which of the following is NOT an anime?');
+INSERT INTO questions (quiz_id, question) VALUES (7, 'Who is Monkey D. Luffy''s first mate?');
+INSERT INTO questions (quiz_id, question) VALUES (7, 'Midoriya Izuku was born with which of the following quirks?');
+INSERT INTO questions (quiz_id, question) VALUES (7, 'Who killed Grisha Yeager?');
+INSERT INTO questions (quiz_id, question) VALUES (7, 'Which Black Clover character owns a grimoire with a five-leaf clover?');
+INSERT INTO questions (quiz_id, question) VALUES (7, 'What is Thorfinn''s primary goal in Vinland Saga?');
+INSERT INTO questions (quiz_id, question) VALUES (7, 'Who is Natsu Dragneel''s ride-or-die companion?');
+INSERT INTO questions (quiz_id, question) VALUES (7, 'Which Stand is the most broken among the JoJos');
+
+INSERT INTO questions (quiz_id, question) VALUES (8, 'What is celebrated on February 2nd and is also a film?');
+INSERT INTO questions (quiz_id, question) VALUES (8, 'What is the national anthem of the United States?');
+INSERT INTO questions (quiz_id, question) VALUES (8, 'Which weather phenomenon translates from Spanish to ''boy?''');
+INSERT INTO questions (quiz_id, question) VALUES (8, 'Which castle is on the island of Anglesey?');
+INSERT INTO questions (quiz_id, question) VALUES (8, 'Which North African seaport is the name in Spanish for the white house?');
+INSERT INTO questions (quiz_id, question) VALUES (8, 'Which is the only vowel on a QWERTY keyboard that is not on the top line of letters?');
+INSERT INTO questions (quiz_id, question) VALUES (8, 'What is the most popular drink in the world that does not contain alcohol?');
+INSERT INTO questions (quiz_id, question) VALUES (8, 'Globe and Jerusalem are types of what?');
