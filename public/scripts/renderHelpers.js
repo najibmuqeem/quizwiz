@@ -38,7 +38,7 @@ const escape = str => {
 |___________________________________________
 */
 
-const buildQuizForm = () => {
+const buildQuizInfoForm = () => {
   return `
   <main class="section">
     <section class="hero is-primary is-bold">
@@ -54,7 +54,7 @@ const buildQuizForm = () => {
       </div>
     </section>
 
-    <form id="create-quiz">
+    <form id="create-quiz" class="has-text-centered">
       <div class="field">
         <label class="label">Title</label>
         <div class="control">
@@ -567,5 +567,5 @@ const renderQuizForm = () => {
   $("body")
     .empty()
     .append(buildNavbar())
-    .append(buildQuizForm());
+    .append(buildQuizInfoForm());
 };
