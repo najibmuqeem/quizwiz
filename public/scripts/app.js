@@ -15,7 +15,6 @@ $(() => {
   // Otherwise, render home page
   if ($.urlParam('quiz')) {
     fetchSingleQuiz($.urlParam('quiz'));
-    return;
   } else {
     fetchAndRenderQuizzes();
   }
@@ -87,8 +86,6 @@ $(() => {
       `<button id="cancel-questions" class="button is-link is-light">Cancel</button>`
     );
   });
-
-  fetchAndRenderQuizzes();
 
   // submit questions
   $("body").on("submit", "#questions", e => {
