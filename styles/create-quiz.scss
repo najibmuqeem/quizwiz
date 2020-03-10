@@ -1,0 +1,19 @@
+/******** Customizations ********/
+
+form:nth-of-type(1) {
+  background: rgb(255,195,55);
+  background: radial-gradient(circle, rgba(255,195,55,0.819765406162465) 0%, rgba(255,195,55,0.7021183473389356) 15%, rgba(255,255,255,1) 68%);
+  border-radius: 150px;
+  padding: 1rem 0 1rem;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.control {
+  width: 50%;
+  margin: 0 auto;
+
+  .textarea {
+    height: 2rem;
+  }
+}
