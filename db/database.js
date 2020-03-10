@@ -130,7 +130,7 @@ const removeQuiz = function(quiz_id) {
   return pool.query(
     `
     DELETE FROM quizzes
-    WHERE quiz_id = $1
+    WHERE id = $1
     `,
     [quiz_id]
   );
