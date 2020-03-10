@@ -21,6 +21,9 @@ let currentOptions;
 // Keeps track of the question number during a quiz
 let questionNumber = 0;
 
+// Keeps score of current quiz
+let currentScore = 0;
+
 // Escapes unsafe characters and returns safe html. To prevent XSS
 const escape = str => {
   const div = document.createElement("div");
@@ -156,8 +159,37 @@ const buildQuiz = function(quiz) {
 };
 
 // Builds the end page shown after quiz ends
-const buildEndPage = () => {
+const buildEndPage = (quizInfo) => {
+  return `
+  <main class="section">
 
+    <section class="container quiz-end-background start-end-quiz has-text-centered">
+
+      <!-- Quiz info -->
+      <h1 class="title is-1 has-text-white ">
+        You completed ${quizInfo.title}!
+      </h1>
+      <p class="is-size-3 has-text-black">You scored ${currentScore}/${quizInfo.number_of_questions}</p>
+
+      <!-- Share/Home button -->
+      <a class="button is-primary is-inverted is-medium" href="">
+        <strong>Share Your Result</strong>
+      </a>
+      <a class="button is-primary is-inverted is-outlined is-medium" href="/">
+        <strong>Back To Home</strong>
+      </a>
+
+      <!-- Previous scores -->
+      <div class="previous-attempts">
+        <h3 class="title is-4 has-text-white">Your previous attempts at this quiz:</h3>
+        <ul class="is-size-4">
+        </ul>
+      </div>
+
+    </section>
+
+  </main>
+  `;
 };
 
 // Builds the navbar which is used in home, create new quiz, and end quiz pages
@@ -267,9 +299,17 @@ const renderQuizzes = function(quizzes) {
 // Renders a question and associated options
 const renderQuestion = (questionAndOptions) => {
   if (questionAndOptions.length === 1) {
-    renderEndPage(questionAndOptions);
+    const quizInfo = {
+      id: questionAndOptions[0].quiz_id,
+      user_id: questionAndOptions[0].user_id,
+      title: questionAndOptions[0].title,
+      number_of_questions: questionAndOptions[0].number_of_questions
+    }
+    renderEndPage(quizInfo);
     return;
   }
+
+  console.log(questionAndOptions);
 
   const divisionPoint = questionAndOptions[0].number_of_answers;
   currentOptions = questionAndOptions.slice(0, divisionPoint);
@@ -309,5 +349,7 @@ const renderEndPage = (quizData) => {
   $('body')
     .empty()
     .append(buildNavbar())
-    .append(buildEndPage());
+    .append(buildEndPage(quizData));
+
+  getScores(quizData);
 };
