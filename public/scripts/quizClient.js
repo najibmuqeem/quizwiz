@@ -50,7 +50,7 @@ const fetchQuizData = quizId => {
 // Removes quiz from database
 const removeQuiz = quiz_id => {
   $.ajax({
-    type: "GET",
+    type: "DELETE",
     url: `/api/quizzes/delete/${quiz_id}`,
     dataType: "json"
   });
