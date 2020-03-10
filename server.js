@@ -49,6 +49,8 @@ const correctAnswersRoutes = require("./routes/correctAnswers");
 const scoresRoutes = require("./routes/scores");
 const questionsRoutes = require("./routes/questions");
 const optionsRoutes = require("./routes/options");
+const loginRoutes = require("./routes/login");
+const logoutRoutes = require("./routes/logout");
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 app.use("/api/users", usersRoutes(db));
@@ -58,6 +60,8 @@ app.use("/api/correctAnswers", correctAnswersRoutes());
 app.use("/api/scores", scoresRoutes());
 app.use("/api/questions", questionsRoutes());
 app.use("/api/options", optionsRoutes());
+app.use("/api/login", loginRoutes());
+app.use("/api/logout", logoutRoutes());
 
 // Note: mount other resources here, using the same pattern above
 
