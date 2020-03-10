@@ -21,6 +21,9 @@ let currentOptions;
 // Keeps track of the question number during a quiz
 let questionNumber = 0;
 
+// Keeps score of current quiz
+let currentScore = 0;
+
 // Escapes unsafe characters and returns safe html. To prevent XSS
 const escape = str => {
   const div = document.createElement("div");
@@ -77,8 +80,6 @@ const buildQuizRows = quizzes => {
 
 // Builds a quiz question page with associated options
 const buildQuestionPage = questionAndOptions => {
-  $("html").addClass("quiz-background");
-
   let questionPage = `
   <!-- Question header -->
   <section class="hero question">
@@ -161,6 +162,119 @@ const buildQuiz = function(quiz) {
   return singleQuiz;
 };
 
+// Builds the end page shown after quiz ends
+const buildEndPage = (quizInfo) => {
+  return `
+  <main class="section">
+
+    <section class="container quiz-end-background start-end-quiz has-text-centered">
+
+      <!-- Quiz info -->
+      <h1 class="title is-1 has-text-white ">
+        You completed ${quizInfo.title}!
+      </h1>
+      <p class="is-size-3 has-text-black">You scored ${currentScore}/${quizInfo.number_of_questions}</p>
+
+      <!-- Share/Home button -->
+      <a class="button is-primary is-inverted is-medium" href="">
+        <strong>Share Your Result</strong>
+      </a>
+      <a class="button is-primary is-inverted is-outlined is-medium" href="/">
+        <strong>Back To Home</strong>
+      </a>
+
+      <!-- Previous scores -->
+      <div class="previous-attempts">
+        <h3 class="title is-4 has-text-white">Your previous attempts at this quiz:</h3>
+        <ul class="is-size-4">
+        </ul>
+      </div>
+
+    </section>
+
+  </main>
+  `;
+};
+
+// Builds the navbar which is used in home, create new quiz, and end quiz pages
+const buildNavbar = () => {
+  return `
+  <nav
+    class="navbar is-fixed-top"
+    role="navigation"
+    aria-label="main navigation"
+  >
+    <!-- Brand logo and nav burger -->
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/">
+        <h1 class="title is-3 has-text-info">QUIZ WIZ</h1>
+      </a>
+      <a
+        role="button"
+        class="navbar-burger"
+        aria-label="menu"
+        aria-expanded="false"
+      >
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+
+    <!-- Left side nav items -->
+    <div class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="/">
+          Home
+        </a>
+
+        <a class="navbar-item" href="./temp_html/create-quiz.html">
+          Create Your Own Quiz
+        </a>
+
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            Categories
+          </a>
+
+          <div class="navbar-dropdown">
+            <a class="navbar-item">
+              Arts
+            </a>
+            <a class="navbar-item">
+              History
+            </a>
+            <a class="navbar-item">
+              Movies
+            </a>
+            <a class="navbar-item">
+              Music
+            </a>
+            <a class="navbar-item">
+              Sports
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right side nav items -->
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="buttons">
+            <a class="button is-primary">
+              <strong>Sign up</strong>
+            </a>
+            <a class="button is-light">
+              Log in
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  `;
+};
+
 // Builds the dark navbar which is used in starting quiz and taking quiz (question) pages
 const buildDarkNavbar = () => {
   return `
@@ -187,23 +301,45 @@ const renderQuizzes = function(quizzes) {
 };
 
 // Renders a question and associated options
-const renderQuestion = questionAndOptions => {
-  if (questionAndOptions.length === 0) {
-    console.log("zerooo");
+const renderQuestion = (questionAndOptions) => {
+  if (questionAndOptions.length === 1) {
+    const quizInfo = {
+      id: questionAndOptions[0].quiz_id,
+      user_id: questionAndOptions[0].user_id,
+      title: questionAndOptions[0].title,
+      number_of_questions: questionAndOptions[0].number_of_questions
+    }
+    renderEndPage(quizInfo);
     return;
   }
 
+  console.log(questionAndOptions);
+
   const divisionPoint = questionAndOptions[0].number_of_answers;
-
   currentOptions = questionAndOptions.slice(0, divisionPoint);
-
+  
   shuffle(currentOptions);
+
+  $("html")
+    .addClass("quiz-background");
 
   $("main")
     .empty()
     .append(buildQuestionPage(currentOptions));
 
-  quizData = questionAndOptions.slice(divisionPoint);
+  if (quizData.length === divisionPoint) {
+    quizData.length = 1;
+  } else {
+    quizData = questionAndOptions.slice(divisionPoint);
+  }
+}
+
+// Renders single quiz start page
+const renderQuiz = function(quiz) {
+  $('body')
+    .empty()
+    .append(buildDarkNavbar())
+    .append(buildQuiz(quiz));
 };
 
 const shuffle = function(array) {
@@ -214,15 +350,22 @@ const shuffle = function(array) {
   return array;
 };
 
-// Renders single quiz start page
-const renderQuiz = function(quiz) {
-  $("body").empty();
-  $("body").append(buildDarkNavbar());
-  $("body").append(buildQuiz(quiz));
 };
 // To render scores for a user
 const renderScores = function(scores) {
   for (let scoreObject of scores) {
     $(".previous-attempts > ul").append(`<li>${scoreObject.score}/5</li>`);
   }
+};
+
+// Renders the end page shown after user completes a quiz
+const renderEndPage = (quizData) => {
+  $('html')
+    .removeClass('quiz-background');
+  $('body')
+    .empty()
+    .append(buildNavbar())
+    .append(buildEndPage(quizData));
+
+  getScores(quizData);
 };

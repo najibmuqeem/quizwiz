@@ -124,9 +124,6 @@ $(() => {
   });
 });
 
-// Keeps score of current quiz
-let currentScore = 0;
-
 const clearInputValues = function() {
   $("input").val("");
   $("textarea").val("");
