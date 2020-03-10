@@ -3,7 +3,6 @@ const logout = function() {
   $("#logout").click((e) => {
 
     e.preventDefault();
-    console.log('logout');
 
   $.ajax({
       type:"POST",
