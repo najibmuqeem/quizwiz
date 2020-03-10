@@ -2,11 +2,19 @@ $(() => {
 
   // Grab any url query params. To be used when sharing quizzes
   $.urlParam = function(name){
-    var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
-    return results[1] || 0;
+    const results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+
+    if (results) {
+      return results[1];
+    } else {
+      return null;
+    }
   }
 
-  console.log($.urlParam('quiz'));
+  // Render a specific quiz page if a quiz query was in the URL
+  if ($.urlParam('quiz')) {
+    fetchSingleQuiz($.urlParam('quiz'));
+  }
 
   // Open/close nav menu when navbar-burger is clicked
   // For mobile only
