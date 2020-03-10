@@ -54,8 +54,8 @@ const buildQuizRows = quizzes => {
     quizRows += `
       <div class="tile is-parent">
         <article class="tile is-child box" style="background-image: linear-gradient(180deg, rgba(255,255,255,0.7) 40%, rgba(255,255,255,0.3) 70%, rgba(255,255,255,0) 100%), url(${escape(
-          quiz.picture_url
-        )});" onclick="fetchSingleQuiz(${quiz.id})">
+    quiz.picture_url
+  )});" onclick="fetchSingleQuiz(${quiz.id})">
           <p class="title">${escape(quiz.title)}</p>
           <p class="subtitle">${escape(quiz.description)}</p>
           <div class="content">
@@ -114,8 +114,8 @@ const buildQuestionPage = questionAndOptions => {
   <div class="content has-text-right is-size-3">
     <p>
       Question <strong>${++questionNumber}</strong> of <strong>${
-    questionAndOptions[0].number_of_questions
-  }</strong>
+  questionAndOptions[0].number_of_questions
+}</strong>
     </p>
   </div>
   `;
@@ -167,7 +167,7 @@ const buildDarkNavbar = () => {
       </a>
     </div>
   </nav>
-  `
+  `;
 };
 
 /*
@@ -197,7 +197,7 @@ const renderQuestion = (questionAndOptions) => {
     .append(buildQuestionPage(currentOptions));
 
   quizData = questionAndOptions.slice(divisionPoint);
-}
+};
 
 // Renders single quiz start page
 const renderQuiz = function(quiz) {
