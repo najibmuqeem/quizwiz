@@ -23,6 +23,14 @@ $(() => {
     $(".navbar-menu").toggleClass("is-active");
   });
 
+  // Initiate .share-button elements as a clipboard object
+  new ClipboardJS('.share-button');
+
+  // Notify user when sharing info is copied to clipboard
+  $('body').on('click', '.share-button', () => {
+    alert('Copied to clipboard!\nPaste anywhere to share this quiz!');
+  })
+
   fetchAndRenderQuizzes();
 
   //submit quiz
