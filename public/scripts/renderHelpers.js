@@ -153,6 +153,60 @@ const buildQuizForm = () => {
   `;
 };
 
+const buildQuizQuestionsForm = function(number_of_questions, number_of_options) {
+  let quizQuestionsForm = ``;
+
+  for (let i = 1; i <= number_of_questions; i++) {
+    quizQuestionsForm += `
+    <div class="question-container">
+      <div class="field">
+        <label class="label">Question ${i}</label>
+        <div class="control">
+          <input type="text" required="required" id="question${i}" class="input question" />
+        </div>
+      </div>`;
+
+    for (let j = 1; j <= number_of_options; j++) {
+
+      if (j === 1) {
+        quizQuestionsForm += `
+        <div class="field">
+          <label class="label">Option ${j}</label>
+          <div class="control">
+            <input type="text" required="required" id="option${j}" class="input correct optionInput" placeholder="Correct option"/>
+          </div>
+        </div>`;
+
+      } else {
+        quizQuestionsForm += `
+        <div class="field">
+          <label class="label">Option ${j}</label>
+          <div class="control">
+            <input type="text" required="required" id="option${j}" class="input optionInput" placeholder="Incorrect option" />
+          </div>
+        </div>`;
+      }
+    }
+
+    quizQuestionsForm += `</div><br>`;
+  }
+
+  quizQuestionsForm +=
+  `
+  <div class="field is-grouped">
+    <div class="control buttons">
+      <button id="submit-questions" class="button is-primary">Submit</button>
+    </div>
+  </div>
+  <div>
+    Quiz ID:
+    <span id="quiz-id"></span>
+  </div>
+  `;
+
+  return quizQuestionsForm;
+};
+
 // Builds rows of quizzes to be used in renderQuizzes
 const buildQuizRows = quizzes => {
   let quizRows = `
