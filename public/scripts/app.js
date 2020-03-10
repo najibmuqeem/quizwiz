@@ -6,10 +6,21 @@ $(() => {
     $(".navbar-menu").toggleClass("is-active");
   });
 
-  fetchAndRenderQuizzes();
+  // cancel quiz button
+  $("body").on("click", "#cancel-quiz", e => {
+    e.preventDefault();
+    clearInputValues();
+    fetchAndRenderQuizzes();
+  });
 
-  //submit quiz
-  $("#create-quiz").on("submit", e => {
+  // cancel questions button
+  $("body").on("click", "#cancel-questions", e => {
+    e.preventDefault();
+    removeQuiz(Number($("#quiz-id")[0].innerText));
+    fetchAndRenderQuizzes();
+  });
+
+  $("body").on("submit", "#create-quiz", e => {
     e.preventDefault();
     const form = $("#create-quiz")[0];
 
@@ -37,14 +48,20 @@ $(() => {
     clearInputValues();
 
     $("#create-quiz").hide();
+    $("#cancel-quiz").hide();
 
     createQuiz(quiz);
 
     $("#questions").append(createHTML(number_of_questions, number_of_options));
+    $("#questions").append(
+      `<button id="cancel-questions" class="button is-link is-light">Cancel</button>`
+    );
   });
 
+  fetchAndRenderQuizzes();
+
   // submit questions
-  $("#questions").on("submit", e => {
+  $("body").on("submit", "#questions", e => {
     e.preventDefault();
 
     const number_of_answers = $(".option").length / $(".question").length;
@@ -65,20 +82,6 @@ $(() => {
     });
     fetchSingleQuiz(quiz_id);
   });
-
-  // cancel quiz button
-  $("#cancel-quiz").click(e => {
-    e.preventDefault();
-    clearInputValues();
-  });
-
-  // cancel questions button, doesn't work yet
-  // $("#cancel-questions").click(e => {
-  //   e.preventDefault();
-  //   removeQuiz(Number($("#quiz-id")[0].innerText));
-  //   $("#questions").hide();
-  //   $("#create-quiz").show();
-  // });
 
   // Checks if user chose correct answer, increments score accordingly
   $(".option").click(event => {
@@ -124,12 +127,6 @@ $(() => {
   });
 });
 
-const clearInputValues = function() {
-  $("input").val("");
-  $("textarea").val("");
-  $("#public").prop("checked", false);
-};
-
 const createHTML = function(number_of_questions, number_of_options) {
   let html = ``;
 
@@ -138,7 +135,7 @@ const createHTML = function(number_of_questions, number_of_options) {
                 <div class="field">
                   <label class="label">Question ${i}</label>
                   <div class="control">
-                    <input type="text" id="question${i}" class="input question" />
+                    <input type="text" required="required" id="question${i}" class="input question" />
                   </div>
                 </div>`;
     for (let j = 1; j <= number_of_options; j++) {
@@ -147,7 +144,7 @@ const createHTML = function(number_of_questions, number_of_options) {
                     <div class="field">
                       <label class="label">Option ${j}</label>
                       <div class="control">
-                        <input type="text" id="option${j}" class="input correct option" placeholder="Correct option"/>
+                        <input type="text" required="required" id="option${j}" class="input correct option" placeholder="Correct option"/>
                       </div>
                     </div>`;
       } else {
@@ -155,7 +152,7 @@ const createHTML = function(number_of_questions, number_of_options) {
                     <div class="field">
                       <label class="label">Option ${j}</label>
                       <div class="control">
-                        <input type="text" id="option${j}" class="input option" placeholder="Incorrect option" />
+                        <input type="text" required="required" id="option${j}" class="input option" placeholder="Incorrect option" />
                       </div>
                     </div>`;
       }
@@ -167,7 +164,6 @@ const createHTML = function(number_of_questions, number_of_options) {
               <div class="field is-grouped">
                 <div class="control">
                   <button id="submit-questions" class="button is-primary">Submit</button>
-                  <button id="cancel-questions" class="button is-link is-light">Cancel</button>
                 </div>
               </div>
               <div>
@@ -177,4 +173,10 @@ const createHTML = function(number_of_questions, number_of_options) {
             `;
 
   return html;
+};
+
+const clearInputValues = function() {
+  $("input").val("");
+  $("textarea").val("");
+  $("#public").prop("checked", false);
 };
