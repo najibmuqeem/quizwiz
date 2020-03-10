@@ -50,7 +50,7 @@ const fetchQuizData = quizId => {
 // Removes quiz from database
 const removeQuiz = quiz_id => {
   $.ajax({
-    type: "GET",
+    type: "DELETE",
     url: `/api/quizzes/delete/${quiz_id}`,
     dataType: "json"
   });
@@ -78,7 +78,7 @@ const addOptions = function(questionElem, question_id, number_of_answers) {
   let options = [];
   let is_correct = [];
 
-  questionElem.find(".option").each(function(i) {
+  questionElem.find(".optionInput").each(function() {
     options.push($(this)[0].value);
 
     if ($(this)[0].className.includes("correct")) {

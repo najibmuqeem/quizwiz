@@ -75,12 +75,37 @@ exports.getUsersWithPlaysOnQuiz = getUsersWithPlaysOnQuiz;
 
 //returns array of QUIZ objects with keys id, title, description, picture_url, number_of_questions, number_of_plays, user_id, is_public (use res.rows)
 const getQuizzes = function(user_id) {
-  let queryString = `SELECT * FROM quizzes`;
+  let queryString = `SELECT
+                      quiz_id as id,
+                      quizzes.title as title,
+                      quizzes.description as description,
+                      quizzes.picture_url as picture_url,
+                      quizzes.number_of_questions as number_of_questions,
+                      quizzes.number_of_plays as number_of_plays,
+                      quizzes.user_id as user_id,
+                      quizzes.is_public as is_public
+                    FROM questions
+                    JOIN quizzes ON quizzes.id = quiz_id
+                    WHERE number_of_questions IS NOT NULL
+                    AND number_of_answers IS NOT NULL
+                    `;
   if (user_id) {
-    queryString += `WHERE user_id = $1;`;
+    queryString += `AND user_id = $1 `;
+  }
+  queryString += `GROUP BY
+                    quiz_id,
+                    title,
+                    description,
+                    picture_url,
+                    number_of_questions,
+                    number_of_plays,
+                    user_id,
+                    is_public
+                  ORDER BY id DESC;`;
+
+  if (user_id) {
     return pool.query(queryString, [user_id]);
   } else {
-    queryString += `;`;
     return pool.query(queryString);
   }
 };
@@ -130,7 +155,7 @@ const removeQuiz = function(quiz_id) {
   return pool.query(
     `
     DELETE FROM quizzes
-    WHERE quiz_id = $1
+    WHERE id = $1
     `,
     [quiz_id]
   );

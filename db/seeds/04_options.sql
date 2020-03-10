@@ -122,3 +122,28 @@ INSERT INTO options (question_id, option, is_correct) VALUES (25, 'Canadian Arct
 INSERT INTO options (question_id, option, is_correct) VALUES (25, 'South of South America', false);
 INSERT INTO options (question_id, option, is_correct) VALUES (25, 'North of Russia', false);
 INSERT INTO options (question_id, option, is_correct) VALUES (25, 'Sub-African Antarctic', false);
+
+INSERT INTO options (question_id, option, is_correct) VALUES (26, 'Donald J. Trump', true);
+INSERT INTO options (question_id, option, is_correct) VALUES (26, 'Kevin Guertin', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (26, 'Raho Mohamed', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (26, 'Sebastian Lynch', false);
+
+INSERT INTO options (question_id, option, is_correct) VALUES (27, 'Donald J. Trump', true);
+INSERT INTO options (question_id, option, is_correct) VALUES (27, 'Jeffrey Liu', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (27, 'Liubov Kleimenova', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (27, 'Steven Choi', false);
+
+INSERT INTO options (question_id, option, is_correct) VALUES (28, 'Donald J. Trump', true);
+INSERT INTO options (question_id, option, is_correct) VALUES (28, 'Ata Ansari', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (28, 'Noah Novick', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (28, 'David He', false);
+
+INSERT INTO options (question_id, option, is_correct) VALUES (29, 'Donald J. Trump', true);
+INSERT INTO options (question_id, option, is_correct) VALUES (29, 'Igor Cekan (Lucas)', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (29, 'Marco Siu', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (29, 'Rahul A. Mitra', false);
+
+INSERT INTO options (question_id, option, is_correct) VALUES (30, 'Donald J. Trump', true);
+INSERT INTO options (question_id, option, is_correct) VALUES (30, 'Victor Yu', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (30, 'Asmaa Ali', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (30, 'Altair Ioffe', false);

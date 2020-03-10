@@ -5,7 +5,6 @@ const database = require("../db/database");
 module.exports = () => {
   // Get quizzes
   router.get("/", (req, res) => {
-    req.session.user_id = 1;
     database
       .getQuizzes()
       .then(data => {
@@ -41,7 +40,7 @@ module.exports = () => {
   });
 
   //Delete quiz
-  router.get("/delete/:id", (req, res) => {
+  router.delete("/delete/:id", (req, res) => {
     database
       .removeQuiz(req.params.id)
       .then(() => {
