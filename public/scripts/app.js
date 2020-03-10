@@ -1,10 +1,37 @@
 $(() => {
+
+  // Grab any url query params. To be used when sharing quizzes
+  $.urlParam = function(name){
+    const results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+
+    if (results) {
+      return results[1];
+    } else {
+      return null;
+    }
+  }
+
+  // Render a specific quiz page if a quiz query was in the URL
+  if ($.urlParam('quiz')) {
+    fetchSingleQuiz($.urlParam('quiz'));
+  }
+
   // Open/close nav menu when navbar-burger is clicked
   // For mobile only
   $("body").on("click", ".navbar-burger", () => {
     $(".navbar-burger").toggleClass("is-active");
     $(".navbar-menu").toggleClass("is-active");
   });
+
+  // Initiate .share-button elements as a clipboard object
+  new ClipboardJS('.share-button');
+
+  // Notify user when sharing info is copied to clipboard
+  $('body').on('click', '.share-button', () => {
+    alert('Copied to clipboard!\nPaste anywhere to share this quiz!');
+  })
+
+  fetchAndRenderQuizzes();
 
   // cancel quiz button
   $("body").on("click", "#cancel-quiz", e => {
@@ -19,6 +46,7 @@ $(() => {
     removeQuiz(Number($("#quiz-id")[0].innerText));
     fetchAndRenderQuizzes();
   });
+
 
   $("body").on("submit", "#create-quiz", e => {
     e.preventDefault();
@@ -83,11 +111,19 @@ $(() => {
     fetchSingleQuiz(quiz_id);
   });
 
-  // Checks if user chose correct answer, increments score accordingly
-  $(".option").click(event => {
-    const correctAnswer = currentOptions.filter(option => option.is_correct);
-    console.log("hallooo");
+  // cancel quiz button
+  $("#cancel-quiz").click(e => {
+    e.preventDefault();
+    clearInputValues();
   });
+
+  // cancel questions button, doesn't work yet
+  // $("#cancel-questions").click(e => {
+  //   e.preventDefault();
+  //   removeQuiz(Number($("#quiz-id")[0].innerText));
+  //   $("#questions").hide();
+  //   $("#create-quiz").show();
+  // });
 
   // Checks if user chose correct answer, increments score accordingly, goes to next question
   $("body").on("click", ".option", () => {

@@ -255,11 +255,14 @@ const buildQuiz = function(quiz) {
         quiz.number_of_questions
       )}</span> Questions</em></p>
 
-      <!-- Start button -->
+      <!-- Start/share button -->
       <a class="button is-primary is-inverted is-large" onclick="fetchQuizData(${
         quiz.id
       })">
         <strong>Start Quiz</strong>
+      </a>
+      <a class="button is-primary is-inverted is-outlined is-large share-button" data-clipboard-text="Check out this awesome quiz on http://localhost:8080?quiz=${quiz.id}">
+        <strong>Share This Quiz</strong>
       </a>
 
       <!-- Previous scores -->
@@ -289,7 +292,7 @@ const buildEndPage = quizInfo => {
       <p class="is-size-3 has-text-black">You scored ${currentScore}/${quizInfo.number_of_questions}</p>
 
       <!-- Share/Home button -->
-      <a class="button is-primary is-inverted is-medium">
+      <a class="button is-primary is-inverted is-medium share-button" data-clipboard-text="I scored ${currentScore}/${quizInfo.number_of_questions} on this quiz:  http://localhost:8080?quiz=${quizInfo.id} See if you can beat me!">
         <strong>Share Your Result</strong>
       </a>
       <a class="button is-primary is-inverted is-outlined is-medium" href="/">
@@ -442,8 +445,6 @@ const renderQuestion = questionAndOptions => {
     renderEndPage(quizInfo);
     return;
   }
-
-  console.log(questionAndOptions);
 
   const divisionPoint = questionAndOptions[0].number_of_answers;
   currentOptions = questionAndOptions.slice(0, divisionPoint);
