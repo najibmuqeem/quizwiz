@@ -453,15 +453,11 @@ const renderQuestion = questionAndOptions => {
     .empty()
     .append(buildQuestionPage(currentOptions));
 
-<<<<<<< HEAD
-  quizData = questionAndOptions.slice(divisionPoint);
-=======
   if (quizData.length === divisionPoint) {
     quizData.length = 1;
   } else {
     quizData = questionAndOptions.slice(divisionPoint);
   }
->>>>>>> c916f6ce30e0e0f2377ac919ce234387937fb363
 };
 
 // Renders single quiz start page
