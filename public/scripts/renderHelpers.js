@@ -101,6 +101,7 @@ const buildQuizForm = () => {
                         name="questions"
                         id="num-questions"
                         type="number"
+                        required="required"
                         min="1"
                       />
                     </div>
@@ -113,6 +114,7 @@ const buildQuizForm = () => {
                         name="options"
                         id="num-options"
                         type="number"
+                        required="required"
                         min="2"
                       />
                     </div>
@@ -137,12 +139,13 @@ const buildQuizForm = () => {
                       <button id="submit-quiz" class="button is-primary">
                         Submit
                       </button>
+                      <button id="cancel-quiz" class="button is-link is-light">
+                        Cancel
+                      </button>
                     </div>
                   </div>
                 </form>
-                <button id="cancel-quiz" class="button is-link is-light">
-                  Cancel
-                </button>
+
                 <form id="questions">
                 </form>
               </main>`;
@@ -167,8 +170,8 @@ const buildQuizRows = quizzes => {
     quizRows += `
       <div class="tile is-parent">
         <article class="tile is-child box" style="background-image: linear-gradient(180deg, rgba(255,255,255,0.7) 40%, rgba(255,255,255,0.3) 70%, rgba(255,255,255,0) 100%), url(${escape(
-    quiz.picture_url
-  )});" onclick="fetchSingleQuiz(${quiz.id})">
+          quiz.picture_url
+        )});" onclick="fetchSingleQuiz(${quiz.id})">
           <p class="title">${escape(quiz.title)}</p>
           <p class="subtitle">${escape(quiz.description)}</p>
           <div class="content">
@@ -225,8 +228,8 @@ const buildQuestionPage = questionAndOptions => {
   <div class="content has-text-right is-size-3">
     <p>
       Question <strong>${++questionNumber}</strong> of <strong>${
-  questionAndOptions[0].number_of_questions
-}</strong>
+    questionAndOptions[0].number_of_questions
+  }</strong>
     </p>
   </div>
   `;
