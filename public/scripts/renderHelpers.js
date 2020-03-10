@@ -404,6 +404,26 @@ const buildDarkNavbar = () => {
   `;
 };
 
+// Builds the hero section that says 'featured quizzes;
+const buildFeaturedHero = () => {
+  return `
+  <main id="home" class="section">
+    <section class="hero is-primary is-bold">
+      <div class="hero-body">
+        <div class="container">
+          <h1 class="title is-2">
+            Featured Quizzes
+          </h1>
+          <h2 class="subtitle">
+            Do you have what it takes to answer these questions?
+          </h2>
+        </div>
+      </div>
+    </section>
+  </main>
+  `;
+};
+
 /*
 |
 | RENDERING FUNCTIONS
@@ -413,24 +433,31 @@ const buildDarkNavbar = () => {
 
 // Renders quizzes into <main> element
 const renderQuizzes = function(quizzes) {
-  $("main")
+  $("body")
     .empty()
     .append(buildNavbar())
-    .append(
-      `<section class="hero is-primary is-bold">
-        <div class="hero-body">
-          <div class="container">
-            <h1 class="title is-2">
-              Featured Quizzes
-            </h1>
-            <h2 class="subtitle">
-              Do you have what it takes to answer these questions?
-            </h2>
-          </div>
-        </div>
-      </section>`
-    )
-    .append(buildQuizRows(quizzes));
+    .append(buildFeaturedHero());
+
+  $('main')
+    .append(buildQuizRows(quizzes))
+  // $("main")
+  //   .empty()
+  //   .append(buildNavbar())
+  //   .append(
+  //     `<section class="hero is-primary is-bold">
+  //       <div class="hero-body">
+  //         <div class="container">
+  //           <h1 class="title is-2">
+  //             Featured Quizzes
+  //           </h1>
+  //           <h2 class="subtitle">
+  //             Do you have what it takes to answer these questions?
+  //           </h2>
+  //         </div>
+  //       </div>
+  //     </section>`
+  //   )
+  //   .append(buildQuizRows(quizzes));
 };
 
 // Renders a question and associated options
