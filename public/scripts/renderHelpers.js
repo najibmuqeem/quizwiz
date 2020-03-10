@@ -144,8 +144,6 @@ const buildQuizInfoForm = () => {
             </button>
           </div>
         </div>
-      </form>
-      <form id="questions"></form>
   </main>
   `;
 };
