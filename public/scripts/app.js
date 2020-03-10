@@ -81,7 +81,7 @@ $(() => {
 
     createQuiz(quiz);
 
-    $("#questions").append(createHTML(number_of_questions, number_of_options));
+    $("#questions").append(buildQuizQuestionsForm(number_of_questions, number_of_options));
     $(".buttons").append(
       `<button id="cancel-questions" class="button is-link is-light">Cancel</button>`
     );
@@ -161,54 +161,6 @@ $(() => {
     }, 1000);
   });
 });
-
-const createHTML = function(number_of_questions, number_of_options) {
-  let html = ``;
-
-  for (let i = 1; i <= number_of_questions; i++) {
-    html += `<div class="question-container">
-                <div class="field">
-                  <label class="label">Question ${i}</label>
-                  <div class="control">
-                    <input type="text" required="required" id="question${i}" class="input question" />
-                  </div>
-                </div>`;
-    for (let j = 1; j <= number_of_options; j++) {
-      if (j === 1) {
-        html += `
-                    <div class="field">
-                      <label class="label">Option ${j}</label>
-                      <div class="control">
-                        <input type="text" required="required" id="option${j}" class="input correct optionInput" placeholder="Correct option"/>
-                      </div>
-                    </div>`;
-      } else {
-        html += `
-                    <div class="field">
-                      <label class="label">Option ${j}</label>
-                      <div class="control">
-                        <input type="text" required="required" id="option${j}" class="input optionInput" placeholder="Incorrect option" />
-                      </div>
-                    </div>`;
-      }
-    }
-    html += `</div><br>`;
-  }
-
-  html += `
-              <div class="field is-grouped">
-                <div class="control buttons">
-                  <button id="submit-questions" class="button is-primary">Submit</button>
-                </div>
-              </div>
-              <div>
-                Quiz ID:
-                <span id="quiz-id"></span>
-              </div>
-            `;
-
-  return html;
-};
 
 const clearInputValues = function() {
   $("input").val("");
