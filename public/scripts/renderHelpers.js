@@ -184,19 +184,25 @@ const renderQuizzes = function(quizzes) {
 
 // Renders a question and associated options
 const renderQuestion = (questionAndOptions) => {
-  if (questionAndOptions.length === 0) {
-    console.log('zerooo');
+  if (questionAndOptions.length === 1) {
+    renderEndPage(questionAndOptions);
     return;
   }
 
-  const divisionPoint = questionAndOptions[0].number_of_answers;
+  console.log(questionAndOptions);
 
+  const divisionPoint = questionAndOptions[0].number_of_answers;
   currentOptions = questionAndOptions.slice(0, divisionPoint);
+
   $("main")
     .empty()
     .append(buildQuestionPage(currentOptions));
 
-  quizData = questionAndOptions.slice(divisionPoint);
+  if (quizData.length === divisionPoint) {
+    quizData.length = 1;
+  } else {
+    quizData = questionAndOptions.slice(divisionPoint);
+  }
 }
 
 // Renders single quiz start page
