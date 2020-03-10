@@ -1,7 +1,7 @@
 $(() => {
   // Open/close nav menu when navbar-burger is clicked
   // For mobile only
-  $(".navbar-burger").click(() => {
+  $("body").on("click", ".navbar-burger", () => {
     $(".navbar-burger").toggleClass("is-active");
     $(".navbar-menu").toggleClass("is-active");
   });
@@ -53,7 +53,7 @@ $(() => {
     createQuiz(quiz);
 
     $("#questions").append(createHTML(number_of_questions, number_of_options));
-    $("#questions").append(
+    $(".buttons").append(
       `<button id="cancel-questions" class="button is-link is-light">Cancel</button>`
     );
   });
@@ -162,7 +162,7 @@ const createHTML = function(number_of_questions, number_of_options) {
 
   html += `
               <div class="field is-grouped">
-                <div class="control">
+                <div class="control buttons">
                   <button id="submit-questions" class="button is-primary">Submit</button>
                 </div>
               </div>
