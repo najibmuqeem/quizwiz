@@ -61,6 +61,7 @@ $(() => {
     fetchSingleQuiz(quiz_id);
   });
 
+
   // cancel quiz button
   $("#cancel-quiz").click(e => {
     e.preventDefault();
@@ -80,14 +81,30 @@ $(() => {
     const correctAnswer = currentOptions.filter(option => option.is_correct);
     console.log("hallooo");
 
-    if (event.target.text() === correctAnswer.option) {
+
+
+  // Checks if user chose correct answer, increments score accordingly, goes to next question
+  $('body').on('click', '.option', () => {
+    const userAnswer = event.target.innerText;
+    const correctAnswer = currentOptions.filter(option => option.is_correct)[0].option;
+
+    if (userAnswer === correctAnswer) {
       currentScore++;
     }
 
-    event.target.css("backgroundColor", "red");
-    $(".option")
-      .filter(elem => elem.text() === correctAnswer.option)
-      .css("backgroundColor", "green");
+    $('.option').filter(function() {
+      return $(this).children().text() === userAnswer;
+    }).css('backgroundColor', '#e74c3c');
+
+    $('.option').filter(function() {
+      return $(this).children().text() === correctAnswer;
+    }).css('backgroundColor', '#2ecc71');
+
+    $('.option').css('pointer-events', 'none');
+
+    setTimeout(() => {
+      renderQuestion(quizData);
+    }, 1000);
   });
 });
 
