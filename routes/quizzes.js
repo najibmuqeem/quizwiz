@@ -41,7 +41,7 @@ module.exports = () => {
   });
 
   //Delete quiz
-  router.get("/delete/:id", (req, res) => {
+  router.delete("/delete/:id", (req, res) => {
     database
       .removeQuiz(req.params.id)
       .then(() => {
