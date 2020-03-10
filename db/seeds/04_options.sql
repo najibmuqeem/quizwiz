@@ -147,3 +147,103 @@ INSERT INTO options (question_id, option, is_correct) VALUES (30, 'Donald J. Tru
 INSERT INTO options (question_id, option, is_correct) VALUES (30, 'Victor Yu', false);
 INSERT INTO options (question_id, option, is_correct) VALUES (30, 'Asmaa Ali', false);
 INSERT INTO options (question_id, option, is_correct) VALUES (30, 'Altair Ioffe', false);
+
+INSERT INTO options (question_id, option, is_correct) VALUES (31, 'Demon Slayer: Kimetsu no Yaiba', true);
+INSERT INTO options (question_id, option, is_correct) VALUES (31, 'Pokemon', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (31, 'My Sister is a Demon', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (31, 'Demon Lord', false);
+
+INSERT INTO options (question_id, option, is_correct) VALUES (32, 'Naruto Uzumaki', true);
+INSERT INTO options (question_id, option, is_correct) VALUES (32, 'Kushina Uzumaki', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (32, 'Monkey D. Luffy', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (32, 'Ichigo Kurosaki', false);
+
+INSERT INTO options (question_id, option, is_correct) VALUES (33, 'Ryuk', true);
+INSERT INTO options (question_id, option, is_correct) VALUES (33, 'James', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (33, 'Karanda', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (33, 'Syra', false);
+
+INSERT INTO options (question_id, option, is_correct) VALUES (34, 'The Promised Neverland', true);
+INSERT INTO options (question_id, option, is_correct) VALUES (34, 'Orphan Blue', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (34, 'Escape!', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (34, 'Pokemon', false);
+
+INSERT INTO options (question_id, option, is_correct) VALUES (35, 'Ratatouille', true);
+INSERT INTO options (question_id, option, is_correct) VALUES (35, 'Pokemon', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (35, 'Naruto', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (35, 'Dragon Ball Z', false);
+
+INSERT INTO options (question_id, option, is_correct) VALUES (36, 'Roronoa Zoro', true);
+INSERT INTO options (question_id, option, is_correct) VALUES (36, 'Vinsmoke Sanji', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (36, 'Kozuki Oden', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (36, 'Shanks', false);
+
+INSERT INTO options (question_id, option, is_correct) VALUES (37, 'He was born quirkless', true);
+INSERT INTO options (question_id, option, is_correct) VALUES (37, 'All-for-One', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (37, 'One-for-All', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (37, 'Super-strength', false);
+
+INSERT INTO options (question_id, option, is_correct) VALUES (38, 'Eren Yeager', true);
+INSERT INTO options (question_id, option, is_correct) VALUES (38, 'No one killed him', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (38, 'Dina Fritz', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (38, 'Commander Erwin', false);
+
+INSERT INTO options (question_id, option, is_correct) VALUES (39, 'Asta', true);
+INSERT INTO options (question_id, option, is_correct) VALUES (39, 'Yuno', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (39, 'Rill', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (39, 'Julius', false);
+
+INSERT INTO options (question_id, option, is_correct) VALUES (40, 'to kill Askeladd', true);
+INSERT INTO options (question_id, option, is_correct) VALUES (40, 'to bring peace to Vinland', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (40, 'to find his father', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (40, 'to find the legendary land of Vinland', false);
+
+INSERT INTO options (question_id, option, is_correct) VALUES (41, 'Happy', true);
+INSERT INTO options (question_id, option, is_correct) VALUES (41, 'Lucy Heartfilia ', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (41, 'Gray Fullbuster', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (41, 'Erza Scarlett', false);
+
+INSERT INTO options (question_id, option, is_correct) VALUES (42, 'Giorno Giovanna: Gold Experience Requiem', true);
+INSERT INTO options (question_id, option, is_correct) VALUES (42, 'Josuke Higashikata: Crazy Diamond', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (42, 'Jotaro Kujo: Star Platinum (Za Warudo)', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (42, 'Joseph Joestar: Hermit Purple', false);
+
+INSERT INTO options (question_id, option, is_correct) VALUES (43, 'Groundhog Day', true);
+INSERT INTO options (question_id, option, is_correct) VALUES (43, 'St. Patrick''s Day', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (43, 'Christmas', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (43, 'Eid Al-Fitr', false);
+
+INSERT INTO options (question_id, option, is_correct) VALUES (44, 'The Star-Spangled Banner', true);
+INSERT INTO options (question_id, option, is_correct) VALUES (44, 'O, Canada', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (44, 'Stars and Stripes', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (44, 'We the South', false);
+
+INSERT INTO options (question_id, option, is_correct) VALUES (45, 'El Nino', true);
+INSERT INTO options (question_id, option, is_correct) VALUES (45, 'Adios', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (45, 'Lo siento', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (45, 'Mucho gusto', false);
+
+INSERT INTO options (question_id, option, is_correct) VALUES (46, 'Beaumaria', true);
+INSERT INTO options (question_id, option, is_correct) VALUES (46, 'Edinburgh', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (46, 'Balmoral', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (46, 'Glamis', false);
+
+INSERT INTO options (question_id, option, is_correct) VALUES (47, 'Casablanca', true);
+INSERT INTO options (question_id, option, is_correct) VALUES (47, 'Casapasta', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (47, 'Pastablanca', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (47, 'Hasta la vista', false);
+
+INSERT INTO options (question_id, option, is_correct) VALUES (48, 'a', true);
+INSERT INTO options (question_id, option, is_correct) VALUES (48, 'e', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (48, 'i', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (48, 'o', false);
+
+INSERT INTO options (question_id, option, is_correct) VALUES (49, 'coffee', true);
+INSERT INTO options (question_id, option, is_correct) VALUES (49, 'water', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (49, 'soda', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (49, 'juice', false);
+
+INSERT INTO options (question_id, option, is_correct) VALUES (50, 'artichoke', true);
+INSERT INTO options (question_id, option, is_correct) VALUES (50, 'broccoli', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (50, 'lettuce', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (50, 'fish', false);

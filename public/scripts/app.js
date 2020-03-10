@@ -1,23 +1,28 @@
 $(() => {
+  fetchAndRenderQuizzes();
 
   // Grab any url query params. To be used when sharing quizzes
-  $.urlParam = function(name){
-    const results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+  $.urlParam = function(name) {
+    const results = new RegExp("[?&]" + name + "=([^&#]*)").exec(
+      window.location.href
+    );
 
     if (results) {
       return results[1];
     } else {
       return null;
     }
-  }
+  };
 
   // Render a specific quiz page if a quiz query was in the URL
+
   // Otherwise, render home page
   if ($.urlParam('quiz')) {
     fetchSingleQuiz($.urlParam('quiz'));
     return;
   } else {
     fetchAndRenderQuizzes();
+
   }
 
   // Open/close nav menu when navbar-burger is clicked
@@ -28,12 +33,14 @@ $(() => {
   });
 
   // Initiate .share-button elements as a clipboard object
-  new ClipboardJS('.share-button');
+  new ClipboardJS(".share-button");
 
   // Notify user when sharing info is copied to clipboard
+
   $('body').on('click', '.share-button', () => {
     alert('Copied to clipboard!\nPaste anywhere to share this quiz!');
   })
+
 
   // cancel quiz button
   $("body").on("click", "#cancel-quiz", e => {
@@ -48,7 +55,6 @@ $(() => {
     removeQuiz(Number($("#quiz-id")[0].innerText));
     fetchAndRenderQuizzes();
   });
-
 
   $("body").on("submit", "#create-quiz", e => {
     e.preventDefault();
