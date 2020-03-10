@@ -317,7 +317,7 @@ const renderQuestion = (questionAndOptions) => {
 
   const divisionPoint = questionAndOptions[0].number_of_answers;
   currentOptions = questionAndOptions.slice(0, divisionPoint);
-  
+
   shuffle(currentOptions);
 
   $("html")
@@ -350,7 +350,6 @@ const shuffle = function(array) {
   return array;
 };
 
-};
 // To render scores for a user
 const renderScores = function(scores) {
   for (let scoreObject of scores) {
