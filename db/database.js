@@ -5,20 +5,7 @@ const pool = new Pool(dbParams);
 
 // Users
 
-//returns USER object with keys id, name, username (use res.rows[0])
-const getUserWithName = function(name) {
-  return pool.query(
-    `
-      SELECT *
-      FROM users
-      WHERE name = $1;
-      `,
-    [name]
-  );
-};
-exports.getUserWithName = getUserWithName;
-
-//returns USER object with keys id, name, username (use res.rows[0])
+//returns USER object with keys id, username (use res.rows[0])
 const getUserWithUsername = function(username) {
   return pool.query(
     `
@@ -31,7 +18,7 @@ const getUserWithUsername = function(username) {
 };
 exports.getUserWithUsername = getUserWithUsername;
 
-//returns USER object with keys id, name, username (use res.rows[0])
+//returns USER object with keys id, username (use res.rows[0])
 const getUserWithId = function(id) {
   return pool.query(
     `
@@ -44,20 +31,20 @@ const getUserWithId = function(id) {
 };
 exports.getUserWithId = getUserWithId;
 
-//adds a new user to users database and returns USER object with keys id, name, username (use res.rows[0])
-const addUser = function(user) {
+//adds a new user to users database and returns USER object with keys id, username (use res.rows[0])
+const addUser = function(username) {
   return pool.query(
     `
-      INSERT INTO users (name, username)
-      VALUES ($1, $2)
+      INSERT INTO users (username)
+      VALUES ($1)
       RETURNING *;
       `,
-    [user.name, user.username]
+    [username]
   );
 };
 exports.addUser = addUser;
 
-//returns array of USER objects with keys id, name, username (use res.rows)
+//returns array of USER objects with keys id, username (use res.rows)
 const getUsersWithPlaysOnQuiz = function(quiz_id) {
   return pool.query(
     `
@@ -269,13 +256,13 @@ exports.insertScore = insertScore;
 //to get user attempts on a specific quiz, pass actual values to both parameters
 //to get all user's attempts on a specific quiz, pass null as first parameter
 const getUserQuizAttempts = function(user_id, quiz_id) {
-  let queryString = `SELECT users.name, count(*) as number_of_quiz_attempts`;
+  let queryString = `SELECT users.username, count(*) as number_of_quiz_attempts`;
   let queryParams = [];
   if (!user_id) {
     queryString += ` FROM user_scores
     JOIN quizzes ON quizzes.id = quiz_id
     JOIN users on users.id = user_scores.user_id
-    GROUP BY user_scores.quiz_id, users.name
+    GROUP BY user_scores.quiz_id, users.username
     HAVING user_scores.quiz_id = $1;`;
     queryParams.push(quiz_id);
   } else {
@@ -283,7 +270,7 @@ const getUserQuizAttempts = function(user_id, quiz_id) {
       FROM user_scores
       JOIN quizzes ON quizzes.id = quiz_id
       JOIN users on users.id = user_scores.user_id
-      GROUP BY user_scores.user_id, users.name, quizzes.title
+      GROUP BY user_scores.user_id, users.username, quizzes.title
       HAVING user_scores.user_id = $1`;
     queryParams.push(user_id);
     if (quiz_id) {
