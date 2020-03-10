@@ -47,8 +47,6 @@ app.use(
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
-const usersRoutes = require("./routes/users");
-const widgetsRoutes = require("./routes/widgets");
 const quizzesRoutes = require("./routes/quizzes");
 const correctAnswersRoutes = require("./routes/correctAnswers");
 const scoresRoutes = require("./routes/scores");
@@ -58,8 +56,6 @@ const loginRoutes = require("./routes/login");
 const logoutRoutes = require("./routes/logout");
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
-app.use("/api/users", usersRoutes(db));
-app.use("/api/widgets", widgetsRoutes(db));
 app.use("/api/quizzes", quizzesRoutes());
 app.use("/api/correctAnswers", correctAnswersRoutes());
 app.use("/api/scores", scoresRoutes());
