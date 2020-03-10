@@ -138,10 +138,14 @@ const buildQuiz = function(quiz) {
         ${escape(quiz.title)}
       </h1>
       <p class="is-size-3 has-text-black">${escape(quiz.description)}</p>
-      <p class="is-size-4"><em><span class="total-question-number">${escape(quiz.number_of_questions)}</span> Questions</em></p>
+      <p class="is-size-4"><em><span class="total-question-number">${escape(
+        quiz.number_of_questions
+      )}</span> Questions</em></p>
 
       <!-- Start button -->
-      <a class="button is-primary is-inverted is-large" onclick="fetchQuizData(${quiz.id})">
+      <a class="button is-primary is-inverted is-large" onclick="fetchQuizData(${
+        quiz.id
+      })">
         <strong>Start Quiz</strong>
       </a>
 
@@ -313,9 +317,12 @@ const renderQuestion = (questionAndOptions) => {
 
   const divisionPoint = questionAndOptions[0].number_of_answers;
   currentOptions = questionAndOptions.slice(0, divisionPoint);
+  
+  shuffle(currentOptions);
 
   $("html")
     .addClass("quiz-background");
+
   $("main")
     .empty()
     .append(buildQuestionPage(currentOptions));
@@ -335,6 +342,15 @@ const renderQuiz = function(quiz) {
     .append(buildQuiz(quiz));
 };
 
+const shuffle = function(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+};
+
+};
 // To render scores for a user
 const renderScores = function(scores) {
   for (let scoreObject of scores) {

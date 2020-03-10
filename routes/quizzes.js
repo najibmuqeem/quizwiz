@@ -5,6 +5,7 @@ const database = require("../db/database");
 module.exports = () => {
   // Get quizzes
   router.get("/", (req, res) => {
+    req.session.user_id = 1;
     database
       .getQuizzes()
       .then(data => {
@@ -33,6 +34,18 @@ module.exports = () => {
       .then(data => {
         const quizzes = data.rows;
         res.json(quizzes);
+      })
+      .catch(err => {
+        res.status(500).json({ error: err.message });
+      });
+  });
+
+  //Delete quiz
+  router.get("/delete/:id", (req, res) => {
+    database
+      .removeQuiz(req.params.id)
+      .then(() => {
+        res.redirect("/");
       })
       .catch(err => {
         res.status(500).json({ error: err.message });

@@ -51,15 +51,35 @@ $(() => {
     const quiz_id = Number($("#quiz-id")[0].innerText);
 
     $(".question-container").each(function() {
-      let $this = $(this);
+      let $questionElem = $(this);
       $(this)
         .find(".question")
         .each(function() {
-          addQuestion($this, quiz_id, $(this)[0].value, number_of_answers);
+          addQuestion($questionElem, quiz_id, $(this)[0].value, number_of_answers);
         });
     });
     fetchSingleQuiz(quiz_id);
   });
+
+  // cancel quiz button
+  $("#cancel-quiz").click(e => {
+    e.preventDefault();
+    clearInputValues();
+  });
+
+  // cancel questions button, doesn't work yet
+  // $("#cancel-questions").click(e => {
+  //   e.preventDefault();
+  //   removeQuiz(Number($("#quiz-id")[0].innerText));
+  //   $("#questions").hide();
+  //   $("#create-quiz").show();
+  // });
+
+  // Checks if user chose correct answer, increments score accordingly
+  $(".option").click(event => {
+    const correctAnswer = currentOptions.filter(option => option.is_correct);
+    console.log("hallooo");
+
 
   // Checks if user chose correct answer, increments score accordingly, goes to next question
   $('body').on('click', '.option', () => {
@@ -129,7 +149,7 @@ const createHTML = function(number_of_questions, number_of_options) {
               <div class="field is-grouped">
                 <div class="control">
                   <button id="submit-questions" class="button is-primary">Submit</button>
-                  <button class="button is-link is-light">Cancel</button>
+                  <button id="cancel-questions" class="button is-link is-light">Cancel</button>
                 </div>
               </div>
               <div>
