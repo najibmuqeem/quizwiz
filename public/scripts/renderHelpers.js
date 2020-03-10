@@ -77,8 +77,6 @@ const buildQuizRows = quizzes => {
 
 // Builds a quiz question page with associated options
 const buildQuestionPage = questionAndOptions => {
-  $("html").addClass("quiz-background");
-
   let questionPage = `
   <!-- Question header -->
   <section class="hero question">
@@ -157,6 +155,90 @@ const buildQuiz = function(quiz) {
   return singleQuiz;
 };
 
+// Builds the end page shown after quiz ends
+const buildEndPage = () => {
+
+};
+
+// Builds the navbar which is used in home, create new quiz, and end quiz pages
+const buildNavbar = () => {
+  return `
+  <nav
+    class="navbar is-fixed-top"
+    role="navigation"
+    aria-label="main navigation"
+  >
+    <!-- Brand logo and nav burger -->
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/">
+        <h1 class="title is-3 has-text-info">QUIZ WIZ</h1>
+      </a>
+      <a
+        role="button"
+        class="navbar-burger"
+        aria-label="menu"
+        aria-expanded="false"
+      >
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+
+    <!-- Left side nav items -->
+    <div class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="/">
+          Home
+        </a>
+
+        <a class="navbar-item" href="./temp_html/create-quiz.html">
+          Create Your Own Quiz
+        </a>
+
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            Categories
+          </a>
+
+          <div class="navbar-dropdown">
+            <a class="navbar-item">
+              Arts
+            </a>
+            <a class="navbar-item">
+              History
+            </a>
+            <a class="navbar-item">
+              Movies
+            </a>
+            <a class="navbar-item">
+              Music
+            </a>
+            <a class="navbar-item">
+              Sports
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right side nav items -->
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="buttons">
+            <a class="button is-primary">
+              <strong>Sign up</strong>
+            </a>
+            <a class="button is-light">
+              Log in
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  `;
+};
+
 // Builds the dark navbar which is used in starting quiz and taking quiz (question) pages
 const buildDarkNavbar = () => {
   return `
@@ -167,7 +249,7 @@ const buildDarkNavbar = () => {
       </a>
     </div>
   </nav>
-  `
+  `;
 };
 
 /*
@@ -189,11 +271,11 @@ const renderQuestion = (questionAndOptions) => {
     return;
   }
 
-  console.log(questionAndOptions);
-
   const divisionPoint = questionAndOptions[0].number_of_answers;
   currentOptions = questionAndOptions.slice(0, divisionPoint);
 
+  $("html")
+    .addClass("quiz-background");
   $("main")
     .empty()
     .append(buildQuestionPage(currentOptions));
@@ -222,5 +304,10 @@ const renderScores = function(scores) {
 
 // Renders the end page shown after user completes a quiz
 const renderEndPage = (quizData) => {
-
+  $('html')
+    .removeClass('quiz-background');
+  $('body')
+    .empty()
+    .append(buildNavbar())
+    .append(buildEndPage());
 };
