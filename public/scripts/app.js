@@ -64,7 +64,7 @@ $(() => {
   $("body").on("submit", "#questions", e => {
     e.preventDefault();
 
-    const number_of_answers = $(".option").length / $(".question").length;
+    const number_of_answers = $(".optionInput").length / $(".question").length;
     const quiz_id = Number($("#quiz-id")[0].innerText);
 
     $(".question-container").each(function() {
@@ -144,7 +144,7 @@ const createHTML = function(number_of_questions, number_of_options) {
                     <div class="field">
                       <label class="label">Option ${j}</label>
                       <div class="control">
-                        <input type="text" required="required" id="option${j}" class="input correct option" placeholder="Correct option"/>
+                        <input type="text" required="required" id="option${j}" class="input correct optionInput" placeholder="Correct option"/>
                       </div>
                     </div>`;
       } else {
@@ -152,7 +152,7 @@ const createHTML = function(number_of_questions, number_of_options) {
                     <div class="field">
                       <label class="label">Option ${j}</label>
                       <div class="control">
-                        <input type="text" required="required" id="option${j}" class="input option" placeholder="Incorrect option" />
+                        <input type="text" required="required" id="option${j}" class="input optionInput" placeholder="Incorrect option" />
                       </div>
                     </div>`;
       }
