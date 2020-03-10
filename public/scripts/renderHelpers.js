@@ -502,6 +502,7 @@ const buildFeaturedHero = () => {
 
 // Renders quizzes into <main> element
 const renderQuizzes = function(quizzes) {
+  $("html").removeClass("quiz-background");
   $("body")
     .empty()
     .append(buildNavbar())
