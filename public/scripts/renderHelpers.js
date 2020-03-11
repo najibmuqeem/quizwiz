@@ -342,7 +342,7 @@ const buildQuiz = function(quiz) {
   } else {
     singleQuiz += `<!-- Previous scores -->
     <div class="previous-attempts">
-      <h3 class="title is-4 has-text-white">You have not taken this quiz yet!</h3>
+      <h3 class="title is-4 has-text-white">Please log in to keep track of your scores.</h3>
       <ul class="is-size-4">
       </ul>
     </div>
@@ -390,7 +390,7 @@ const buildEndPage = quizInfo => {
   } else {
     endHTML += `<!-- Previous scores -->
     <div class="previous-attempts">
-      <h3 class="title is-4 has-text-white">You have not taken this quiz yet!</h3>
+      <h3 class="title is-4 has-text-white">Please log in to keep track of your score!</h3>
       <ul class="is-size-4">
       </ul>
     </div>
