@@ -44,6 +44,18 @@ const fetchSingleQuiz = function(id) {
   });
 };
 
+// Get a single quiz, for rendering share result page
+const fetchQuizToShare = (quizId, username, score) {
+  $.ajax({
+    type: "GET",
+    url: `/api/quizzes/${quizId}`,
+    success: quizData => {
+      renderShareResultPage(quizData, username, score);
+    },
+    dataType: "json"
+  });
+}
+
 // Get all the questions and options for a quiz
 const fetchQuizData = quizId => {
   $.ajax({
