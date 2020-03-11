@@ -45,6 +45,18 @@ const fetchSingleQuiz = function(id) {
   });
 };
 
+// Get a random quiz
+const getRandomQuiz = function() {
+  $.ajax({
+    type: "GET",
+    url: "/api/quizzes/random",
+    success: data => {
+      renderQuiz(data);
+    },
+    dataType: "json"
+  });
+};
+
 // Get a single quiz, for rendering share result page
 const fetchQuizToShare = (quizId, username, score) => {
   $.ajax({
@@ -55,7 +67,7 @@ const fetchQuizToShare = (quizId, username, score) => {
     },
     dataType: "json"
   });
-}
+};
 
 // Get all the questions and options for a quiz
 const fetchQuizData = quizId => {
