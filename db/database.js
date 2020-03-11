@@ -297,7 +297,7 @@ const getUserQuizAttempts = function(user_id, quiz_id) {
 };
 exports.getUserQuizAttempts = getUserQuizAttempts;
 
-//returns object with keys score and number_of_questions (use res.rows)
+//returns object with keys score and number_of_questions
 const getScores = function(user_id, quiz_id) {
   return pool.query(
     `
@@ -312,3 +312,35 @@ const getScores = function(user_id, quiz_id) {
   );
 };
 exports.getScores = getScores;
+
+//returns object with keys score and number_of_questions
+const getUserHighestScoreOnQuiz = function(user_id, quiz_id) {
+  return pool.query(
+    `
+    SELECT score, quizzes.number_of_questions
+    FROM user_scores
+    JOIN quizzes ON quizzes.id = quiz_id
+    WHERE user_scores.user_id = $1 AND quiz_id = $2
+    ORDER BY score DESC
+    LIMIT 1;
+    `,
+    [user_id, quiz_id]
+  );
+};
+exports.getUserHighestScoreOnQuiz = getUserHighestScoreOnQuiz;
+
+//returns object with keys score and number_of_questions
+const getHighestScoreOnQuiz = function(quiz_id) {
+  return pool.query(
+    `
+    SELECT score, quizzes.number_of_questions
+    FROM user_scores
+    JOIN quizzes ON quizzes.id = quiz_id
+    WHERE quiz_id = $1
+    ORDER BY score DESC
+    LIMIT 1;
+    `,
+    [user_id, quiz_id]
+  );
+};
+exports.getHighestScoreOnQuiz = getHighestScoreOnQuiz;
