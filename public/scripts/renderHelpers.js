@@ -15,6 +15,9 @@
 // Keeps track of logged in user
 let loggedInUser;
 
+// Keeps track of logged in user's ID
+let currentUserID;
+
 // Holds all the questions and options for a quiz
 let quizData;
 
@@ -323,7 +326,7 @@ const buildQuiz = function(quiz) {
 
       <!-- Previous scores -->
       <div class="previous-attempts">
-        <h3 class="title is-4 has-text-white">Your previous attempts at this quiz:</h3>
+        <h3 class="title is-4 has-text-white">Your most recent attempts at this quiz:</h3>
         <ul class="is-size-4">
         </ul>
       </div>
@@ -336,7 +339,7 @@ const buildQuiz = function(quiz) {
 
 // Builds the end page shown after quiz ends
 const buildEndPage = quizInfo => {
-  return `
+  let endHTML = `
   <main class="section">
 
     <section class="container quiz-end-background start-end-quiz has-text-centered">
@@ -357,7 +360,7 @@ const buildEndPage = quizInfo => {
 
       <!-- Previous scores -->
       <div class="previous-attempts">
-        <h3 class="title is-4 has-text-white">Your previous attempts at this quiz:</h3>
+        <h3 class="title is-4 has-text-white">Your most recent attempts at this quiz:</h3>
         <ul class="is-size-4">
         </ul>
       </div>
@@ -366,6 +369,9 @@ const buildEndPage = quizInfo => {
 
   </main>
   `;
+  storeScore(quizInfo.id, currentUserID, currentScore);
+  currentScore = 0;
+  return endHTML;
 };
 
 // Builds the navbar which is used in home, create new quiz, and end quiz pages
@@ -432,7 +438,7 @@ const buildNavbar = () => {
 
   if (loggedInUser) {
     navHTML += `<div class="navbar-item" id="loggedIn">
-        <p>Welcome, ${loggedInUser}</p> &nbsp; <button id="logoutButton" class="button is-success" action="renderLoginNav()">Logout</button>
+        <p>Welcome, ${loggedInUser} <span id="current-user-id">${currentUserID}</span> </p> &nbsp; <button id="logoutButton" class="button is-success" action="renderLoginNav()">Logout</button>
          </div>
        </div>`;
   } else {
@@ -543,6 +549,8 @@ const renderQuiz = function(quiz) {
     .empty()
     .append(buildDarkNavbar())
     .append(buildQuiz(quiz));
+
+  getScores({ user_id: currentUserID, id: quiz.id });
 };
 
 const shuffle = function(array) {
@@ -554,6 +562,13 @@ const shuffle = function(array) {
 
 // To render scores for a user
 const renderScores = function(scores) {
+  if (scores.length === 0) {
+    $(
+      ".previous-attempts"
+    )[0].innerHTML = `<h3 class="title is-4 has-text-white">You haven't taken this quiz yet!</h3>
+      <ul class="is-size-4"></ul>`;
+  }
+
   for (let scoreObject of scores) {
     $(".previous-attempts > ul").append(
       `<li>${scoreObject.score}/${scoreObject.number_of_questions}</li>`
@@ -569,7 +584,7 @@ const renderEndPage = quizData => {
     .append(buildNavbar())
     .append(buildEndPage(quizData));
 
-  getScores(quizData);
+  getScores({ user_id: currentUserID, id: quizData.id });
 };
 
 // Renders quiz creation form
@@ -594,12 +609,13 @@ const userLoginForm = function() {
 
 //On successful login
 const userLoggedIn = function(data) {
+  loggedInUser = data.username;
+  currentUserID = data.id;
   const loggedIn = `<div  id="loggedIn" class="columns is-vcentered">
- <p>Welcome, ${data}</p>  &nbsp; <button id="logoutButton" class="button is-success" action="renderLoginNav()">Logout</button>
+  <p>Welcome, ${loggedInUser} <span id="current-user-id">${currentUserID}</span> </p>  &nbsp; <button id="logoutButton" class="button is-success" action="renderLoginNav()">Logout</button>
   </div>
 </div>`;
   $("#loginFormContainer").replaceWith(loggedIn);
-  loggedInUser = data;
 };
 
 //logout
