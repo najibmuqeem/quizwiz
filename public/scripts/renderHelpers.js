@@ -555,7 +555,9 @@ const shuffle = function(array) {
 // To render scores for a user
 const renderScores = function(scores) {
   for (let scoreObject of scores) {
-    $(".previous-attempts > ul").append(`<li>${scoreObject.score}/5</li>`);
+    $(".previous-attempts > ul").append(
+      `<li>${scoreObject.score}/${scoreObject.number_of_questions}</li>`
+    );
   }
 };
 
