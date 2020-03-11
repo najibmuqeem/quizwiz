@@ -432,7 +432,7 @@ const buildNavbar = () => {
 
   if (loggedInUser) {
     navHTML += `<div class="navbar-item" id="loggedIn">
-        <p>Welcome, ${loggedInUser}</p> &nbsp; <button id="logoutButton" class="button is-success" action="renderLoginNav()">Logout</button>
+        <p>Welcome, ${loggedInUser}</p> &nbsp; <button id="logoutButton" class="button is-primary is-light" action="renderLoginNav()">Logout</button>
          </div>
        </div>`;
   } else {
@@ -440,12 +440,12 @@ const buildNavbar = () => {
         <div class="navbar-end">
           <div class="navbar-item">
             <div class="buttons" id="loginNav">
-              <a class="button is-primary">
-                <strong>Sign up</strong>
-              </a>
-              <a class="button is-light" id="loginNavButton" onclick="userLoginForm()">
-                Log in
-              </a>
+              <div id="loginFormContainer">
+                <form class="columns is-vcentered" id="loginForm">
+                  <input required="required" id="username" type="text" class="input" placeholder="username">
+                  <button class="button is-primary" id="login" type="submit">Login</button>
+                  </form>
+              </div>
             </div>
           </div>
         </div>
@@ -579,22 +579,22 @@ const renderQuizForm = () => {
     .append(buildQuizInfoForm());
 };
 
-// on click of login
-const userLoginForm = function() {
-  const loginForm = `<div id="loginFormContainer">
-   <form class="columns is-vcentered" id="loginForm">
-     <input required="required" id="username" type="text" class="input is-medium" placeholder="username">
-     <button class="button is-success" id="login" type="submit">Login</button>
-      </form>
- </div>`;
+// // on click of login
+// const userLoginForm = function() {
+//   const loginForm = `<div id="loginFormContainer">
+//    <form class="columns is-vcentered" id="loginForm">
+//      <input required="required" id="username" type="text" class="input" placeholder="username">
+//      <button class="button is-primary" id="login" type="submit">Login</button>
+//       </form>
+//  </div>`;
 
-  $("#loginNav").replaceWith(loginForm);
-};
+//   $("#loginNav").replaceWith(loginForm);
+// };
 
 //On successful login
 const userLoggedIn = function(data) {
   const loggedIn = `<div  id="loggedIn" class="columns is-vcentered">
- <p>Welcome, ${data}</p>  &nbsp; <button id="logoutButton" class="button is-success" action="renderLoginNav()">Logout</button>
+ <p>Welcome, ${data}</p>  &nbsp; <button id="logoutButton" class="button is-primary is-light" action="renderLoginNav()">Logout</button>
   </div>
 </div>`;
   $("#loginFormContainer").replaceWith(loggedIn);
@@ -605,13 +605,14 @@ const userLoggedIn = function(data) {
 const renderLoginNav = function() {
   const loginNav = `
   <div class="buttons" id="loginNav">
-    <a class="button is-primary">
-      <strong>Sign up</strong>
-    </a>
-    <a class="button is-light" id="loginNavButton" onclick="userLoginForm()">
-      Log in
-    </a>
+    <div id="loginFormContainer">
+      <form class="columns is-vcentered" id="loginForm">
+        <input required="required" id="username" type="text" class="input" placeholder="username">
+        <button class="button is-primary" id="login" type="submit">Login</button>
+        </form>
+    </div>
   </div>
 `;
   $("#loggedIn").replaceWith(loginNav);
+  loggedInUser = null;
 };
