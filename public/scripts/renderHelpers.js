@@ -603,7 +603,9 @@ const renderQuestion = questionAndOptions => {
     quizData = questionAndOptions.slice(divisionPoint);
   }
   // Timer for each question
-  timer(10000);
+  const correctAnswer = currentOptions.filter(option => option.is_correct)[0]
+      .option;
+  timer(10000, correctAnswer);
 };
 
 // Renders single quiz start page
