@@ -26,15 +26,16 @@ const timer = function(allottedTime) {
   } else {
     displaystring += ":" + 0;
   }
-  console.log(displaystring); // Replace with jquery
 
+  // Initial display of time
+  if (!clickTrack) {
+    $("#timerHeading").text(displaystring);
+    $("#timerHeading").css({color:'white'});
+  }
   // Updating timer after each second
   const t = setInterval(() => {
     let currentTime = Date.now();
     let usedTime = currentTime - startTime;
-    if (usedTime >= allottedTime) {
-      clearTimeout(t);
-    }
     displaystring = "";
     let remainingTime = allottedTime - usedTime;
 
@@ -58,8 +59,24 @@ const timer = function(allottedTime) {
     } else {
       displaystring += ":" + 0;
     }
-    console.log(displaystring); // Replace with jquery
+
+    // clear timer and go to next question
+    if (usedTime >= allottedTime && !clickTrack) {
+      $("#timerHeading").text(displaystring);
+      clearTimeout(t);
+      renderQuestion(quizData);
+      return;
+    }
+
+    //clear timer
+    if (clickTrack) {
+      clearTimeout(t);
+      clickTrack = false;
+      return;
+    }
+
+    // Displaying time
+    $("#timerHeading").text(displaystring);
+    $("#timerHeading").css({color:'white'});
   }, 1000);
 };
-
-timer(1000 * 10); // remove the invocation from here
