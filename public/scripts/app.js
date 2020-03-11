@@ -1,4 +1,5 @@
 let clickTrack = false;
+let cancelButton = false;
 $(() => {
   $("body").on("change", "#username", () => {
     $("#username").val(
