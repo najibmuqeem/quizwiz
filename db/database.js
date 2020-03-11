@@ -292,7 +292,7 @@ const getScores = function(user_id, quiz_id) {
     FROM user_scores
     JOIN quizzes ON quizzes.id = quiz_id
     WHERE user_scores.user_id = $1 AND quiz_id = $2
-    ORDER BY user_scores.user_id DESC
+    ORDER BY user_scores.id DESC
     LIMIT 5;
     `,
     [user_id, quiz_id]
