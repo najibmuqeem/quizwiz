@@ -8,13 +8,13 @@ module.exports = () => {
     database.getUserWithUsername(req.body.userName).then(data => {
       if (data.rowCount !== 0) {
         req.session.user_name = req.body.userName;
-        res.json(req.session.user_name);
+        res.json(data.rows[0]);
       } else {
         database
           .addUser(req.body.userName)
           .then(() => {
             req.session.user_name = req.body.userName;
-            res.json(req.session.user_name);
+            res.json(data.rows[0]);
           })
           .catch(err => res.status(500).json({ error: err.message }));
       }
