@@ -386,12 +386,12 @@ const buildShareResultPage = (quizId, quizName, username, score) => {
 
       <!-- Quiz info -->
       <h1 class="title is-1 has-text-white ">
-        ${username} completed ${quizName}!
+        ${escape(username)} completed ${escape(quizName)}!
       </h1>
-      <p class="is-size-3 has-text-black">They scored ${score}\nSee if you can beat their score!</p>
+      <p class="is-size-3 has-text-black">They scored ${escape(score)}\nSee if you can beat their score!</p>
 
       <!-- Share/Home button -->
-      <a class="button is-primary is-inverted is-medium share-button" onclick=fetchQuizData(${quizId})">
+      <a class="button is-primary is-inverted is-medium share-button" onclick=fetchQuizData(${escape(quizId)})">
         <strong>Take This Quiz</strong>
       </a>
       <a class="button is-primary is-inverted is-outlined is-medium" onclick="fetchAndRenderQuizzes()">
