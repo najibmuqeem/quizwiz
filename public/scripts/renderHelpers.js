@@ -155,7 +155,7 @@ const buildQuizQuestionsForm = function(number_of_questions, number_of_options) 
     quizQuestionsForm += `
     <div class="question-container">
       <div class="field">
-        <label class="label is-large">Question ${i}</label>
+        <label class="label is-large question-label">Question ${i}</label>
         <div class="control">
           <input type="text" required="required" id="question${i}" class="input question" />
         </div>
