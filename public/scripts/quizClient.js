@@ -1,6 +1,6 @@
 // Gets individual quizzes to show on home page
 const fetchAndRenderQuizzes = function() {
-  clickTrack = true;
+  //clickTrack = true;
   $.ajax({
     type: "GET",
     url: "/api/quizzes",
