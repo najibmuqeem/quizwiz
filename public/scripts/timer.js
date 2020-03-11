@@ -9,22 +9,22 @@ const timer = function(allottedTime) {
   allottedTimeCopy %= (1000 * 60);
   const seconds = allottedTimeCopy / 1000;
 
-  if (hours >= 1) {
-    displaystring += Math.round(hours);
-  } else {
-    displaystring += 0;
-  }
+  // if (hours >= 1) {
+  //   displaystring += Math.round(hours);
+  // } else {
+  //   displaystring += 0;
+  // }
 
-  if (minutes >= 1) {
-    displaystring += ":" + Math.round(minutes);
-  } else {
-    displaystring += ":" + 0;
-  }
+  // if (minutes >= 1) {
+  //   displaystring += ":" + Math.round(minutes);
+  // } else {
+  //   displaystring += ":" + 0;
+  // }
 
   if (seconds >= 1) {
-    displaystring += ":" + Math.round(seconds);
+    displaystring += Math.round(seconds);
   } else {
-    displaystring += ":" + 0;
+    displaystring += 0;
   }
 
   // Initial display of time
@@ -44,20 +44,20 @@ const timer = function(allottedTime) {
     const minutes = remainingTime / (1000 * 60);
     remainingTime %= (1000 * 60);
     const seconds = remainingTime / 1000;
-    if (hours >= 1) {
-      displaystring += Math.round(hours);
+    // if (hours >= 1) {
+    //   displaystring += Math.round(hours);
+    // } else {
+    //   displaystring += 0;
+    // }
+    // if (minutes >= 1) {
+    //   displaystring += ":" + Math.round(minutes);
+    // } else {
+    //   displaystring += ":" + 0;
+    // }
+    if (seconds >= 0.5) {  // To avoid the time taken for computing the other statements in milli seconds
+      displaystring += Math.round(seconds);
     } else {
       displaystring += 0;
-    }
-    if (minutes >= 1) {
-      displaystring += ":" + Math.round(minutes);
-    } else {
-      displaystring += ":" + 0;
-    }
-    if (seconds >= 0.5) {  // To avoid the time taken for computing the other statements in milli seconds
-      displaystring += ":" + Math.round(seconds);
-    } else {
-      displaystring += ":" + 0;
     }
 
     // clear timer and go to next question
