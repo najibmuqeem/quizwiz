@@ -61,13 +61,12 @@ const timer = function(allottedTime) {
     }
 
     // clear timer and go to next question
-    if (usedTime >= allottedTime && !clickTrack) {
+    if (usedTime >= allottedTime && !clickTrack && !cancelButton) {
       $("#timerHeading").text(displaystring);
       clearTimeout(t);
       renderQuestion(quizData);
       return;
     }
-
     //clear timer
     if (clickTrack) {
       clearTimeout(t);
@@ -75,6 +74,11 @@ const timer = function(allottedTime) {
       return;
     }
 
+    if (cancelButton) {
+      clearTimeout(t);
+      cancelButton = false;
+      return;
+    }
     // Displaying time
     $("#timerHeading").text(displaystring);
     $("#timerHeading").css({color:'white'});

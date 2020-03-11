@@ -497,7 +497,7 @@ const buildDarkNavbar = () => {
   return `
   <nav class="navbar is-dark is-fixed-top" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
-      <a class="navbar-item" onclick="fetchAndRenderQuizzes()">
+      <a class="navbar-item" onclick="setCancelButton();fetchAndRenderQuizzes();">
         <h1 class="title is-1 has-text-info"><i class="far fa-times-circle"></i></h1>
       </a>
     </div>
@@ -669,4 +669,9 @@ const renderLoginNav = function() {
   $("#loggedIn").replaceWith(loginNav);
   loggedInUser = null;
   currentUserID = null;
+};
+
+
+const setCancelButton = function(){
+  cancelButton = true;
 };
