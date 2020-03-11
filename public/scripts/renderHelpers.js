@@ -189,8 +189,8 @@ const buildQuizQuestionsForm = function(number_of_questions, number_of_options) 
   quizQuestionsForm +=
   `
   <div class="field is-grouped">
-    <div class="control buttons">
-      <button id="submit-questions" class="button is-primary">Submit</button>
+    <div class="control submit-buttons has-text-centered">
+      <button id="submit-questions" class="button is-primary is-large">Submit</button>
     </div>
   </div>
   <div>
