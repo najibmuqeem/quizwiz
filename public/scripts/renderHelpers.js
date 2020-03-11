@@ -224,8 +224,8 @@ const buildQuizRows = quizzes => {
     quizRows += `
       <div class="tile is-parent">
         <article class="tile is-child box" style="background-image: linear-gradient(180deg, rgba(255,255,255,0.7) 40%, rgba(255,255,255,0.3) 70%, rgba(255,255,255,0) 100%), url(${escape(
-          quiz.picture_url
-        )});" onclick="fetchSingleQuiz(${quiz.id})">
+    quiz.picture_url
+  )});" onclick="fetchSingleQuiz(${quiz.id})">
           <p class="title">${escape(quiz.title)}</p>
           <p class="subtitle">${escape(quiz.description)}</p>
           <div class="content">
@@ -282,8 +282,8 @@ const buildQuestionPage = questionAndOptions => {
   <div class="content has-text-right is-size-3">
     <p>
       Question <strong>${++questionNumber}</strong> of <strong>${
-    questionAndOptions[0].number_of_questions
-  }</strong>
+  questionAndOptions[0].number_of_questions
+}</strong>
     </p>
   </div>
   `;
@@ -306,18 +306,18 @@ const buildQuiz = function(quiz) {
       </h1>
       <p class="is-size-3 has-text-black">${escape(quiz.description)}</p>
       <p class="is-size-4"><em><span class="total-question-number">${escape(
-        quiz.number_of_questions
-      )}</span> Questions</em></p>
+    quiz.number_of_questions
+  )}</span> Questions</em></p>
 
       <!-- Start/share button -->
       <a class="button is-primary is-inverted is-large" onclick="fetchQuizData(${
-        quiz.id
-      })">
+  quiz.id
+})">
         <strong>Start Quiz</strong>
       </a>
       <a class="button is-primary is-inverted is-outlined is-large share-button" data-clipboard-text="Check out this awesome quiz on http://localhost:8080?quiz=${
-        quiz.id
-      }">
+  quiz.id
+}">
         <strong>Share This Quiz</strong>
       </a>
 
@@ -580,15 +580,11 @@ const renderQuizForm = () => {
 
 // on click of login
 const userLoginForm = function() {
-  const loginForm = `<div class="navbar-item" id="loginFormContainer">
-   <form class="box" id="loginForm">
-   <div class="field">
-     <label class="label">Username</label>
-    <input required="required" id="username" type="text" class="input is-medium" placeholder="username">
-   </div>
-   <button class="button is-success" id="login" type="submit">Login</button>
-    <!-- <button class="button is-success" id="logout" type="submit">Logout</button> -->
-   </form>
+  const loginForm = `<div id="loginFormContainer">
+   <form class="columns is-vcentered" id="loginForm">
+     <input required="required" id="username" type="text" class="input is-medium" placeholder="username">
+     <button class="button is-success" id="login" type="submit">Login</button>
+      </form>
  </div>`;
 
   $("#loginNav").replaceWith(loginForm);
@@ -596,17 +592,17 @@ const userLoginForm = function() {
 
 //On successful login
 const userLoggedIn = function(data) {
-  const loggedIn = `<div class="navbar-item" id="loggedIn">
- <p>Welcome, ${data}</p> &nbsp; <button id="logoutButton" class="button is-success" action="renderLoginNav()">Logout</button>
+  const loggedIn = `<div  id="loggedIn" class="columns is-vcentered">
+ <p>Welcome, ${data}</p>  &nbsp; <button id="logoutButton" class="button is-success" action="renderLoginNav()">Logout</button>
   </div>
 </div>`;
-  $("#loginForm").replaceWith(loggedIn);
+  $("#loginFormContainer").replaceWith(loggedIn);
   loggedInUser = data;
 };
 
 //logout
 const renderLoginNav = function() {
-  const loginNav = `<div class="navbar-item">
+  const loginNav = `
   <div class="buttons" id="loginNav">
     <a class="button is-primary">
       <strong>Sign up</strong>
@@ -615,6 +611,6 @@ const renderLoginNav = function() {
       Log in
     </a>
   </div>
-</div>`;
+`;
   $("#loggedIn").replaceWith(loginNav);
 };

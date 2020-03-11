@@ -1,5 +1,23 @@
 
 
 /* Bulma */
+
 @import "../node_modules/bulma/bulma.sass";
+
+ *{
+   box-sizing: border-box;
+ }
+ #loginForm {
+  height:100px;
+  padding:0;
+}
+
+#login{
+  margin-left:5%;
+
+}
+
+#loginFormContainer{
+  padding:0;
+}
 
