@@ -1,32 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-  <!--***************** HEAD *****************-->
-  <head>
-    <!-- Title -->
-    <title>QuizWiz</title>
+    <!--***************** HEAD *****************-->
+    <head>
+      <!-- Title -->
+      <title>QuizWiz</title>
 
-    <!-- Meta information -->
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <!-- Meta information -->
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Font icons -->
-    <script
-      src="https://kit.fontawesome.com/0a7ed7867a.js"
-      crossorigin="anonymous"
-    ></script>
+      <!-- Font icons -->
+      <script
+        src="https://kit.fontawesome.com/0a7ed7867a.js"
+        crossorigin="anonymous"
+      ></script>
 
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/navbar.css" type="text/css" />
+      <!-- Stylesheets -->
+      <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+      <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+      <link rel="stylesheet" href="/styles/take-quiz.css" type="text/css" />
+      <link rel="stylesheet" href="/styles/start-quiz.css" type="text/css" />
+      <link rel="stylesheet" href="/styles/create-quiz.css" type="text/css" />
+      <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
 
-    <!-- JS scripts -->
-    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-    <script type="text/javascript" src="/scripts/renderHelpers.js"></script>
-    <script type="text/javascript" src="/scripts/quizClient.js"></script>
-    <script type="text/javascript" src="/scripts/app.js"></script>
-  </head>
+      <!-- External JS scripts -->
+      <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+
+      <!-- Interal JS scripts -->
+      <script type="text/javascript" src="./scripts/renderHelpers.js"></script>
+      <script type="text/javascript" src="./scripts/scoreClient.js"></script>
+      <script type="text/javascript" src="./scripts/quizClient.js"></script>
+      <script type="text/javascript" src="/scripts/app.js"></script>
+    </head>
 
   <!--***************** BODY *****************-->
   <body>
@@ -117,11 +123,11 @@
         </div>
       </section>
 
-      <!-- Quizzes grid -->
 
-      <form id="create-quiz">
+      <!-- Form -->
+      <form id="create-quiz" class="has-text-centered">
         <div class="field">
-          <label class="label">Title</label>
+          <label class="label is-large">Title</label>
           <div class="control">
             <input
               name="title"
@@ -135,20 +141,20 @@
         </div>
 
         <div class="field">
-          <label class="label">Description</label>
+          <label class="label is-large">Description</label>
           <div class="control">
-            <textarea
+            <input
               name="description"
               id="description"
-              class="textarea"
+              class="input"
               required="required"
               placeholder="Tell us about your quiz!"
-            ></textarea>
+            ></input>
           </div>
         </div>
 
         <div class="field">
-          <label class="label">Picture</label>
+          <label class="label is-large">Picture</label>
           <div class="control">
             <input
               name="picture"
@@ -161,25 +167,39 @@
         </div>
 
         <div class="field">
-          <label class="label">Number of questions</label>
+          <label class="label is-large">Number of questions</label>
           <div class="control">
-            <input name="questions" id="num-questions" type="number" min="1" />
+            <input
+              name="questions"
+              id="num-questions"
+              type="number"
+              class="input"
+              placeholder="1 to Infinity"
+              min="1" />
           </div>
         </div>
 
         <div class="field">
-          <label class="label">Number of options per question</label>
+          <label class="label is-large">Number of options per question</label>
           <div class="control">
-            <input name="options" id="num-options" type="number" min="2" />
+            <input
+              name="options"
+              id="num-options"
+              type="number"
+              class="input"
+              placeholder="2 to Infinity"
+              min="2" />
           </div>
         </div>
 
         <div class="field">
-          <div class="control">
-            <label class="checkbox">
-              <input name="public" id="public" class="input" type="checkbox" />
-              Public
-            </label>
+          <label class="label is-large">Public?</label>
+          <div class="control has-text-centered">
+              <input
+                name="public"
+                id="public"
+                type="checkbox"
+                checked />
           </div>
         </div>
 

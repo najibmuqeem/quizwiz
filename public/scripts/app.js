@@ -87,9 +87,10 @@ $(() => {
 
     createQuiz(quiz);
 
+    $('main').append(`</form><form id="questions" class="has-text-centered"></form>`);
     $("#questions").append(buildQuizQuestionsForm(number_of_questions, number_of_options));
-    $(".buttons").append(
-      `<button id="cancel-questions" class="button is-link is-light">Cancel</button>`
+    $(".submit-buttons").append(
+      `<button id="cancel-questions" class="button is-large is-link is-light">Cancel</button>`
     );
   });
 

@@ -1,0 +1,36 @@
+/******** Customizations ********/
+
+form {
+  background: rgb(255,195,55);
+  background: radial-gradient(circle, rgba(255,195,55,0.819765406162465) 0%, rgba(255,195,55,0.7021183473389356) 15%, rgba(255,255,255,1) 68%);
+  border-radius: 150px;
+  padding: 1rem 0 1rem;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.control {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.label {
+
+  &.question-label {
+    color: #db5e0b;
+  }
+
+}
+
+#submit-quiz, #cancel-quiz {
+  margin: 0 .7rem;
+}
+
+.submit-buttons {
+
+  .button {
+    margin: 0 .7rem;
+  }
+
+}
+

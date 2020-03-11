@@ -37,7 +37,7 @@ const timer = function(allottedTime) {
     }
     displaystring = "";
     let remainingTime = allottedTime - usedTime;
-    console.log("remaining time:", remainingTime);
+
     const hours = remainingTime / (1000 * 60 * 60);
     remainingTime %= (1000 * 60 * 60);
     const minutes = remainingTime / (1000 * 60);

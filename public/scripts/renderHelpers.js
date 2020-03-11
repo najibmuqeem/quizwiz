@@ -12,6 +12,9 @@
 |___________________________________________
 */
 
+// Keeps track of logged in user
+let loggedInUser;
+
 // Holds all the questions and options for a quiz
 let quizData;
 
@@ -38,7 +41,7 @@ const escape = str => {
 |___________________________________________
 */
 
-const buildQuizForm = () => {
+const buildQuizInfoForm = () => {
   return `
   <main class="section">
     <section class="hero is-primary is-bold">
@@ -54,133 +57,129 @@ const buildQuizForm = () => {
       </div>
     </section>
 
-    <form id="create-quiz">
-      <div class="field">
-        <label class="label">Title</label>
-        <div class="control">
-          <input
-            name="title"
-            id="title"
-            class="input"
-            type="text"
-            required="required"
-            placeholder="E.g. Sea Creatures"
-          />
-        </div>
-      </div>
-
-      <div class="field">
-        <label class="label">Description</label>
-        <div class="control">
-          <textarea
-            name="description"
-            id="description"
-            class="textarea"
-            required="required"
-            placeholder="Tell us about your quiz!"
-          ></textarea>
-        </div>
-      </div>
-
-      <div class="field">
-        <label class="label">Picture</label>
-        <div class="control">
-          <input
-            name="picture"
-            id="picture-url"
-            type="text"
-            class="input"
-            placeholder="URL of a relevant image"
-          />
-        </div>
-      </div>
-
-      <div class="field">
-        <label class="label">Number of questions</label>
-        <div class="control">
-          <input
-            name="questions"
-            id="num-questions"
-            type="number"
-            required="required"
-            min="1"
-          />
-        </div>
-      </div>
-
-      <div class="field">
-        <label class="label">Number of options per question</label>
-        <div class="control">
-          <input
-            name="options"
-            id="num-options"
-            type="number"
-            required="required"
-            min="2"
-          />
-        </div>
-      </div>
-
-      <div class="field">
-        <div class="control">
-          <label class="checkbox">
+    <form id="create-quiz" class="has-text-centered">
+        <div class="field">
+          <label class="label is-large">Title</label>
+          <div class="control">
             <input
-              name="public"
-              id="public"
+              name="title"
+              id="title"
               class="input"
-              type="checkbox"
+              type="text"
+              required="required"
+              placeholder="E.g. Sea Creatures"
             />
-            Public
-          </label>
+          </div>
         </div>
-      </div>
 
-      <div class="field is-grouped">
-        <div class="control">
-          <button id="submit-quiz" class="button is-primary">
-            Submit
-          </button>
-          <button id="cancel-quiz" class="button is-link is-light">
-            Cancel
-          </button>
+        <div class="field">
+          <label class="label is-large">Description</label>
+          <div class="control">
+            <input
+              name="description"
+              id="description"
+              class="input"
+              required="required"
+              placeholder="Tell us about your quiz!"
+            ></input>
+          </div>
         </div>
-      </div>
-    </form>
 
-    <form id="questions">
-    </form>
+        <div class="field">
+          <label class="label is-large">Picture</label>
+          <div class="control">
+            <input
+              name="picture"
+              id="picture-url"
+              type="text"
+              class="input"
+              placeholder="URL of a relevant image"
+            />
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label is-large">Number of questions</label>
+          <div class="control">
+            <input
+              name="questions"
+              id="num-questions"
+              type="number"
+              class="input"
+              placeholder="1 to Infinity"
+              required="required"
+              min="1" />
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label is-large">Number of options per question</label>
+          <div class="control">
+            <input
+              name="options"
+              id="num-options"
+              type="number"
+              class="input"
+              placeholder="2 to Infinity"
+              required="required"
+              min="2" />
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label is-large">Public?</label>
+          <div class="control has-text-centered">
+              <input
+                name="public"
+                id="public"
+                type="checkbox"
+                checked />
+          </div>
+        </div>
+
+        <div class="field is-grouped">
+          <div class="control has-text-centered">
+            <button id="submit-quiz" class="button is-large is-primary">
+              Submit
+            </button>
+            <button id="cancel-quiz" class="button is-large is-link is-light">
+              Cancel
+            </button>
+          </div>
+        </div>
   </main>
   `;
 };
 
-const buildQuizQuestionsForm = function (number_of_questions, number_of_options) {
+const buildQuizQuestionsForm = function(
+  number_of_questions,
+  number_of_options
+) {
   let quizQuestionsForm = ``;
 
   for (let i = 1; i <= number_of_questions; i++) {
     quizQuestionsForm += `
     <div class="question-container">
       <div class="field">
-        <label class="label">Question ${i}</label>
+        <label class="label is-large question-label">Question ${i}</label>
         <div class="control">
           <input type="text" required="required" id="question${i}" class="input question" />
         </div>
       </div>`;
 
     for (let j = 1; j <= number_of_options; j++) {
-
       if (j === 1) {
         quizQuestionsForm += `
         <div class="field">
-          <label class="label">Option ${j}</label>
+          <label class="label is-large">Option ${j}</label>
           <div class="control">
             <input type="text" required="required" id="option${j}" class="input correct optionInput" placeholder="Correct option"/>
           </div>
         </div>`;
-
       } else {
         quizQuestionsForm += `
         <div class="field">
-          <label class="label">Option ${j}</label>
+          <label class="label is-large">Option ${j}</label>
           <div class="control">
             <input type="text" required="required" id="option${j}" class="input optionInput" placeholder="Incorrect option" />
           </div>
@@ -191,11 +190,10 @@ const buildQuizQuestionsForm = function (number_of_questions, number_of_options)
     quizQuestionsForm += `</div><br>`;
   }
 
-  quizQuestionsForm +=
-    `
+  quizQuestionsForm += `
   <div class="field is-grouped">
-    <div class="control buttons">
-      <button id="submit-questions" class="button is-primary">Submit</button>
+    <div class="control submit-buttons has-text-centered">
+      <button id="submit-questions" class="button is-primary is-large">Submit</button>
     </div>
   </div>
   <div>
@@ -226,8 +224,8 @@ const buildQuizRows = quizzes => {
     quizRows += `
       <div class="tile is-parent">
         <article class="tile is-child box" style="background-image: linear-gradient(180deg, rgba(255,255,255,0.7) 40%, rgba(255,255,255,0.3) 70%, rgba(255,255,255,0) 100%), url(${escape(
-      quiz.picture_url
-    )});" onclick="fetchSingleQuiz(${quiz.id})">
+    quiz.picture_url
+  )});" onclick="fetchSingleQuiz(${quiz.id})">
           <p class="title">${escape(quiz.title)}</p>
           <p class="subtitle">${escape(quiz.description)}</p>
           <div class="content">
@@ -284,8 +282,8 @@ const buildQuestionPage = questionAndOptions => {
   <div class="content has-text-right is-size-3">
     <p>
       Question <strong>${++questionNumber}</strong> of <strong>${
-    questionAndOptions[0].number_of_questions
-    }</strong>
+  questionAndOptions[0].number_of_questions
+}</strong>
     </p>
   </div>
   `;
@@ -298,7 +296,7 @@ const buildQuestionPage = questionAndOptions => {
 };
 
 // Builds the starting quiz page
-const buildQuiz = function (quiz) {
+const buildQuiz = function(quiz) {
   let singleQuiz = `
   <main class="section">
     <section class="container quiz-background start-end-quiz has-text-centered">
@@ -313,11 +311,13 @@ const buildQuiz = function (quiz) {
 
       <!-- Start/share button -->
       <a class="button is-primary is-inverted is-large" onclick="fetchQuizData(${
-    quiz.id
-    })">
+  quiz.id
+})">
         <strong>Start Quiz</strong>
       </a>
-      <a class="button is-primary is-inverted is-outlined is-large share-button" data-clipboard-text="Check out this awesome quiz on http://localhost:8080?quiz=${quiz.id}">
+      <a class="button is-primary is-inverted is-outlined is-large share-button" data-clipboard-text="Check out this awesome quiz on http://localhost:8080?quiz=${
+  quiz.id
+}">
         <strong>Share This Quiz</strong>
       </a>
 
@@ -351,7 +351,7 @@ const buildEndPage = quizInfo => {
       <a class="button is-primary is-inverted is-medium share-button" data-clipboard-text="I scored ${currentScore}/${quizInfo.number_of_questions} on this quiz:  http://localhost:8080?quiz=${quizInfo.id} See if you can beat me!">
         <strong>Share Your Result</strong>
       </a>
-      <a class="button is-primary is-inverted is-outlined is-medium" href="/">
+      <a class="button is-primary is-inverted is-outlined is-medium" onclick="fetchAndRenderQuizzes()">
         <strong>Back To Home</strong>
       </a>
 
@@ -370,7 +370,7 @@ const buildEndPage = quizInfo => {
 
 // Builds the navbar which is used in home, create new quiz, and end quiz pages
 const buildNavbar = () => {
-  return `
+  let navHTML = `
   <nav
     class="navbar is-fixed-top"
     role="navigation"
@@ -378,7 +378,7 @@ const buildNavbar = () => {
   >
     <!-- Brand logo and nav burger -->
     <div class="navbar-brand">
-      <a class="navbar-item" href="/">
+      <a class="navbar-item" onclick="fetchAndRenderQuizzes()">
         <h1 class="title is-3 has-text-info">QUIZ WIZ</h1>
       </a>
       <a
@@ -396,7 +396,7 @@ const buildNavbar = () => {
     <!-- Left side nav items -->
     <div class="navbar-menu">
       <div class="navbar-start">
-        <a class="navbar-item" href="/">
+        <a class="navbar-item" onclick="fetchAndRenderQuizzes()">
           Home
         </a>
 
@@ -428,23 +428,31 @@ const buildNavbar = () => {
           </div>
         </div>
       </div>
+      `;
 
-      <!-- Right side nav items -->
-      <div class="navbar-end">
-        <div class="navbar-item">
-          <div class="buttons" id="loginNav">
-            <a class="button is-primary">
-              <strong>Sign up</strong>
-            </a>
-            <a class="button is-light" id="loginNavButton" onclick="userLoginForm()">
-              Log in
-            </a>
+  if (loggedInUser) {
+    navHTML += `<div class="navbar-item" id="loggedIn">
+        <p>Welcome, ${loggedInUser}</p> &nbsp; <button id="logoutButton" class="button is-success" action="renderLoginNav()">Logout</button>
+         </div>
+       </div>`;
+  } else {
+    navHTML += `<!-- Right side nav items -->
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="buttons" id="loginNav">
+              <a class="button is-primary">
+                <strong>Sign up</strong>
+              </a>
+              <a class="button is-light" id="loginNavButton" onclick="userLoginForm()">
+                Log in
+              </a>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </nav>
-  `;
+    </nav>`;
+  }
+  return navHTML;
 };
 
 // Builds the dark navbar which is used in starting quiz and taking quiz (question) pages
@@ -452,7 +460,7 @@ const buildDarkNavbar = () => {
   return `
   <nav class="navbar is-dark is-fixed-top" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
-      <a class="navbar-item" href="/">
+      <a class="navbar-item" onclick="fetchAndRenderQuizzes()">
         <h1 class="title is-1 has-text-info"><i class="far fa-times-circle"></i></h1>
       </a>
     </div>
@@ -488,14 +496,14 @@ const buildFeaturedHero = () => {
 */
 
 // Renders quizzes into <main> element
-const renderQuizzes = function (quizzes) {
+const renderQuizzes = function(quizzes) {
+  $("html").removeClass("quiz-background");
   $("body")
     .empty()
     .append(buildNavbar())
     .append(buildFeaturedHero());
 
-  $('main')
-    .append(buildQuizRows(quizzes));
+  $("main").append(buildQuizRows(quizzes));
 };
 
 // Renders a question and associated options
@@ -530,14 +538,14 @@ const renderQuestion = questionAndOptions => {
 };
 
 // Renders single quiz start page
-const renderQuiz = function (quiz) {
+const renderQuiz = function(quiz) {
   $("body")
     .empty()
     .append(buildDarkNavbar())
     .append(buildQuiz(quiz));
 };
 
-const shuffle = function (array) {
+const shuffle = function(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [array[i], array[j]] = [array[j], array[i]];
@@ -545,7 +553,7 @@ const shuffle = function (array) {
 };
 
 // To render scores for a user
-const renderScores = function (scores) {
+const renderScores = function(scores) {
   for (let scoreObject of scores) {
     $(".previous-attempts > ul").append(`<li>${scoreObject.score}/5</li>`);
   }
@@ -567,15 +575,14 @@ const renderQuizForm = () => {
   $("body")
     .empty()
     .append(buildNavbar())
-    .append(buildQuizForm());
+    .append(buildQuizInfoForm());
 };
 
 // on click of login
-const userLoginForm = function () {
-  console.log('login form');
+const userLoginForm = function() {
   const loginForm = `<div id="loginFormContainer">
    <form class="columns is-vcentered" id="loginForm">
-     <input id="username" type="text" class="input is-medium" placeholder="username">
+     <input required="required" id="username" type="text" class="input is-medium" placeholder="username">
      <button class="button is-success" id="login" type="submit">Login</button>
       </form>
  </div>`;
@@ -584,16 +591,17 @@ const userLoginForm = function () {
 };
 
 //On successful login
-const userLoggedIn = function (data) {
+const userLoggedIn = function(data) {
   const loggedIn = `<div  id="loggedIn" class="columns is-vcentered">
- <p>${data}</p>  &nbsp; <button id="logoutButton" class="button is-success" action="renderLoginNav()">Logout</button>
+ <p>Welcome, ${data}</p>  &nbsp; <button id="logoutButton" class="button is-success" action="renderLoginNav()">Logout</button>
   </div>
 </div>`;
   $("#loginFormContainer").replaceWith(loggedIn);
+  loggedInUser = data;
 };
 
 //logout
-const renderLoginNav = function () {
+const renderLoginNav = function() {
   const loginNav = `
   <div class="buttons" id="loginNav">
     <a class="button is-primary">
