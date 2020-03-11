@@ -54,6 +54,11 @@ $scheme-invert: $orange-light;
   color: white;
 }
 
+::placeholder {
+  color: black !important;
+  opacity: 0.4;
+}
+
 /******** Bulma ********/
 @import "../node_modules/bulma/sass/utilities/_all.sass";
 @import "../node_modules/bulma/sass/base/_all.sass";
