@@ -694,7 +694,6 @@ const renderLoginNav = function() {
   currentUserID = null;
 };
 
-
-const setCancelButton = function(){
+const setCancelButton = function() {
   cancelButton = true;
 };
