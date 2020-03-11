@@ -257,7 +257,7 @@ const buildQuestionPage = questionAndOptions => {
 
     <div class="hero-body">
       <div class="container has-text-centered">
-        <h1 class="is-size-3" id="timerHeading"><h1>
+        <h1 class="is-size-1" id="timerHeading"><h1>
         <h1 class="title is-2 has-text-white">
           ${escape(questionAndOptions[0].question)}
         </h1>
