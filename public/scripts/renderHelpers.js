@@ -567,6 +567,7 @@ const renderEndPage = quizData => {
     .append(buildNavbar())
     .append(buildEndPage(quizData));
 
+  currentScore = 0;
   getScores(quizData);
 };
 
