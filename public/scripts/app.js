@@ -1,6 +1,13 @@
 let clickTrack = false;
 $(() => {
-  fetchAndRenderQuizzes();
+  $("body").on("change", "#username", () => {
+    console.log($("#username"));
+    $("#username").val(
+      $("#username")
+        .val()
+        .trim()
+    );
+  });
 
   // Grab any url query params. To be used when sharing quizzes
   $.urlParam = function(name) {
