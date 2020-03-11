@@ -153,7 +153,7 @@ const buildQuizForm = () => {
   `;
 };
 
-const buildQuizQuestionsForm = function(number_of_questions, number_of_options) {
+const buildQuizQuestionsForm = function (number_of_questions, number_of_options) {
   let quizQuestionsForm = ``;
 
   for (let i = 1; i <= number_of_questions; i++) {
@@ -192,7 +192,7 @@ const buildQuizQuestionsForm = function(number_of_questions, number_of_options) 
   }
 
   quizQuestionsForm +=
-  `
+    `
   <div class="field is-grouped">
     <div class="control buttons">
       <button id="submit-questions" class="button is-primary">Submit</button>
@@ -226,8 +226,8 @@ const buildQuizRows = quizzes => {
     quizRows += `
       <div class="tile is-parent">
         <article class="tile is-child box" style="background-image: linear-gradient(180deg, rgba(255,255,255,0.7) 40%, rgba(255,255,255,0.3) 70%, rgba(255,255,255,0) 100%), url(${escape(
-    quiz.picture_url
-  )});" onclick="fetchSingleQuiz(${quiz.id})">
+      quiz.picture_url
+    )});" onclick="fetchSingleQuiz(${quiz.id})">
           <p class="title">${escape(quiz.title)}</p>
           <p class="subtitle">${escape(quiz.description)}</p>
           <div class="content">
@@ -284,8 +284,8 @@ const buildQuestionPage = questionAndOptions => {
   <div class="content has-text-right is-size-3">
     <p>
       Question <strong>${++questionNumber}</strong> of <strong>${
-  questionAndOptions[0].number_of_questions
-}</strong>
+    questionAndOptions[0].number_of_questions
+    }</strong>
     </p>
   </div>
   `;
@@ -298,7 +298,7 @@ const buildQuestionPage = questionAndOptions => {
 };
 
 // Builds the starting quiz page
-const buildQuiz = function(quiz) {
+const buildQuiz = function (quiz) {
   let singleQuiz = `
   <main class="section">
     <section class="container quiz-background start-end-quiz has-text-centered">
@@ -313,8 +313,8 @@ const buildQuiz = function(quiz) {
 
       <!-- Start/share button -->
       <a class="button is-primary is-inverted is-large" onclick="fetchQuizData(${
-  quiz.id
-})">
+    quiz.id
+    })">
         <strong>Start Quiz</strong>
       </a>
       <a class="button is-primary is-inverted is-outlined is-large share-button" data-clipboard-text="Check out this awesome quiz on http://localhost:8080?quiz=${quiz.id}">
@@ -488,7 +488,7 @@ const buildFeaturedHero = () => {
 */
 
 // Renders quizzes into <main> element
-const renderQuizzes = function(quizzes) {
+const renderQuizzes = function (quizzes) {
   $("body")
     .empty()
     .append(buildNavbar())
@@ -530,14 +530,14 @@ const renderQuestion = questionAndOptions => {
 };
 
 // Renders single quiz start page
-const renderQuiz = function(quiz) {
+const renderQuiz = function (quiz) {
   $("body")
     .empty()
     .append(buildDarkNavbar())
     .append(buildQuiz(quiz));
 };
 
-const shuffle = function(array) {
+const shuffle = function (array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [array[i], array[j]] = [array[j], array[i]];
@@ -545,7 +545,7 @@ const shuffle = function(array) {
 };
 
 // To render scores for a user
-const renderScores = function(scores) {
+const renderScores = function (scores) {
   for (let scoreObject of scores) {
     $(".previous-attempts > ul").append(`<li>${scoreObject.score}/5</li>`);
   }
@@ -571,35 +571,30 @@ const renderQuizForm = () => {
 };
 
 // on click of login
-const userLoginForm = function() {
+const userLoginForm = function () {
   console.log('login form');
-  const loginForm = `<div class="navbar-item" id="loginFormContainer">
-   <form class="box" id="loginForm">
-   <div class="field">
-     <label class="label">Username</label>
-    <input id="username" type="text" class="input is-medium" placeholder="username">
-   </div>
-   <button class="button is-success" id="login" type="submit">Login</button>
-    <!-- <button class="button is-success" id="logout" type="submit">Logout</button> -->
-   </form>
+  const loginForm = `<div id="loginFormContainer">
+   <form class="columns is-vcentered" id="loginForm">
+     <input id="username" type="text" class="input is-medium" placeholder="username">
+     <button class="button is-success" id="login" type="submit">Login</button>
+      </form>
  </div>`;
 
   $("#loginNav").replaceWith(loginForm);
-
 };
 
 //On successful login
-const userLoggedIn = function(data) {
-  const loggedIn = `<div class="navbar-item" id="loggedIn">
- <p>${data}</p> &nbsp; <button id="logoutButton" class="button is-success" action="renderLoginNav()">Logout</button>
+const userLoggedIn = function (data) {
+  const loggedIn = `<div  id="loggedIn" class="columns is-vcentered">
+ <p>${data}</p>  &nbsp; <button id="logoutButton" class="button is-success" action="renderLoginNav()">Logout</button>
   </div>
 </div>`;
-  $("#loginForm").replaceWith(loggedIn);
+  $("#loginFormContainer").replaceWith(loggedIn);
 };
 
 //logout
-const renderLoginNav = function() {
-  const loginNav = `<div class="navbar-item">
+const renderLoginNav = function () {
+  const loginNav = `
   <div class="buttons" id="loginNav">
     <a class="button is-primary">
       <strong>Sign up</strong>
@@ -608,6 +603,6 @@ const renderLoginNav = function() {
       Log in
     </a>
   </div>
-</div>`;
+`;
   $("#loggedIn").replaceWith(loginNav);
 };
