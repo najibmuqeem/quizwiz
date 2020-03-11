@@ -584,7 +584,7 @@ const userLoginForm = function() {
   const loginForm = `<div id="loginFormContainer">
    <form class="columns is-vcentered" id="loginForm">
      <input required="required" id="username" type="text" class="input" placeholder="username">
-     <button class="button is-success" id="login" type="submit">Login</button>
+     <button class="button is-primary" id="login" type="submit">Login</button>
       </form>
  </div>`;
 
