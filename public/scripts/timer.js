@@ -1,4 +1,4 @@
-const timer = function(allottedTime) {
+const timer = function(allottedTime, correctAnswer) {
   let startTime = Date.now();
   let displaystring = "";
   let allottedTimeCopy = allottedTime;
@@ -64,10 +64,21 @@ const timer = function(allottedTime) {
     if (usedTime >= allottedTime && !clickTrack) {
       $("#timerHeading").text(displaystring);
       clearTimeout(t);
+
       $(".option").css("pointer-events", "none");
+      $(".option")
+        .filter(function() {
+          return (
+            $(this)
+              .children()
+              .text() === correctAnswer
+          );
+        })
+        .css("backgroundColor", "#f1c40f");
       setTimeout(() => {
         renderQuestion(quizData);
-      }, 1000);
+      }, 1500);
+
       return;
     }
 
