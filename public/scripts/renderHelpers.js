@@ -354,10 +354,10 @@ const buildEndPage = quizInfo => {
       <p class="is-size-3 has-text-black">You scored ${currentScore}/${quizInfo.number_of_questions}</p>
 
       <!-- Share/Home button -->
-      <a class="button is-primary is-inverted is-medium share-button" data-clipboard-text="I scored ${currentScore}/${quizInfo.number_of_questions} on this quiz:  http://localhost:8080?quiz=${quizInfo.id} See if you can beat me!">
+      <a class="button is-primary is-inverted is-large share-button" data-clipboard-text="See if you can beat me on this quiz: http://localhost:8080?quiz=${quizInfo.id}&user=${loggedInUser}&score=${currentScore}/${quizInfo.number_of_questions}">
         <strong>Share Your Result</strong>
       </a>
-      <a class="button is-primary is-inverted is-outlined is-medium" onclick="fetchAndRenderQuizzes()">
+      <a class="button is-primary is-inverted is-outlined is-large" onclick="fetchAndRenderQuizzes()">
         <strong>Back To Home</strong>
       </a>
 
@@ -388,22 +388,15 @@ const buildShareResultPage = (quizId, quizName, username, score) => {
       <h1 class="title is-1 has-text-white ">
         ${escape(username)} completed ${escape(quizName)}!
       </h1>
-      <p class="is-size-3 has-text-black">They scored ${escape(score)}\nSee if you can beat their score!</p>
+      <p class="is-size-3 has-text-black">They scored ${escape(score)}<br>See if you can beat their score!</p>
 
       <!-- Share/Home button -->
-      <a class="button is-primary is-inverted is-medium share-button" onclick=fetchQuizData(${escape(quizId)})">
+      <a class="button is-primary is-inverted is-large" onclick="fetchQuizData(${escape(quizId)})">
         <strong>Take This Quiz</strong>
       </a>
-      <a class="button is-primary is-inverted is-outlined is-medium" onclick="fetchAndRenderQuizzes()">
+      <a class="button is-primary is-inverted is-outlined is-large" onclick="fetchAndRenderQuizzes()">
         <strong>Home Page</strong>
       </a>
-
-      <!-- Previous scores -->
-      <div class="previous-attempts">
-        <h3 class="title is-4 has-text-white">Your most recent attempts at this quiz:</h3>
-        <ul class="is-size-4">
-        </ul>
-      </div>
 
     </section>
 
@@ -569,6 +562,9 @@ const renderQuestion = questionAndOptions => {
   shuffle(currentOptions);
 
   $("html").addClass("quiz-background");
+
+  $("nav").remove();
+  $("body").prepend(buildDarkNavbar());
 
   $("main")
     .empty()
