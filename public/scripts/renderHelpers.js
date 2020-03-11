@@ -155,7 +155,7 @@ const buildQuizQuestionsForm = function(number_of_questions, number_of_options) 
     quizQuestionsForm += `
     <div class="question-container">
       <div class="field">
-        <label class="label">Question ${i}</label>
+        <label class="label is-large">Question ${i}</label>
         <div class="control">
           <input type="text" required="required" id="question${i}" class="input question" />
         </div>
@@ -166,7 +166,7 @@ const buildQuizQuestionsForm = function(number_of_questions, number_of_options) 
       if (j === 1) {
         quizQuestionsForm += `
         <div class="field">
-          <label class="label">Option ${j}</label>
+          <label class="label is-large">Option ${j}</label>
           <div class="control">
             <input type="text" required="required" id="option${j}" class="input correct optionInput" placeholder="Correct option"/>
           </div>
@@ -175,7 +175,7 @@ const buildQuizQuestionsForm = function(number_of_questions, number_of_options) 
       } else {
         quizQuestionsForm += `
         <div class="field">
-          <label class="label">Option ${j}</label>
+          <label class="label is-large">Option ${j}</label>
           <div class="control">
             <input type="text" required="required" id="option${j}" class="input optionInput" placeholder="Incorrect option" />
           </div>
