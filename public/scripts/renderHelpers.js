@@ -313,7 +313,7 @@ const buildQuiz = function(quiz) {
       )}</span> Questions</em></p>
 
       <!-- Start/share button -->
-      <a class="button is-primary is-inverted is-large" onclick="fetchQuizData(${
+      <a class="button is-primary is-inverted is-large" onclick="setFlags();fetchQuizData(${
         quiz.id
       })">
         <strong>Start Quiz</strong>
@@ -685,4 +685,9 @@ const renderLoginNav = function() {
 
 const setCancelButton = function() {
   cancelButton = true;
+};
+
+const setFlags = function() {
+  cancelButton = false;
+  clickTrack = false;
 };
