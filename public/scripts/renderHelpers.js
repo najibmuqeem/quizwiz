@@ -596,6 +596,13 @@ const renderEndPage = quizData => {
 
 };
 
+// Renders the page that shows another user's result of a quiz
+const renderShareResultPage = (quizId, username, score) => {
+  $("body")
+    .append(buildNavbar())
+    .append(buildShareResultPage(quizId, username, score));
+}
+
 // Renders quiz creation form
 const renderQuizForm = () => {
   $("body")
