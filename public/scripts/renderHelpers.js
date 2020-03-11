@@ -249,9 +249,12 @@ const buildQuizRows = quizzes => {
 const buildQuestionPage = questionAndOptions => {
   let questionPage = `
   <!-- Question header -->
+
   <section class="hero question">
+
     <div class="hero-body">
       <div class="container has-text-centered">
+        <h1 id="timerHeading"><h1>
         <h1 class="title is-2 has-text-white">
           ${escape(questionAndOptions[0].question)}
         </h1>
@@ -530,11 +533,14 @@ const renderQuestion = questionAndOptions => {
     .empty()
     .append(buildQuestionPage(currentOptions));
 
+
   if (quizData.length === divisionPoint) {
     quizData.length = 1;
   } else {
     quizData = questionAndOptions.slice(divisionPoint);
   }
+  // Timer for each question
+  timer(10000);
 };
 
 // Renders single quiz start page
