@@ -1,7 +1,6 @@
 let clickTrack = false;
 $(() => {
   $("body").on("change", "#username", () => {
-    console.log($("#username"));
     $("#username").val(
       $("#username")
         .val()
