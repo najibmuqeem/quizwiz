@@ -41,7 +41,7 @@ const escape = str => {
 |___________________________________________
 */
 
-const buildQuizForm = () => {
+const buildQuizInfoForm = () => {
   return `
   <main class="section">
     <section class="hero is-primary is-bold">
@@ -57,101 +57,96 @@ const buildQuizForm = () => {
       </div>
     </section>
 
-    <form id="create-quiz">
-      <div class="field">
-        <label class="label">Title</label>
-        <div class="control">
-          <input
-            name="title"
-            id="title"
-            class="input"
-            type="text"
-            required="required"
-            placeholder="E.g. Sea Creatures"
-          />
-        </div>
-      </div>
-
-      <div class="field">
-        <label class="label">Description</label>
-        <div class="control">
-          <textarea
-            name="description"
-            id="description"
-            class="textarea"
-            required="required"
-            placeholder="Tell us about your quiz!"
-          ></textarea>
-        </div>
-      </div>
-
-      <div class="field">
-        <label class="label">Picture</label>
-        <div class="control">
-          <input
-            name="picture"
-            id="picture-url"
-            type="text"
-            class="input"
-            placeholder="URL of a relevant image"
-          />
-        </div>
-      </div>
-
-      <div class="field">
-        <label class="label">Number of questions</label>
-        <div class="control">
-          <input
-            name="questions"
-            id="num-questions"
-            type="number"
-            required="required"
-            min="1"
-          />
-        </div>
-      </div>
-
-      <div class="field">
-        <label class="label">Number of options per question</label>
-        <div class="control">
-          <input
-            name="options"
-            id="num-options"
-            type="number"
-            required="required"
-            min="2"
-          />
-        </div>
-      </div>
-
-      <div class="field">
-        <div class="control">
-          <label class="checkbox">
+    <form id="create-quiz" class="has-text-centered">
+        <div class="field">
+          <label class="label is-large">Title</label>
+          <div class="control">
             <input
-              name="public"
-              id="public"
+              name="title"
+              id="title"
               class="input"
-              type="checkbox"
+              type="text"
+              required="required"
+              placeholder="E.g. Sea Creatures"
             />
-            Public
-          </label>
+          </div>
         </div>
-      </div>
 
-      <div class="field is-grouped">
-        <div class="control">
-          <button id="submit-quiz" class="button is-primary">
-            Submit
-          </button>
-          <button id="cancel-quiz" class="button is-link is-light">
-            Cancel
-          </button>
+        <div class="field">
+          <label class="label is-large">Description</label>
+          <div class="control">
+            <input
+              name="description"
+              id="description"
+              class="input"
+              required="required"
+              placeholder="Tell us about your quiz!"
+            ></input>
+          </div>
         </div>
-      </div>
-    </form>
 
-    <form id="questions">
-    </form>
+        <div class="field">
+          <label class="label is-large">Picture</label>
+          <div class="control">
+            <input
+              name="picture"
+              id="picture-url"
+              type="text"
+              class="input"
+              placeholder="URL of a relevant image"
+            />
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label is-large">Number of questions</label>
+          <div class="control">
+            <input
+              name="questions"
+              id="num-questions"
+              type="number"
+              class="input"
+              placeholder="1 to Infinity"
+              required="required"
+              min="1" />
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label is-large">Number of options per question</label>
+          <div class="control">
+            <input
+              name="options"
+              id="num-options"
+              type="number"
+              class="input"
+              placeholder="2 to Infinity"
+              required="required"
+              min="2" />
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label is-large">Public?</label>
+          <div class="control has-text-centered">
+              <input
+                name="public"
+                id="public"
+                type="checkbox"
+                checked />
+          </div>
+        </div>
+
+        <div class="field is-grouped">
+          <div class="control has-text-centered">
+            <button id="submit-quiz" class="button is-large is-primary">
+              Submit
+            </button>
+            <button id="cancel-quiz" class="button is-large is-link is-light">
+              Cancel
+            </button>
+          </div>
+        </div>
   </main>
   `;
 };
@@ -166,7 +161,7 @@ const buildQuizQuestionsForm = function(
     quizQuestionsForm += `
     <div class="question-container">
       <div class="field">
-        <label class="label">Question ${i}</label>
+        <label class="label is-large question-label">Question ${i}</label>
         <div class="control">
           <input type="text" required="required" id="question${i}" class="input question" />
         </div>
@@ -176,7 +171,7 @@ const buildQuizQuestionsForm = function(
       if (j === 1) {
         quizQuestionsForm += `
         <div class="field">
-          <label class="label">Option ${j}</label>
+          <label class="label is-large">Option ${j}</label>
           <div class="control">
             <input type="text" required="required" id="option${j}" class="input correct optionInput" placeholder="Correct option"/>
           </div>
@@ -184,7 +179,7 @@ const buildQuizQuestionsForm = function(
       } else {
         quizQuestionsForm += `
         <div class="field">
-          <label class="label">Option ${j}</label>
+          <label class="label is-large">Option ${j}</label>
           <div class="control">
             <input type="text" required="required" id="option${j}" class="input optionInput" placeholder="Incorrect option" />
           </div>
@@ -197,8 +192,8 @@ const buildQuizQuestionsForm = function(
 
   quizQuestionsForm += `
   <div class="field is-grouped">
-    <div class="control buttons">
-      <button id="submit-questions" class="button is-primary">Submit</button>
+    <div class="control submit-buttons has-text-centered">
+      <button id="submit-questions" class="button is-primary is-large">Submit</button>
     </div>
   </div>
   <div>
@@ -580,7 +575,7 @@ const renderQuizForm = () => {
   $("body")
     .empty()
     .append(buildNavbar())
-    .append(buildQuizForm());
+    .append(buildQuizInfoForm());
 };
 
 // on click of login
