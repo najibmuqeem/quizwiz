@@ -73,8 +73,13 @@ $(() => {
       user_id = $("#current-user-id")[0].textContent;
     } else {
       alert(
-        "Non-user detected. Logging in as temporary user... \n Log in to keep track of your scores!"
+        "Please log in to create quizzes and keep track of your quiz scores."
       );
+      user_id = null;
+      currentUserID = null;
+      loggedInUser = null;
+      renderQuizForm();
+      return;
     }
 
     const quiz = {
@@ -129,7 +134,7 @@ $(() => {
 
   // Checks if user chose correct answer, increments score accordingly, goes to next question
   $("body").on("click", ".option", () => {
-    clickTrack = true;  // Updating clickTrack when user selects an answer
+    clickTrack = true; // Updating clickTrack when user selects an answer
     const userAnswer = event.target.innerText;
     const correctAnswer = currentOptions.filter(option => option.is_correct)[0]
       .option;
