@@ -327,15 +327,28 @@ const buildQuiz = function(quiz) {
         <strong>Share This Quiz</strong>
       </a>
 
-      <!-- Previous scores -->
-      <div class="previous-attempts">
-        <h3 class="title is-4 has-text-white">Your most recent attempts at this quiz:</h3>
-        <ul class="is-size-4">
-        </ul>
-      </div>
-    </section>
-  </main>
+
     `;
+
+  if (loggedInUser) {
+    singleQuiz += `<!-- Previous scores -->
+    <div class="previous-attempts">
+      <h3 class="title is-4 has-text-white">Your most recent attempts at this quiz:</h3>
+      <ul class="is-size-4">
+      </ul>
+    </div>
+  </section>
+</main>`;
+  } else {
+    singleQuiz += `<!-- Previous scores -->
+    <div class="previous-attempts">
+      <h3 class="title is-4 has-text-white">You have not taken this quiz yet!</h3>
+      <ul class="is-size-4">
+      </ul>
+    </div>
+  </section>
+</main>`;
+  }
 
   return singleQuiz;
 };
@@ -361,18 +374,32 @@ const buildEndPage = quizInfo => {
         <strong>Back To Home</strong>
       </a>
 
-      <!-- Previous scores -->
-      <div class="previous-attempts">
-        <h3 class="title is-4 has-text-white">Your most recent attempts at this quiz:</h3>
-        <ul class="is-size-4">
-        </ul>
-      </div>
-
-    </section>
-
-  </main>
   `;
-  storeScore(quizInfo.id, currentUserID, currentScore);
+  if (currentUserID) {
+    endHTML += `<!-- Previous scores -->
+    <div class="previous-attempts">
+      <h3 class="title is-4 has-text-white">Your most recent attempts at this quiz:</h3>
+      <ul class="is-size-4">
+      </ul>
+    </div>
+
+  </section>
+
+</main>`;
+    storeScore(quizInfo.id, currentUserID, currentScore);
+  } else {
+    endHTML += `<!-- Previous scores -->
+    <div class="previous-attempts">
+      <h3 class="title is-4 has-text-white">You have not taken this quiz yet!</h3>
+      <ul class="is-size-4">
+      </ul>
+    </div>
+
+  </section>
+
+</main>`;
+  }
+
   currentScore = 0;
   return endHTML;
 };
@@ -540,7 +567,6 @@ const renderQuestion = questionAndOptions => {
     .empty()
     .append(buildQuestionPage(currentOptions));
 
-
   if (quizData.length === divisionPoint) {
     quizData.length = 1;
   } else {
@@ -591,9 +617,7 @@ const renderEndPage = quizData => {
     .append(buildNavbar())
     .append(buildEndPage(quizData));
 
-
   getScores({ user_id: currentUserID, id: quizData.id });
-
 };
 
 // Renders quiz creation form
@@ -620,13 +644,14 @@ const renderQuizForm = () => {
 const userLoggedIn = function(data) {
   loggedInUser = data.username;
   currentUserID = data.id;
-  const loggedIn = `<div  id="loggedIn" class="columns is-vcentered">
+  if (loggedInUser) {
+    const loggedIn = `<div  id="loggedIn" class="columns is-vcentered">
+    <p>Welcome, ${loggedInUser} <span id="current-user-id">${currentUserID}</span> </p>  &nbsp; <button id="logoutButton" class="button is-success" action="renderLoginNav()">Logout</button>
 
-  <p>Welcome, ${loggedInUser} <span id="current-user-id">${currentUserID}</span> </p>  &nbsp; <button id="logoutButton" class="button is-success" action="renderLoginNav()">Logout</button>
-
-  </div>
-</div>`;
-  $("#loginFormContainer").replaceWith(loggedIn);
+    </div>
+  </div>`;
+    $("#loginFormContainer").replaceWith(loggedIn);
+  }
 };
 
 //logout
@@ -643,4 +668,5 @@ const renderLoginNav = function() {
 `;
   $("#loggedIn").replaceWith(loginNav);
   loggedInUser = null;
+  currentUserID = null;
 };
