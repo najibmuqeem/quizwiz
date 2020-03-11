@@ -415,10 +415,14 @@ const buildShareResultPage = (quizId, quizName, username, score) => {
       <h1 class="title is-1 has-text-white ">
         ${escape(username)} completed ${escape(quizName)}!
       </h1>
-      <p class="is-size-3 has-text-black">They scored ${escape(score)}<br>See if you can beat their score!</p>
+      <p class="is-size-3 has-text-black">They scored ${escape(
+        score
+      )}<br>See if you can beat their score!</p>
 
       <!-- Share/Home button -->
-      <a class="button is-primary is-inverted is-large" onclick="fetchQuizData(${escape(quizId)})">
+      <a class="button is-primary is-inverted is-large" onclick="fetchQuizData(${escape(
+        quizId
+      )})">
         <strong>Take This Quiz</strong>
       </a>
       <a class="button is-primary is-inverted is-outlined is-large" onclick="fetchAndRenderQuizzes()">
@@ -467,30 +471,11 @@ const buildNavbar = () => {
           Create Your Own Quiz
         </a>
 
-        <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link">
-            Categories
-          </a>
-
-          <div class="navbar-dropdown">
-            <a class="navbar-item">
-              Arts
-            </a>
-            <a class="navbar-item">
-              History
-            </a>
-            <a class="navbar-item">
-              Movies
-            </a>
-            <a class="navbar-item">
-              Music
-            </a>
-            <a class="navbar-item">
-              Sports
-            </a>
-          </div>
-        </div>
+        <a class="navbar-item" onclick="getRandomQuiz()">
+          Random Quiz
+        </a>
       </div>
+    </div>
       `;
 
   if (loggedInUser) {
@@ -655,7 +640,7 @@ const renderShareResultPage = (quiz, username, score) => {
   $("body")
     .append(buildNavbar())
     .append(buildShareResultPage(quiz.id, quiz.title, username, score));
-}
+};
 
 // Renders quiz creation form
 const renderQuizForm = () => {

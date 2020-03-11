@@ -8,7 +8,7 @@ $(() => {
         .trim()
     );
   });
-  
+
   // Grab any url query params. To be used when sharing quizzes
   $.urlParam = function(name) {
     const results = new RegExp("[?&]" + name + "=([^&#]*)").exec(
@@ -26,11 +26,17 @@ $(() => {
   // Render a specific quiz page if only a quiz query was in the URL
   // Else, render home page
   if ($.urlParam("quiz") && $.urlParam("user") && $.urlParam("score")) {
-    fetchQuizToShare($.urlParam("quiz"), $.urlParam("user"), $.urlParam("score"));
-
+    if ($.urlParam("user") === "undefined" || $.urlParam("user") === "null") {
+      fetchQuizToShare($.urlParam("quiz"), "Your friend", $.urlParam("score"));
+    } else {
+      fetchQuizToShare(
+        $.urlParam("quiz"),
+        $.urlParam("user"),
+        $.urlParam("score")
+      );
+    }
   } else if ($.urlParam("quiz")) {
     fetchSingleQuiz($.urlParam("quiz"));
-
   } else {
     fetchAndRenderQuizzes();
   }

@@ -104,12 +104,25 @@ const getQuiz = function(quiz_id) {
     `
     SELECT *
     FROM quizzes
-    WHERE id = $1
+    WHERE id = $1;
     `,
     [quiz_id]
   );
 };
 exports.getQuiz = getQuiz;
+
+//returns random QUIZ object
+const getRandomQuiz = function() {
+  return pool.query(
+    `
+    SELECT *
+    FROM quizzes
+    ORDER BY RANDOM()
+    LIMIT 1;
+    `
+  );
+};
+exports.getRandomQuiz = getRandomQuiz;
 
 //adds a new quiz to quizzes database and returns all keys of created QUIZ object (use res.rows[0])
 const createNewQuiz = function(quiz) {
