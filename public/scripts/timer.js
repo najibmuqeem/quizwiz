@@ -64,7 +64,9 @@ const timer = function(allottedTime) {
     if (usedTime >= allottedTime && !clickTrack) {
       $("#timerHeading").text(displaystring);
       clearTimeout(t);
-      renderQuestion(quizData);
+      setTimeout(() => {
+        renderQuestion(quizData);
+      }, 1000);
       return;
     }
 
