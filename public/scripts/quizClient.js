@@ -8,6 +8,17 @@ const fetchAndRenderQuizzes = function() {
   });
 };
 
+// Get user given username
+const getUserWithUsername = function(username) {
+  $.ajax({
+    type: "GET",
+    url: "/api/users",
+    data: username,
+    success: data => {},
+    dataType: "json"
+  });
+};
+
 // Post quiz
 const createQuiz = function(data) {
   $.ajax({
@@ -28,7 +39,6 @@ const fetchSingleQuiz = function(id) {
     url: `/api/quizzes/${id}`,
     success: data => {
       renderQuiz(data);
-      getScores(data);
     },
     dataType: "json"
   });

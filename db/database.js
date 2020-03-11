@@ -284,14 +284,15 @@ const getUserQuizAttempts = function(user_id, quiz_id) {
 };
 exports.getUserQuizAttempts = getUserQuizAttempts;
 
-//returns score as integer (use res.rows[0])
+//returns object with keys score and number_of_questions (use res.rows)
 const getScores = function(user_id, quiz_id) {
   return pool.query(
     `
-    SELECT score
+    SELECT score, quizzes.number_of_questions
     FROM user_scores
-    WHERE user_id = $1 AND quiz_id = $2
-    ORDER BY id DESC
+    JOIN quizzes ON quizzes.id = quiz_id
+    WHERE user_scores.user_id = $1 AND quiz_id = $2
+    ORDER BY user_scores.id DESC
     LIMIT 5;
     `,
     [user_id, quiz_id]
