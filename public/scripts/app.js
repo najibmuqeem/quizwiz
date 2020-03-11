@@ -17,11 +17,10 @@ $(() => {
   // Render a specific quiz page if a quiz query was in the URL
 
   // Otherwise, render home page
-  if ($.urlParam('quiz')) {
-    fetchSingleQuiz($.urlParam('quiz'));
+  if ($.urlParam("quiz")) {
+    fetchSingleQuiz($.urlParam("quiz"));
   } else {
     fetchAndRenderQuizzes();
-
   }
 
   // Open/close nav menu when navbar-burger is clicked
@@ -35,11 +34,9 @@ $(() => {
   new ClipboardJS(".share-button");
 
   // Notify user when sharing info is copied to clipboard
-
-  $('body').on('click', '.share-button', () => {
-    alert('Copied to clipboard!\nPaste anywhere to share this quiz!');
-  })
-
+  $("body").on("click", ".share-button", () => {
+    alert("Copied to clipboard!\nPaste anywhere to share this quiz!");
+  });
 
   // cancel quiz button
   $("body").on("click", "#cancel-quiz", e => {
@@ -87,8 +84,12 @@ $(() => {
 
     createQuiz(quiz);
 
-    $('main').append(`</form><form id="questions" class="has-text-centered"></form>`);
-    $("#questions").append(buildQuizQuestionsForm(number_of_questions, number_of_options));
+    $("main").append(
+      `</form><form id="questions" class="has-text-centered"></form>`
+    );
+    $("#questions").append(
+      buildQuizQuestionsForm(number_of_questions, number_of_options)
+    );
     $(".submit-buttons").append(
       `<button id="cancel-questions" class="button is-large is-link is-light">Cancel</button>`
     );
@@ -116,20 +117,6 @@ $(() => {
     });
     fetchSingleQuiz(quiz_id);
   });
-
-  // cancel quiz button
-  $("#cancel-quiz").click(e => {
-    e.preventDefault();
-    clearInputValues();
-  });
-
-  // cancel questions button, doesn't work yet
-  // $("#cancel-questions").click(e => {
-  //   e.preventDefault();
-  //   removeQuiz(Number($("#quiz-id")[0].innerText));
-  //   $("#questions").hide();
-  //   $("#create-quiz").show();
-  // });
 
   // Checks if user chose correct answer, increments score accordingly, goes to next question
   $("body").on("click", ".option", () => {
