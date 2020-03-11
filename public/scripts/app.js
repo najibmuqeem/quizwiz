@@ -68,10 +68,12 @@ $(() => {
       is_public = false;
     }
     let user_id;
-    if ($("#current-user-id")[0].textContent) {
+    if ($("#current-user-id")[0]) {
       user_id = $("#current-user-id")[0].textContent;
     } else {
-      user_id = 1;
+      alert(
+        "Non-user detected. Logging in as temporary user... \n Log in to keep track of your scores!"
+      );
     }
 
     const quiz = {
