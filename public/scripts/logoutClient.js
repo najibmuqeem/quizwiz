@@ -6,7 +6,6 @@ const logout = function() {
       type: "POST",
       url: "/api/logout",
       data: {},
-      success: data => console.log(data),
       dataType: "json"
     });
   });
