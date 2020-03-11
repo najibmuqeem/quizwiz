@@ -67,6 +67,12 @@ $(() => {
     } else {
       is_public = false;
     }
+    let user_id;
+    if ($("#current-user-id")[0].textContent) {
+      user_id = $("#current-user-id")[0].textContent;
+    } else {
+      user_id = 1;
+    }
 
     const quiz = {
       title,
@@ -74,7 +80,7 @@ $(() => {
       picture_url,
       number_of_questions,
       is_public,
-      user_id: 1
+      user_id
     };
 
     clearInputValues();
