@@ -594,7 +594,7 @@ const userLoginForm = function() {
 //On successful login
 const userLoggedIn = function(data) {
   const loggedIn = `<div  id="loggedIn" class="columns is-vcentered">
- <p>Welcome, ${data}</p>  &nbsp; <button id="logoutButton" class="button is-success" action="renderLoginNav()">Logout</button>
+ <p>Welcome, ${data}</p>  &nbsp; <button id="logoutButton" class="button is-primary" action="renderLoginNav()">Logout</button>
   </div>
 </div>`;
   $("#loginFormContainer").replaceWith(loggedIn);
