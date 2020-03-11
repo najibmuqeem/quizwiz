@@ -377,6 +377,40 @@ const buildEndPage = quizInfo => {
   return endHTML;
 };
 
+// Builds the page that's shown when a user shares the result of their attempt
+const buildShareResultPage = (quizId, quizName, username, score) => {
+  return `
+  <main class="section">
+
+    <section class="container quiz-end-background start-end-quiz has-text-centered">
+
+      <!-- Quiz info -->
+      <h1 class="title is-1 has-text-white ">
+        ${username} completed ${quizName}!
+      </h1>
+      <p class="is-size-3 has-text-black">They scored ${score}\nSee if you can beat their score!</p>
+
+      <!-- Share/Home button -->
+      <a class="button is-primary is-inverted is-medium share-button" onclick=fetchQuizData(${quizId})">
+        <strong>Take This Quiz</strong>
+      </a>
+      <a class="button is-primary is-inverted is-outlined is-medium" onclick="fetchAndRenderQuizzes()">
+        <strong>Home Page</strong>
+      </a>
+
+      <!-- Previous scores -->
+      <div class="previous-attempts">
+        <h3 class="title is-4 has-text-white">Your most recent attempts at this quiz:</h3>
+        <ul class="is-size-4">
+        </ul>
+      </div>
+
+    </section>
+
+  </main>
+  `;
+};
+
 // Builds the navbar which is used in home, create new quiz, and end quiz pages
 const buildNavbar = () => {
   let navHTML = `
@@ -597,10 +631,10 @@ const renderEndPage = quizData => {
 };
 
 // Renders the page that shows another user's result of a quiz
-const renderShareResultPage = (quizId, username, score) => {
+const renderShareResultPage = (quiz, username, score) => {
   $("body")
     .append(buildNavbar())
-    .append(buildShareResultPage(quizId, username, score));
+    .append(buildShareResultPage(quiz.id, quiz.title, username, score));
 }
 
 // Renders quiz creation form
