@@ -1,20 +1,16 @@
 const logout = function() {
-
-  $("#logout").click((e) => {
-
+  $("#logout").click(e => {
     e.preventDefault();
 
-  $.ajax({
-      type:"POST",
-      url:"/api/logout",
+    $.ajax({
+      type: "POST",
+      url: "/api/logout",
       data: {},
-      success: (data) => console.log(data),
+      success: data => console.log(data),
       dataType: "json"
-
     });
   });
 };
-
 
 $(() => {
   logout();
