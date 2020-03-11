@@ -10,5 +10,12 @@
 }
 
 #timerHeading {
+  display: inline-block;
+  width: 7rem;
   margin-bottom: 2rem;
+  border: 10px solid;
+  border-image: linear-gradient(180deg, rgb(69, 173, 8), rgb(27, 168, 69)) 1;
+  border-radius: 20px;
+  padding: 15px;
 }
+
