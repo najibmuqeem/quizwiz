@@ -1,7 +1,5 @@
 let clickTrack = false;
 $(() => {
-  fetchAndRenderQuizzes();
-
   // Grab any url query params. To be used when sharing quizzes
   $.urlParam = function(name) {
     const results = new RegExp("[?&]" + name + "=([^&#]*)").exec(
