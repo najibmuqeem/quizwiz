@@ -45,7 +45,7 @@ const fetchSingleQuiz = function(id) {
 };
 
 // Get a single quiz, for rendering share result page
-const fetchQuizToShare = (quizId, username, score) {
+const fetchQuizToShare = (quizId, username, score) => {
   $.ajax({
     type: "GET",
     url: `/api/quizzes/${quizId}`,
