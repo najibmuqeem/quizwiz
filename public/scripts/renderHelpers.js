@@ -469,7 +469,6 @@ const buildNavbar = () => {
           Random Quiz
         </a>
       </div>
-    </div>
       `;
 
   if (loggedInUser) {
