@@ -295,10 +295,6 @@ const buildQuestionPage = questionAndOptions => {
   </div>
   `;
 
-  if (questionNumber === questionAndOptions[0].number_of_questions) {
-    questionNumber = 0;
-  }
-
   return questionPage;
 };
 
@@ -397,7 +393,7 @@ const buildEndPage = quizInfo => {
     </section>
   </main>`;
   }
-
+  questionNumber = 0;
   currentScore = 0;
   return endHTML;
 };
@@ -544,6 +540,8 @@ const buildFeaturedHero = () => {
 
 // Renders quizzes into <main> element
 const renderQuizzes = function(quizzes) {
+  currentScore = 0;
+  questionNumber = 0;
   $("html").removeClass("quiz-background");
   $("body")
     .empty()
