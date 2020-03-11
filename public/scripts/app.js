@@ -19,7 +19,7 @@ $(() => {
   // Render a specific quiz page if only a quiz query was in the URL
   // Else, render home page
   if ($.urlParam("quiz") && $.urlParam("user") && $.urlParam("score")) {
-    console.log('working');
+    fetchQuizToShare($.urlParam("quiz"), $.urlParam("user"), $.urlParam("score"));
 
   } else if ($.urlParam("quiz")) {
     fetchSingleQuiz($.urlParam("quiz"));
