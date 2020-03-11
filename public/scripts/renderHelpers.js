@@ -442,7 +442,7 @@ const buildNavbar = () => {
   if (loggedInUser) {
     navHTML += `<div class="navbar-item" id="loggedIn">
 
-        <p>Welcome, ${loggedInUser} <span id="current-user-id">${currentUserID}</span> </p> &nbsp; <button id="logoutButton" class="button is-success" action="renderLoginNav()">Logout</button>
+        <p>Welcome, ${loggedInUser} <span id="current-user-id">${currentUserID}</span> </p> &nbsp; <button id="logoutButton" class="button is-primary is-light" action="renderLoginNav()">Logout</button>
          </div>
        </div>`;
   } else {
@@ -622,7 +622,7 @@ const userLoggedIn = function(data) {
   currentUserID = data.id;
   const loggedIn = `<div  id="loggedIn" class="columns is-vcentered">
 
-  <p>Welcome, ${loggedInUser} <span id="current-user-id">${currentUserID}</span> </p>  &nbsp; <button id="logoutButton" class="button is-success" action="renderLoginNav()">Logout</button>
+  <p>Welcome, ${loggedInUser} <span id="current-user-id">${currentUserID}</span> </p>  &nbsp; <button id="logoutButton" class="button is-primary is-light" action="renderLoginNav()">Logout</button>
 
   </div>
 </div>`;
