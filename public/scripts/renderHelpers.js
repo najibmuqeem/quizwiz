@@ -135,11 +135,11 @@ const buildQuizInfoForm = () => {
         </div>
 
         <div class="field is-grouped">
-          <div class="control">
-            <button id="submit-quiz" class="button is-primary">
+          <div class="control has-text-centered">
+            <button id="submit-quiz" class="button is-large is-primary">
               Submit
             </button>
-            <button id="cancel-quiz" class="button is-link is-light">
+            <button id="cancel-quiz" class="button is-large is-link is-light">
               Cancel
             </button>
           </div>
