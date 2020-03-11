@@ -61,6 +61,8 @@ const timer = function(allottedTime, correctAnswer) {
     }
 
     // clear timer and go to next question
+    console.log('clickTrack',clickTrack);
+    console.log('cancelButton',cancelButton);
     if (usedTime >= allottedTime && !clickTrack && !cancelButton) {
       $("#timerHeading").text(displaystring);
       clearTimeout(t);
