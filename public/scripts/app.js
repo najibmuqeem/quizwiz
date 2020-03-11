@@ -1,8 +1,14 @@
 let clickTrack = false;
 let cancelButton = false;
 $(() => {
-  fetchAndRenderQuizzes();
-
+  $("body").on("change", "#username", () => {
+    $("#username").val(
+      $("#username")
+        .val()
+        .trim()
+    );
+  });
+  
   // Grab any url query params. To be used when sharing quizzes
   $.urlParam = function(name) {
     const results = new RegExp("[?&]" + name + "=([^&#]*)").exec(
@@ -16,11 +22,15 @@ $(() => {
     }
   };
 
-  // Render a specific quiz page if a quiz query was in the URL
+  // Render a quiz result page if quiz, username, and score queries were in URL
+  // Render a specific quiz page if only a quiz query was in the URL
+  // Else, render home page
+  if ($.urlParam("quiz") && $.urlParam("user") && $.urlParam("score")) {
+    fetchQuizToShare($.urlParam("quiz"), $.urlParam("user"), $.urlParam("score"));
 
-  // Otherwise, render home page
-  if ($.urlParam("quiz")) {
+  } else if ($.urlParam("quiz")) {
     fetchSingleQuiz($.urlParam("quiz"));
+
   } else {
     fetchAndRenderQuizzes();
   }
