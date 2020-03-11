@@ -3,10 +3,10 @@ const timer = function(allottedTime) {
   let displaystring = "";
   let allottedTimeCopy = allottedTime;
   // Setting the initial value of timer
-  const hours = allottedTime / (1000 * 60 * 60);
-  allottedTime %= (1000 * 60 * 60);
-  const minutes = allottedTimeCopy / (1000 * 60);
-  allottedTimeCopy %= (1000 * 60);
+  // const hours = allottedTime / (1000 * 60 * 60);
+  // allottedTime %= (1000 * 60 * 60);
+  // const minutes = allottedTimeCopy / (1000 * 60);
+  // allottedTimeCopy %= (1000 * 60);
   const seconds = allottedTimeCopy / 1000;
 
   // if (hours >= 1) {
@@ -78,5 +78,20 @@ const timer = function(allottedTime) {
     // Displaying time
     $("#timerHeading").text(displaystring);
     $("#timerHeading").css({color:'white'});
+
+    // Changing border color depending on time left
+    if (displaystring < 3) {
+      $("#timerHeading").css('border-image', 'linear-gradient(180deg, rgb(170, 47, 17), rgb(209, 15, 9)) 1');
+
+    } else if (displaystring < 5) {
+      $("#timerHeading").css('border-image', 'linear-gradient(180deg, rgb(170, 47, 17), rgb(221, 218, 40)) 1');
+
+    } else if (displaystring < 7) {
+      $("#timerHeading").css('border-image', 'linear-gradient(180deg, rgb(219, 207, 41), rgb(221, 218, 40)) 1');
+
+    } else if (displaystring < 9) {
+      $("#timerHeading").css('border-image', 'linear-gradient(180deg, rgb(219, 207, 41), rgb(27, 168, 69)) 1');
+    }
+
   }, 1000);
 };
