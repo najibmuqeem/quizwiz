@@ -108,6 +108,7 @@ const addQuestion = function(
   });
 };
 
+// Function to run once question(s) have been posted
 const addOptions = function(questionElem, question_id, number_of_answers) {
   let options = [];
   let is_correct = [];

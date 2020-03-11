@@ -1,6 +1,7 @@
 let clickTrack = false;
 let cancelButton = false;
 $(() => {
+  // Trims spaces in username field
   $("body").on("change", "#username", () => {
     $("#username").val(
       $("#username")
