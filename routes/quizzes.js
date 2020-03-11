@@ -51,6 +51,19 @@ module.exports = () => {
       });
   });
 
+  // Get a random quiz
+  router.get("/random", (req, res) => {
+    database
+      .getRandomQuiz()
+      .then(data => {
+        const quiz = data.rows[0];
+        res.json(quiz);
+      })
+      .catch(err => {
+        res.status(500).json({ error: err.message });
+      });
+  });
+
   //Get a single quiz
 
   router.get("/:id", (req, res) => {
@@ -64,5 +77,6 @@ module.exports = () => {
         res.status(500).json({ error: err.message });
       });
   });
+
   return router;
 };
