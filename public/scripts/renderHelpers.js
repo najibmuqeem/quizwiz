@@ -258,7 +258,7 @@ const buildQuestionPage = questionAndOptions => {
 
     <div class="hero-body">
       <div class="container has-text-centered">
-        <h1 id="timerHeading"><h1>
+        <h1 class="is-size-1" id="timerHeading"><h1>
         <h1 class="title is-2 has-text-white">
           ${escape(questionAndOptions[0].question)}
         </h1>
@@ -584,7 +584,9 @@ const renderQuestion = questionAndOptions => {
     quizData = questionAndOptions.slice(divisionPoint);
   }
   // Timer for each question
-  timer(10000);
+  const correctAnswer = currentOptions.filter(option => option.is_correct)[0]
+      .option;
+  timer(10000, correctAnswer);
 };
 
 // Renders single quiz start page
@@ -653,14 +655,14 @@ const userLoggedIn = function(data) {
   currentUserID = data.id;
 
   if (loggedInUser) {
-    $("#loginFormContainer").replaceWith(
-      `
-        <div  id="loggedIn" class="columns is-vcentered">
-          <p>Welcome, ${loggedInUser} <span id="current-user-id">${currentUserID}</span> </p>  &nbsp; <button id="logoutButton" class="button is-success" action="renderLoginNav()">Logout</button>
-        </div>
-      </div>
-      `
-    );
+
+    const loggedIn = `<div  id="loggedIn" class="columns is-vcentered">
+    <p>Welcome, ${loggedInUser} <span id="current-user-id">${currentUserID}</span> </p>  &nbsp; <button id="logoutButton" class="button is-primary" action="renderLoginNav()">Logout</button>
+
+    </div>
+  </div>`;
+    $("#loginFormContainer").replaceWith(loggedIn);
+
   }
 };
 
