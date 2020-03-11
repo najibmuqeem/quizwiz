@@ -3,7 +3,7 @@ INSERT INTO options (question_id, option, is_correct) VALUES (1, '', false);
 INSERT INTO options (question_id, option, is_correct) VALUES (1, '0', false);
 INSERT INTO options (question_id, option, is_correct) VALUES (1, 'null', false);
 
-INSERT INTO options (question_id, option, is_correct) VALUES (2, 'spot the difference .', true);
+INSERT INTO options (question_id, option, is_correct) VALUES (2, 'spot the  difference', true);
 INSERT INTO options (question_id, option, is_correct) VALUES (2, 'spot the difference', false);
 INSERT INTO options (question_id, option, is_correct) VALUES (2, 'spot the difference', false);
 INSERT INTO options (question_id, option, is_correct) VALUES (2, 'spot the difference', false);
