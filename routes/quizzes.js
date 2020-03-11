@@ -17,7 +17,6 @@ module.exports = () => {
   });
 
   //Post quiz
-
   router.post("/", (req, res) => {
     const params = {
       title: req.body.title,

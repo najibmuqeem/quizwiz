@@ -154,6 +154,7 @@ const buildQuizInfoForm = () => {
   `;
 };
 
+// Builds question submission form after a new quiz is created
 const buildQuizQuestionsForm = function(
   number_of_questions,
   number_of_options
@@ -294,10 +295,6 @@ const buildQuestionPage = questionAndOptions => {
   </div>
   `;
 
-  if (questionNumber === questionAndOptions[0].number_of_questions) {
-    questionNumber = 0;
-  }
-
   return questionPage;
 };
 
@@ -332,22 +329,22 @@ const buildQuiz = function(quiz) {
 
   if (loggedInUser) {
     singleQuiz += `<!-- Previous scores -->
-    <div class="previous-attempts">
-      <h3 class="title is-4 has-text-white">Your most recent attempts at this quiz:</h3>
-      <ul class="is-size-4">
-      </ul>
-    </div>
-  </section>
-</main>`;
+      <div class="previous-attempts">
+        <h3 class="title is-4 has-text-white">Your most recent attempts at this quiz:</h3>
+        <ul class="is-size-4">
+        </ul>
+      </div>
+    </section>
+  </main>`;
   } else {
     singleQuiz += `<!-- Previous scores -->
-    <div class="previous-attempts">
-      <h3 class="title is-4 has-text-white">Please log in to keep track of your scores.</h3>
-      <ul class="is-size-4">
-      </ul>
-    </div>
-  </section>
-</main>`;
+      <div class="previous-attempts">
+        <h3 class="title is-4 has-text-white">Please log in to keep track of your scores.</h3>
+        <ul class="is-size-4">
+        </ul>
+      </div>
+    </section>
+  </main>`;
   }
 
   return singleQuiz;
@@ -377,29 +374,26 @@ const buildEndPage = quizInfo => {
   `;
   if (currentUserID) {
     endHTML += `<!-- Previous scores -->
-    <div class="previous-attempts">
-      <h3 class="title is-4 has-text-white">Your most recent attempts at this quiz:</h3>
-      <ul class="is-size-4">
-      </ul>
-    </div>
+      <div class="previous-attempts">
+        <h3 class="title is-4 has-text-white">Your most recent attempts at this quiz:</h3>
+        <ul class="is-size-4">
+        </ul>
+      </div>
+    </section>
 
-  </section>
-
-</main>`;
+  </main>`;
     storeScore(quizInfo.id, currentUserID, currentScore);
   } else {
     endHTML += `<!-- Previous scores -->
-    <div class="previous-attempts">
-      <h3 class="title is-4 has-text-white">Please log in to keep track of your score!</h3>
-      <ul class="is-size-4">
-      </ul>
-    </div>
-
-  </section>
-
-</main>`;
+      <div class="previous-attempts">
+        <h3 class="title is-4 has-text-white">Please log in to keep track of your score!</h3>
+        <ul class="is-size-4">
+        </ul>
+      </div>
+    </section>
+  </main>`;
   }
-
+  questionNumber = 0;
   currentScore = 0;
   return endHTML;
 };
@@ -546,6 +540,8 @@ const buildFeaturedHero = () => {
 
 // Renders quizzes into <main> element
 const renderQuizzes = function(quizzes) {
+  currentScore = 0;
+  questionNumber = 0;
   $("html").removeClass("quiz-background");
   $("body")
     .empty()
@@ -603,6 +599,7 @@ const renderQuiz = function(quiz) {
   getScores({ user_id: currentUserID, id: quiz.id });
 };
 
+// Function to shuffle any array
 const shuffle = function(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -652,30 +649,20 @@ const renderQuizForm = () => {
     .append(buildQuizInfoForm());
 };
 
-// // on click of login
-// const userLoginForm = function() {
-//   const loginForm = `<div id="loginFormContainer">
-//    <form class="columns is-vcentered" id="loginForm">
-//      <input required="required" id="username" type="text" class="input" placeholder="username">
-//      <button class="button is-primary" id="login" type="submit">Login</button>
-//       </form>
-//  </div>`;
-
-//   $("#loginNav").replaceWith(loginForm);
-// };
-
 //On successful login
 const userLoggedIn = function(data) {
   loggedInUser = data.username;
   currentUserID = data.id;
 
   if (loggedInUser) {
+
     const loggedIn = `<div  id="loggedIn" class="columns is-vcentered">
     <p>Welcome, ${loggedInUser} <span id="current-user-id">${currentUserID}</span> </p>  &nbsp; <button id="logoutButton" class="button is-primary" action="renderLoginNav()">Logout</button>
 
     </div>
   </div>`;
     $("#loginFormContainer").replaceWith(loggedIn);
+
   }
 };
 
