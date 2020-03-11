@@ -1,3 +1,4 @@
+let clickTrack = false;
 $(() => {
   fetchAndRenderQuizzes();
 
@@ -133,6 +134,7 @@ $(() => {
 
   // Checks if user chose correct answer, increments score accordingly, goes to next question
   $("body").on("click", ".option", () => {
+    clickTrack = true;  // Updating clickTrack when user selects an answer
     const userAnswer = event.target.innerText;
     const correctAnswer = currentOptions.filter(option => option.is_correct)[0]
       .option;
