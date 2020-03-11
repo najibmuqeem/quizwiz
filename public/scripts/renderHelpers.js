@@ -583,7 +583,7 @@ const renderQuizForm = () => {
 const userLoginForm = function() {
   const loginForm = `<div id="loginFormContainer">
    <form class="columns is-vcentered" id="loginForm">
-     <input required="required" id="username" type="text" class="input is-medium" placeholder="username">
+     <input required="required" id="username" type="text" class="input" placeholder="username">
      <button class="button is-success" id="login" type="submit">Login</button>
       </form>
  </div>`;
