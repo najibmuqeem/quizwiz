@@ -367,10 +367,10 @@ const buildEndPage = quizInfo => {
       <p class="is-size-3 has-text-black">You scored ${currentScore}/${quizInfo.number_of_questions}</p>
 
       <!-- Share/Home button -->
-      <a class="button is-primary is-inverted is-medium share-button" data-clipboard-text="I scored ${currentScore}/${quizInfo.number_of_questions} on this quiz:  http://localhost:8080?quiz=${quizInfo.id} See if you can beat me!">
+      <a class="button is-primary is-inverted is-large share-button" data-clipboard-text="See if you can beat me on this quiz: http://localhost:8080?quiz=${quizInfo.id}&user=${loggedInUser}&score=${currentScore}/${quizInfo.number_of_questions}">
         <strong>Share Your Result</strong>
       </a>
-      <a class="button is-primary is-inverted is-outlined is-medium" onclick="fetchAndRenderQuizzes()">
+      <a class="button is-primary is-inverted is-outlined is-large" onclick="fetchAndRenderQuizzes()">
         <strong>Back To Home</strong>
       </a>
 
@@ -402,6 +402,33 @@ const buildEndPage = quizInfo => {
 
   currentScore = 0;
   return endHTML;
+};
+
+// Builds the page that's shown when a user shares the result of their attempt
+const buildShareResultPage = (quizId, quizName, username, score) => {
+  return `
+  <main class="section">
+
+    <section class="container quiz-end-background start-end-quiz has-text-centered">
+
+      <!-- Quiz info -->
+      <h1 class="title is-1 has-text-white ">
+        ${escape(username)} completed ${escape(quizName)}!
+      </h1>
+      <p class="is-size-3 has-text-black">They scored ${escape(score)}<br>See if you can beat their score!</p>
+
+      <!-- Share/Home button -->
+      <a class="button is-primary is-inverted is-large" onclick="fetchQuizData(${escape(quizId)})">
+        <strong>Take This Quiz</strong>
+      </a>
+      <a class="button is-primary is-inverted is-outlined is-large" onclick="fetchAndRenderQuizzes()">
+        <strong>Home Page</strong>
+      </a>
+
+    </section>
+
+  </main>
+  `;
 };
 
 // Builds the navbar which is used in home, create new quiz, and end quiz pages
@@ -469,7 +496,7 @@ const buildNavbar = () => {
   if (loggedInUser) {
     navHTML += `<div class="navbar-item" id="loggedIn">
 
-        <p>Welcome, ${loggedInUser} <span id="current-user-id">${currentUserID}</span> </p> &nbsp; <button id="logoutButton" class="button is-success" action="renderLoginNav()">Logout</button>
+        <p>Welcome, ${loggedInUser} <span id="current-user-id">${currentUserID}</span> </p> &nbsp; <button id="logoutButton" class="button is-primary is-light" action="renderLoginNav()">Logout</button>
          </div>
        </div>`;
   } else {
@@ -563,6 +590,9 @@ const renderQuestion = questionAndOptions => {
 
   $("html").addClass("quiz-background");
 
+  $("nav").remove();
+  $("body").prepend(buildDarkNavbar());
+
   $("main")
     .empty()
     .append(buildQuestionPage(currentOptions));
@@ -620,6 +650,13 @@ const renderEndPage = quizData => {
   getScores({ user_id: currentUserID, id: quizData.id });
 };
 
+// Renders the page that shows another user's result of a quiz
+const renderShareResultPage = (quiz, username, score) => {
+  $("body")
+    .append(buildNavbar())
+    .append(buildShareResultPage(quiz.id, quiz.title, username, score));
+}
+
 // Renders quiz creation form
 const renderQuizForm = () => {
   $("body")
@@ -644,6 +681,7 @@ const renderQuizForm = () => {
 const userLoggedIn = function(data) {
   loggedInUser = data.username;
   currentUserID = data.id;
+
   if (loggedInUser) {
     const loggedIn = `<div  id="loggedIn" class="columns is-vcentered">
     <p>Welcome, ${loggedInUser} <span id="current-user-id">${currentUserID}</span> </p>  &nbsp; <button id="logoutButton" class="button is-success" action="renderLoginNav()">Logout</button>
