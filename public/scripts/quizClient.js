@@ -8,6 +8,7 @@ const fetchAndRenderQuizzes = function(user_id) {
   });
 };
 
+// Gets quizzes that the current logged-in user has created
 const fetchAndRenderUserQuizzes = function(user_id) {
   $.ajax({
     type: "GET",
@@ -23,7 +24,6 @@ const getUserWithUsername = function(username) {
     type: "GET",
     url: "/api/users",
     data: username,
-    success: data => {},
     dataType: "json"
   });
 };
@@ -46,9 +46,7 @@ const fetchSingleQuiz = function(id) {
   $.ajax({
     type: "GET",
     url: `/api/quizzes/${id}`,
-    success: data => {
-      renderQuiz(data);
-    },
+    success: renderQuiz,
     dataType: "json"
   });
 };
@@ -58,9 +56,7 @@ const getRandomQuiz = function() {
   $.ajax({
     type: "GET",
     url: "/api/quizzes/random",
-    success: data => {
-      renderQuiz(data);
-    },
+    success: renderQuiz,
     dataType: "json"
   });
 };
@@ -99,7 +95,7 @@ const removeQuiz = quiz_id => {
   });
 };
 
-// Post question to quiz
+// Add question to quiz
 const addQuestion = function(
   questionElem,
   quiz_id,
