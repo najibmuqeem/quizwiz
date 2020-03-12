@@ -23,7 +23,7 @@ INSERT INTO quizzes (title, description, picture_url, number_of_questions, user_
 INSERT INTO quizzes (title, description, picture_url, number_of_questions, user_id) VALUES ('Trivia', 'Common knowledge.', 'https://kids.niehs.nih.gov/games/assets/img855717.jpg', 8, 3);
 
 /*qid:9*/
-INSERT INTO quizzes (title, description, picture_url, number_of_questions, user_id, is_public) VALUES ('Javascript', 'goodAtJavascript ? takeQuiz() : keepScrolling()', 'https://1.bp.blogspot.com/-pdqcVeIQp64/XDX7TzdRdcI/AAAAAAAAM8E/ZmGuB6caZqIGmEflGHcj3zgXJJrmqRLdgCLcBGAs/w1200-h630-p-k-no-nu/Free%2BCourses%2Bto%2Blearn%2BJavaScript.jpg', 5, 3, false);
+INSERT INTO quizzes (title, description, picture_url, number_of_questions, user_id) VALUES ('Javascript', 'goodAtJavascript ? takeQuiz() : keepScrolling()', 'https://1.bp.blogspot.com/-pdqcVeIQp64/XDX7TzdRdcI/AAAAAAAAM8E/ZmGuB6caZqIGmEflGHcj3zgXJJrmqRLdgCLcBGAs/w1200-h630-p-k-no-nu/Free%2BCourses%2Bto%2Blearn%2BJavaScript.jpg', 5, 3);
 
 /*qid:10*/
 INSERT INTO quizzes (title, description, picture_url, number_of_questions, user_id) VALUES ('Linux', 'Basic commands', 'https://cdn.mos.cms.futurecdn.net/i5TSKD2VVirrGsyqqwK4cG.jpg', 4, 5);
