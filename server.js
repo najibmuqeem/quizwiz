@@ -36,7 +36,15 @@ app.use(
   })
 );
 
-app.use(express.static("public"));
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+} else {
+  app.use(express.static("public"));
+}
+
+app.get("*", (request, response) => {
+  response.sendFile(path.join(__dirname, "client/build", "index.html"));
+});
 
 //cookie
 app.use(
