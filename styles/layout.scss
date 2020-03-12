@@ -1,5 +1,5 @@
 /******** Import Font ********/
-@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
 
 /******** Customizations ********/
 $family-sans-serif: "Montserrat", sans-serif;
@@ -51,9 +51,8 @@ $scheme-invert: $orange-light;
 }
 
 .navbar-brand {
-
   a {
-    padding-top: .3rem;
+    padding-top: 0.3rem;
     padding-bottom: 0;
 
     img {
@@ -61,9 +60,7 @@ $scheme-invert: $orange-light;
       max-height: unset;
       border: 5px inset $primary;
     }
-
   }
-
 }
 
 .navbar-menu {
@@ -73,7 +70,7 @@ $scheme-invert: $orange-light;
 
 .navbar.is-dark {
   a {
-    padding-bottom: .3rem;
+    padding-bottom: 0.3rem;
   }
 }
 
@@ -89,6 +86,10 @@ $scheme-invert: $orange-light;
 ::placeholder {
   color: black !important;
   opacity: 0.4;
+}
+
+#delete-quiz {
+  margin-top: 2%;
 }
 
 /******** Bulma ********/
