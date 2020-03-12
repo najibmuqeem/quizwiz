@@ -1,5 +1,10 @@
 // Gets individual quizzes to show on home page
-const fetchAndRenderQuizzes = function() {
+const fetchAndRenderQuizzes = function(user_id) {
+  if (!user_id) {
+    $("#my-quizzes").hide();
+  } else {
+    $("#my-quizzes").show();
+  }
   $.ajax({
     type: "GET",
     url: "/api/quizzes",

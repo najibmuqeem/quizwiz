@@ -405,7 +405,7 @@ const buildEndPage = quizInfo => {
       <a class="button is-primary is-inverted is-large share-button" data-clipboard-text="See if you can beat me on this quiz: http://localhost:8080?quiz=${quizInfo.id}&user=${loggedInUser}&score=${currentScore}/${quizInfo.number_of_questions}">
         <strong>Share Your Result</strong>
       </a>
-      <a class="button is-primary is-inverted is-outlined is-large" onclick="fetchAndRenderQuizzes()">
+      <a class="button is-primary is-inverted is-outlined is-large" onclick="fetchAndRenderQuizzes(${currentUserID})">
         <strong>Back To Home</strong>
       </a>
 
@@ -457,7 +457,7 @@ const buildShareResultPage = (quizId, quizName, username, score) => {
       )})">
         <strong>Take This Quiz</strong>
       </a>
-      <a class="button is-primary is-inverted is-outlined is-large" onclick="fetchAndRenderQuizzes()">
+      <a class="button is-primary is-inverted is-outlined is-large" onclick="fetchAndRenderQuizzes(${currentUserID})">
         <strong>Home Page</strong>
       </a>
 
@@ -477,7 +477,7 @@ const buildNavbar = () => {
   >
     <!-- Brand logo and nav burger -->
     <div class="navbar-brand">
-      <a class="navbar-item" onclick="fetchAndRenderQuizzes()">
+      <a class="navbar-item" onclick="fetchAndRenderQuizzes(${currentUserID})">
         <h1 class="title is-3 has-text-info">QUIZ WIZ</h1>
       </a>
       <a
@@ -495,7 +495,7 @@ const buildNavbar = () => {
     <!-- Left side nav items -->
     <div class="navbar-menu">
       <div class="navbar-start">
-        <a class="navbar-item" onclick="fetchAndRenderQuizzes()">
+        <a class="navbar-item" onclick="fetchAndRenderQuizzes(${currentUserID})">
           Home
         </a>
 
@@ -540,7 +540,7 @@ const buildDarkNavbar = () => {
   return `
   <nav class="navbar is-dark is-fixed-top" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
-      <a class="navbar-item" onclick="setCancelButton();fetchAndRenderQuizzes();">
+      <a class="navbar-item" onclick="setCancelButton();fetchAndRenderQuizzes(${currentUserID});">
         <h1 class="title is-1 has-text-info"><i class="far fa-times-circle"></i></h1>
       </a>
     </div>
@@ -560,6 +560,26 @@ const buildFeaturedHero = () => {
           </h1>
           <h2 class="subtitle">
             Do you have what it takes to answer these questions?
+          </h2>
+        </div>
+      </div>
+    </section>
+  </main>
+  `;
+};
+
+// Builds the hero section that says 'featured quizzes;
+const buildMyHero = () => {
+  return `
+  <main id="home" class="section">
+    <section class="hero is-primary is-bold">
+      <div class="hero-body">
+        <div class="container">
+          <h1 class="title is-2">
+            My Quizzes
+          </h1>
+          <h2 class="subtitle">
+            How tough are your own quizzes?
           </h2>
         </div>
       </div>
@@ -588,7 +608,7 @@ const renderQuizzes = function(quizzes) {
   $("main").append(buildQuizRows(quizzes));
   if (currentUserID) {
     $(".navbar-start")
-      .append(`<a class="navbar-item" onclick="fetchAndRenderUserQuizzes(${currentUserID})">
+      .append(`<a id="my-quizzes" class="navbar-item" onclick="fetchAndRenderUserQuizzes(${currentUserID})">
        My Quizzes
      </a>`);
   }
@@ -602,12 +622,12 @@ const renderUserQuizzes = function(quizzes) {
   $("body")
     .empty()
     .append(buildNavbar())
-    .append(buildFeaturedHero());
+    .append(buildMyHero());
 
   $("main").append(buildUserQuizRows(quizzes));
   if (currentUserID) {
     $(".navbar-start")
-      .append(`<a class="navbar-item" onclick="fetchAndRenderUserQuizzes(${currentUserID})">
+      .append(`<a id="my-quizzes" class="navbar-item" onclick="fetchAndRenderUserQuizzes(${currentUserID})">
        My Quizzes
      </a>`);
   }
@@ -712,7 +732,7 @@ const renderQuizForm = () => {
 
   if (currentUserID) {
     $(".navbar-start")
-      .append(`<a class="navbar-item" onclick="fetchAndRenderUserQuizzes(${currentUserID})">
+      .append(`<a id="my-quizzes" class="navbar-item" onclick="fetchAndRenderUserQuizzes(${currentUserID})">
        My Quizzes
      </a>`);
   }
@@ -731,7 +751,7 @@ const userLoggedIn = function(data) {
   </div>`;
     $("#loginFormContainer").replaceWith(loggedIn);
     $(".navbar-start")
-      .append(`<a class="navbar-item" onclick="fetchAndRenderUserQuizzes(${currentUserID})">
+      .append(`<a id="my-quizzes" class="navbar-item" onclick="fetchAndRenderUserQuizzes(${currentUserID})">
        My Quizzes
      </a>`);
   }
