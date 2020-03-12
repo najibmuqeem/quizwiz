@@ -21,7 +21,6 @@ module.exports = () => {
     database
       .getScores(req.params.id, req.params.qid)
       .then(data => {
-        /* req.params.id temporarily replaced by req.session['user_id']*/
         const scores = data.rows;
         res.json(scores);
       })
