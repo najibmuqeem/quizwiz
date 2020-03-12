@@ -38,10 +38,6 @@ app.use(
 
 app.use(express.static("./quizwiz"));
 
-app.use(function(req, res, next) {
-  res.header("Content-Security-Policy", "default-src 'self'");
-});
-
 //cookie
 app.use(
   cookieSession({
