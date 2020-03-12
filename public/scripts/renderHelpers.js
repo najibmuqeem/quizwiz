@@ -356,7 +356,7 @@ const buildQuiz = function(quiz) {
       })">
         <strong>Start Quiz</strong>
       </a>
-      <a class="button is-primary is-inverted is-outlined is-large share-button" data-clipboard-text="Check out this awesome quiz on http://localhost:8080?quiz=${
+      <a class="button is-primary is-inverted is-outlined is-large share-button" data-clipboard-text="Check out this awesome quiz on https://quizwizz.herokuapp.com/?quiz=${
         quiz.id
       }">
         <strong>Share This Quiz</strong>
