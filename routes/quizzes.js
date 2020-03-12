@@ -38,6 +38,19 @@ module.exports = () => {
       });
   });
 
+  // Get user's quizzes
+  router.get("/single/:uid", (req, res) => {
+    database
+      .getQuizzes(req.params.uid)
+      .then(data => {
+        const quizzes = data.rows;
+        res.json(quizzes);
+      })
+      .catch(err => {
+        res.status(500).json({ error: err.message });
+      });
+  });
+
   //Delete quiz
   router.delete("/delete/:id", (req, res) => {
     database

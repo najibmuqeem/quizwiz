@@ -249,6 +249,44 @@ const buildQuizRows = quizzes => {
   return quizRows;
 };
 
+// Builds rows of user quizzes to be used in renderUserQuizzes
+const buildUserQuizRows = quizzes => {
+  let quizRows = `
+  <div class="tile is-ancestor">
+  `;
+
+  quizzes.forEach((quiz, index, quizzes) => {
+    if (index % 3 === 0 && index !== 0) {
+      quizRows += `
+      </div>
+      <div class="tile is-ancestor">
+      `;
+    }
+
+    quizRows += `
+      <div class="tile is-parent">
+        <article class="tile is-child box" style="background-image: linear-gradient(180deg, rgba(255,255,255,0.7) 40%, rgba(255,255,255,0.3) 70%, rgba(255,255,255,0) 100%), url(${escape(
+          quiz.picture_url
+        )});" onclick="fetchSingleQuiz(${quiz.id})">
+          <p class="title">${escape(quiz.title)}</p>
+          <p class="subtitle">${escape(quiz.description)}</p>
+          <div class="content">
+            <p>${escape(quiz.number_of_questions)} questions</p>
+          </div>
+        </article>
+      </div>
+    `;
+
+    if (index === quizzes.length - 1) {
+      quizRows += `
+      </div>
+      `;
+    }
+  });
+
+  return quizRows;
+};
+
 // Builds a quiz question page with associated options
 const buildQuestionPage = questionAndOptions => {
   let questionPage = `
@@ -548,6 +586,31 @@ const renderQuizzes = function(quizzes) {
     .append(buildFeaturedHero());
 
   $("main").append(buildQuizRows(quizzes));
+  if (currentUserID) {
+    $(".navbar-start")
+      .append(`<a class="navbar-item" onclick="fetchAndRenderUserQuizzes(${currentUserID})">
+       My Quizzes
+     </a>`);
+  }
+};
+
+// Renders user quizzes into <main> element
+const renderUserQuizzes = function(quizzes) {
+  currentScore = 0;
+  questionNumber = 0;
+  $("html").removeClass("quiz-background");
+  $("body")
+    .empty()
+    .append(buildNavbar())
+    .append(buildFeaturedHero());
+
+  $("main").append(buildUserQuizRows(quizzes));
+  if (currentUserID) {
+    $(".navbar-start")
+      .append(`<a class="navbar-item" onclick="fetchAndRenderUserQuizzes(${currentUserID})">
+       My Quizzes
+     </a>`);
+  }
 };
 
 // Renders a question and associated options
@@ -584,7 +647,7 @@ const renderQuestion = questionAndOptions => {
   }
   // Timer for each question
   const correctAnswer = currentOptions.filter(option => option.is_correct)[0]
-      .option;
+    .option;
   timer(10000, correctAnswer);
 };
 
@@ -646,6 +709,13 @@ const renderQuizForm = () => {
     .empty()
     .append(buildNavbar())
     .append(buildQuizInfoForm());
+
+  if (currentUserID) {
+    $(".navbar-start")
+      .append(`<a class="navbar-item" onclick="fetchAndRenderUserQuizzes(${currentUserID})">
+       My Quizzes
+     </a>`);
+  }
 };
 
 //On successful login
@@ -654,14 +724,16 @@ const userLoggedIn = function(data) {
   currentUserID = data.id;
 
   if (loggedInUser) {
-
     const loggedIn = `<div  id="loggedIn" class="columns is-vcentered">
     <p>Welcome, ${loggedInUser} <span id="current-user-id">${currentUserID}</span> </p>  &nbsp; <button id="logoutButton" class="button is-primary" action="renderLoginNav()">Logout</button>
 
     </div>
   </div>`;
     $("#loginFormContainer").replaceWith(loggedIn);
-
+    $(".navbar-start")
+      .append(`<a class="navbar-item" onclick="fetchAndRenderUserQuizzes(${currentUserID})">
+       My Quizzes
+     </a>`);
   }
 };
 
