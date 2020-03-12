@@ -1,4 +1,9 @@
+/******** Import Font ********/
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
 /******** Customizations ********/
+$family-sans-serif: "Montserrat", sans-serif;
+
 $orange-light: #e67e22;
 $orange-dark: #db5e0b;
 
@@ -42,6 +47,33 @@ $scheme-invert: $orange-light;
   &.option:hover {
     box-shadow: 0px 2px 18px 9px rgba(230, 230, 230, 0.8);
     transition: all 0.5s;
+  }
+}
+
+.navbar-brand {
+
+  a {
+    padding-top: .3rem;
+    padding-bottom: 0;
+
+    img {
+      width: 220px;
+      max-height: unset;
+      border: 5px inset $primary;
+    }
+
+  }
+
+}
+
+.navbar-menu {
+  border-bottom: 2px solid $primary;
+  font-weight: bold;
+}
+
+.navbar.is-dark {
+  a {
+    padding-bottom: .3rem;
   }
 }
 

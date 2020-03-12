@@ -9,6 +9,10 @@
     "local": "./node_modules/.bin/nodemon -L --ignore public/",
     "db:reset": "node bin/resetdb.js"
   },
+  "engines": {
+    "node": "8.9.x",
+    "npm": "6.14.x"
+  },
   "author": "Lighthouse Labs",
   "license": "ISC",
   "dependencies": {

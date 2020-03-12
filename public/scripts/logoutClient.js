@@ -2,7 +2,7 @@ const logout = function() {
   $("#logout").click(e => {
     e.preventDefault();
 
-    fetchAndRenderQuizzes(${currentUserID});
+    fetchAndRenderQuizzes(currentUserID);
 
     $.ajax({
       type: "POST",
