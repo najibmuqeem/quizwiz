@@ -28,12 +28,6 @@ INSERT INTO questions (quiz_id, question) VALUES (5, 'What do narwhals consume?'
 INSERT INTO questions (quiz_id, question) VALUES (5, 'Why are narwhals hunted?');
 INSERT INTO questions (quiz_id, question) VALUES (5, 'Where are narwhals primarily located?');
 
-/* INSERT INTO questions (quiz_id, question) VALUES (6, 'Who beat Hillary Clinton in the 2016 US pesidential election?');
-INSERT INTO questions (quiz_id, question) VALUES (6, 'Who owns Trump Tower?');
-INSERT INTO questions (quiz_id, question) VALUES (6, 'Who made a cameo in Home Alone 2: Lost in New York?');
-INSERT INTO questions (quiz_id, question) VALUES (6, 'Who was the POTUS when Qasem Soleimani was killed?');
-INSERT INTO questions (quiz_id, question) VALUES (6, 'Who is the spouse of Melania Trump?'); */
-
 INSERT INTO questions (quiz_id, question) VALUES (6, 'What is <p></p>?');
 INSERT INTO questions (quiz_id, question) VALUES (6, 'Which is bigger size <h1> or <h2>?');
 INSERT INTO questions (quiz_id, question) VALUES (6, 'Whic tag adds line break?');
@@ -78,3 +72,9 @@ INSERT INTO questions (quiz_id, question,number_of_answers) VALUES (11, 'What is
 INSERT INTO questions (quiz_id, question,number_of_answers) VALUES (11, 'What can one catch that is not thrown?',3);
 INSERT INTO questions (quiz_id, question,number_of_answers) VALUES (11, 'What is it that goes up, but never comes down?',3);
 INSERT INTO questions (quiz_id, question,number_of_answers) VALUES (11, 'Who is bigger, Mr. Bigger, Mrs. Bigger, or their baby',3);
+
+INSERT INTO questions (quiz_id, question) VALUES (12, 'Who beat Hillary Clinton in the 2016 US pesidential election?');
+INSERT INTO questions (quiz_id, question) VALUES (12, 'Who owns Trump Tower?');
+INSERT INTO questions (quiz_id, question) VALUES (12, 'Who made a cameo in Home Alone 2: Lost in New York?');
+INSERT INTO questions (quiz_id, question) VALUES (12, 'Who was the POTUS when Qasem Soleimani was killed?');
+INSERT INTO questions (quiz_id, question) VALUES (12, 'Who is the spouse of Melania Trump?');

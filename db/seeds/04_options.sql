@@ -123,31 +123,6 @@ INSERT INTO options (question_id, option, is_correct) VALUES (25, 'South of Sout
 INSERT INTO options (question_id, option, is_correct) VALUES (25, 'North of Russia', false);
 INSERT INTO options (question_id, option, is_correct) VALUES (25, 'Sub-African Antarctic', false);
 
-/* INSERT INTO options (question_id, option, is_correct) VALUES (26, 'Donald J. Trump', true);
-INSERT INTO options (question_id, option, is_correct) VALUES (26, 'Kevin Guertin', false);
-INSERT INTO options (question_id, option, is_correct) VALUES (26, 'Raho Mohamed', false);
-INSERT INTO options (question_id, option, is_correct) VALUES (26, 'Sebastian Lynch', false);
-
-INSERT INTO options (question_id, option, is_correct) VALUES (27, 'Donald J. Trump', true);
-INSERT INTO options (question_id, option, is_correct) VALUES (27, 'Jeffrey Liu', false);
-INSERT INTO options (question_id, option, is_correct) VALUES (27, 'Liubov Kleimenova', false);
-INSERT INTO options (question_id, option, is_correct) VALUES (27, 'Steven Choi', false);
-
-INSERT INTO options (question_id, option, is_correct) VALUES (28, 'Donald J. Trump', true);
-INSERT INTO options (question_id, option, is_correct) VALUES (28, 'Ata Ansari', false);
-INSERT INTO options (question_id, option, is_correct) VALUES (28, 'Noah Novick', false);
-INSERT INTO options (question_id, option, is_correct) VALUES (28, 'David He', false);
-
-INSERT INTO options (question_id, option, is_correct) VALUES (29, 'Donald J. Trump', true);
-INSERT INTO options (question_id, option, is_correct) VALUES (29, 'Igor Cekan (Lucas)', false);
-INSERT INTO options (question_id, option, is_correct) VALUES (29, 'Marco Siu', false);
-INSERT INTO options (question_id, option, is_correct) VALUES (29, 'Rahul A. Mitra', false);
-
-INSERT INTO options (question_id, option, is_correct) VALUES (30, 'Donald J. Trump', true);
-INSERT INTO options (question_id, option, is_correct) VALUES (30, 'Victor Yu', false);
-INSERT INTO options (question_id, option, is_correct) VALUES (30, 'Asmaa Ali', false);
-INSERT INTO options (question_id, option, is_correct) VALUES (30, 'Altair Ioffe', false); */
-
 INSERT INTO options (question_id, option, is_correct) VALUES (26, 'None of these', true);
 INSERT INTO options (question_id, option, is_correct) VALUES (26, 'heading', false);
 INSERT INTO options (question_id, option, is_correct) VALUES (26, 'input', false);
@@ -334,3 +309,27 @@ INSERT INTO options (question_id, option, is_correct) VALUES (64, 'baby', true);
 INSERT INTO options (question_id, option, is_correct) VALUES (64, 'Mr. Bigger', false);
 INSERT INTO options (question_id, option, is_correct) VALUES (64, 'Mrs. Bigger', false);
 
+INSERT INTO options (question_id, option, is_correct) VALUES (65, 'Donald J. Trump', true);
+INSERT INTO options (question_id, option, is_correct) VALUES (65, 'Kevin Guertin', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (65, 'Raho Mohamed', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (65, 'Sebastian Lynch', false);
+
+INSERT INTO options (question_id, option, is_correct) VALUES (66, 'Donald J. Trump', true);
+INSERT INTO options (question_id, option, is_correct) VALUES (66, 'Jeffrey Liu', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (66, 'Liubov Kleimenova', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (66, 'Steven Choi', false);
+
+INSERT INTO options (question_id, option, is_correct) VALUES (67, 'Donald J. Trump', true);
+INSERT INTO options (question_id, option, is_correct) VALUES (67, 'Ata Ansari', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (67, 'Noah Novick', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (67, 'David He', false);
+
+INSERT INTO options (question_id, option, is_correct) VALUES (68, 'Donald J. Trump', true);
+INSERT INTO options (question_id, option, is_correct) VALUES (68, 'Igor Cekan (Lucas)', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (68, 'Marco Siu', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (68, 'Rahul A. Mitra', false);
+
+INSERT INTO options (question_id, option, is_correct) VALUES (69, 'Donald J. Trump', true);
+INSERT INTO options (question_id, option, is_correct) VALUES (69, 'Victor Yu', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (69, 'Asmaa Ali', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (69, 'Altair Ioffe', false);
