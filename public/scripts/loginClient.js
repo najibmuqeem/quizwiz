@@ -15,6 +15,8 @@ const login = function() {
   $("body").on("click", "#logoutButton", function(e) {
     e.preventDefault();
 
+    fetchAndRenderQuizzes(); //return to main page, prevents clicking "my quizzes" and staying there after logging out
+
     $.ajax({
       type: "POST",
       url: "/api/logout",

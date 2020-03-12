@@ -13,3 +13,5 @@ INSERT INTO quizzes (title, description, picture_url, number_of_questions, user_
 INSERT INTO quizzes (title, description, picture_url, number_of_questions, user_id) VALUES ('Anime', 'How much of a weeb are you?', 'https://i.ytimg.com/vi/yd0VwPQ0k40/maxresdefault.jpg', 12, 4);
 
 INSERT INTO quizzes (title, description, picture_url, number_of_questions, user_id) VALUES ('Trivia', 'Common knowledge.', 'https://kids.niehs.nih.gov/games/assets/img855717.jpg', 8, 5);
+
+INSERT INTO quizzes (title, description, picture_url, number_of_questions, user_id) VALUES ('Javascript', 'goodAtJavascript ? takeQuiz() : keepScrolling()', 'https://1.bp.blogspot.com/-pdqcVeIQp64/XDX7TzdRdcI/AAAAAAAAM8E/ZmGuB6caZqIGmEflGHcj3zgXJJrmqRLdgCLcBGAs/w1200-h630-p-k-no-nu/Free%2BCourses%2Bto%2Blearn%2BJavaScript.jpg', 5, 3);
