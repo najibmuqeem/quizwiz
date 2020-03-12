@@ -35,7 +35,7 @@ app.use(
     outputStyle: "expanded"
   })
 );
-app.use(express.static("quizwiz"));
+app.use(express.static("./quizwiz"));
 
 //cookie
 app.use(
