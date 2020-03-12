@@ -412,7 +412,7 @@ const buildEndPage = quizInfo => {
       </a>
 
   `;
-  if (currentUserID) {
+  if (loggedInUser) {
     endHTML += `<!-- Previous scores -->
       <div class="previous-attempts">
         <h3 class="title is-4 has-text-white">Your most recent attempts at this quiz:</h3>
@@ -612,7 +612,7 @@ const renderQuizzes = function(quizzes) {
     .append(buildFeaturedHero());
 
   $("main").append(buildQuizRows(quizzes));
-  if (currentUserID) {
+  if (loggedInUser) {
     $(".navbar-start")
       .append(`<a id="my-quizzes" class="navbar-item" onclick="fetchAndRenderUserQuizzes(${currentUserID})">
        My Quizzes
@@ -633,7 +633,7 @@ const renderUserQuizzes = function(quizzes) {
     .append(buildMyHero());
 
   $("main").append(buildUserQuizRows(quizzes));
-  if (currentUserID) {
+  if (loggedInUser) {
     $(".navbar-start")
       .append(`<a id="my-quizzes" class="navbar-item" onclick="fetchAndRenderUserQuizzes(${currentUserID})">
        My Quizzes
@@ -740,7 +740,7 @@ const renderQuizForm = () => {
     .append(buildNavbar())
     .append(buildQuizInfoForm());
 
-  if (currentUserID) {
+  if (loggedInUser) {
     $(".navbar-start")
       .append(`<a id="my-quizzes" class="navbar-item" onclick="fetchAndRenderUserQuizzes(${currentUserID})">
        My Quizzes
