@@ -1,6 +1,6 @@
-/******** Customizations ********/
 .container {
 
+  // Rectangular container used in start/end quiz pages
   &.start-end-quiz {
     min-height: 80vh;
     padding-bottom: 5rem;
@@ -19,6 +19,7 @@
       margin: 0 .7rem 2rem;
     }
 
+    // Div containing a user's previous attempts
     .previous-attempts {
       border: 3px solid white;
       border-radius: 30px;

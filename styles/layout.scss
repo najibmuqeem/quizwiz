@@ -2,20 +2,26 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
 
 /******** Customizations ********/
+
+//default font for all text
 $family-sans-serif: "Montserrat", sans-serif;
 
+// color variables
 $orange-light: #e67e22;
 $orange-dark: #db5e0b;
 
+// set colors used by Bulma
 $primary: $orange-light;
 $info: $orange-dark;
 $link: $orange-light;
 $scheme-invert: $orange-light;
 
+// all hero sections
 .hero {
   margin-bottom: 30px;
 }
 
+// background color for when taking a quiz
 .quiz-background {
   background-image: linear-gradient(
     141deg,
@@ -25,6 +31,7 @@ $scheme-invert: $orange-light;
   );
 }
 
+// background color for quiz result page, after quiz ends
 .quiz-end-background {
   background-image: linear-gradient(
     141deg,
@@ -34,60 +41,32 @@ $scheme-invert: $orange-light;
   );
 }
 
+// all tiles (boxes holding quizzes, and quiz options while taking a quiz)
 .box {
   background-size: cover;
   height: 250px;
   transition: all 0.5s;
+  cursor: pointer;
 
   &:hover {
     box-shadow: 0px 2px 18px 3px rgba(230, 126, 34, 0.8);
     transition: all 0.5s;
   }
 
+  // option boxes while taking a quiz
   &.option:hover {
     box-shadow: 0px 2px 18px 9px rgba(230, 230, 230, 0.8);
     transition: all 0.5s;
   }
 }
 
-.navbar-brand {
-  a {
-    padding-top: 0.3rem;
-    padding-bottom: 0;
-
-    img {
-      width: 220px;
-      max-height: unset;
-      border: 5px inset $primary;
-    }
-  }
-}
-
-.navbar-menu {
-  border-bottom: 2px solid $primary;
-  font-weight: bold;
-}
-
-.navbar.is-dark {
-  a {
-    padding-bottom: 0.3rem;
-  }
-}
-
-.tile {
-  cursor: pointer;
-}
-
-#current-user-id {
-  font-size: 1px;
-  color: white;
-}
-
+// placeholder text in input forms
 ::placeholder {
   color: black !important;
   opacity: 0.4;
 }
 
+// delete quiz button, only shows if you own that quiz
 #delete-quiz {
   margin-top: 2%;
 }

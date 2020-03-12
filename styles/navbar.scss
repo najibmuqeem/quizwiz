@@ -1,0 +1,38 @@
+// color variables
+$orange-light: #e67e22;
+
+// logo in navbar
+.navbar-brand {
+
+  a {
+    padding-top: .3rem;
+    padding-bottom: 0;
+
+    img {
+      width: 220px;
+      max-height: unset;
+      border: 5px inset $orange-light;
+    }
+
+  }
+
+}
+
+// items section in navbar
+.navbar-menu {
+  border-bottom: 2px solid $orange-light;
+  font-weight: bold;
+}
+
+// close button in dark navbar
+.navbar.is-dark {
+  a {
+    padding-bottom: .3rem;
+  }
+}
+
+// logged in user's username
+#current-user-id {
+  font-size: 1px;
+  color: white;
+}

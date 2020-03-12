@@ -1,5 +1,4 @@
-/******** Customizations ********/
-
+// forms
 #create-quiz, #questions {
   background: rgb(255,195,55);
   background: radial-gradient(circle, rgba(255,195,55,0.819765406162465) 0%, rgba(255,195,55,0.7021183473389356) 15%, rgba(255,255,255,1) 68%);
@@ -9,6 +8,7 @@
   margin: 0 auto;
 }
 
+// container of a single input form
 .control {
   width: 50%;
   margin: 0 auto;
@@ -16,21 +16,16 @@
 
 .label {
 
+  // label for question text input
   &.question-label {
     color: #db5e0b;
   }
 
 }
 
-#submit-quiz, #cancel-quiz {
+// all submit/cancel buttons used during quiz creation
+#submit-quiz,
+#cancel-quiz,
+.submit-buttons .button {
   margin: 0 .7rem;
 }
-
-.submit-buttons {
-
-  .button {
-    margin: 0 .7rem;
-  }
-
-}
-
