@@ -9,10 +9,7 @@ const bodyParser = require("body-parser");
 const sass = require("node-sass-middleware");
 const app = express();
 const morgan = require("morgan");
-
-//cookie
-
-const cookieSession = require("cookie-session");
+const cookieSession = require("cookie-session"); //cookie
 
 // PG database client/connection setup
 const { Pool } = require("pg");
@@ -53,7 +50,6 @@ app.use(
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
 const quizzesRoutes = require("./routes/quizzes");
-const correctAnswersRoutes = require("./routes/correctAnswers");
 const scoresRoutes = require("./routes/scores");
 const questionsRoutes = require("./routes/questions");
 const optionsRoutes = require("./routes/options");
@@ -62,7 +58,6 @@ const logoutRoutes = require("./routes/logout");
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 app.use("/api/quizzes", quizzesRoutes());
-app.use("/api/correctAnswers", correctAnswersRoutes());
 app.use("/api/scores", scoresRoutes());
 app.use("/api/questions", questionsRoutes());
 app.use("/api/options", optionsRoutes());
