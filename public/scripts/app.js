@@ -39,7 +39,7 @@ $(() => {
   } else if ($.urlParam("quiz")) {
     fetchSingleQuiz($.urlParam("quiz"));
   } else {
-    fetchAndRenderQuizzes();
+    fetchAndRenderQuizzes(currentUserID);
   }
 
   // Open/close nav menu when navbar-burger is clicked
@@ -61,14 +61,14 @@ $(() => {
   $("body").on("click", "#cancel-quiz", e => {
     e.preventDefault();
     clearInputValues();
-    fetchAndRenderQuizzes();
+    fetchAndRenderQuizzes(currentUserID);
   });
 
   // cancel questions button
   $("body").on("click", "#cancel-questions", e => {
     e.preventDefault();
     removeQuiz(Number($("#quiz-id")[0].innerText));
-    fetchAndRenderQuizzes();
+    fetchAndRenderQuizzes(currentUserID);
   });
 
   $("body").on("submit", "#create-quiz", e => {
