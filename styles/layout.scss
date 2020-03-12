@@ -1,5 +1,5 @@
 /******** Import Font ********/
-@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
 
 /******** Customizations ********/
 
@@ -64,6 +64,11 @@ $scheme-invert: $orange-light;
 ::placeholder {
   color: black !important;
   opacity: 0.4;
+}
+
+// delete quiz button, only shows if you own that quiz
+#delete-quiz {
+  margin-top: 2%;
 }
 
 /******** Bulma ********/
