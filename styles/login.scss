@@ -1,17 +1,20 @@
-/******** Customizations ********/
+// container holding the login form
 #loginFormContainer {
   padding:0;
 
+  // login input field
   input {
     width: 65%;
   }
 
 }
 
+// login button
 #login {
   margin-left:5%;
 }
 
+// container holding username and logout button (only shows if logged in)
 #loggedIn {
 
   p {
