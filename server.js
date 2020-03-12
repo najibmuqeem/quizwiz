@@ -35,7 +35,13 @@ app.use(
     outputStyle: "expanded"
   })
 );
+
 app.use(express.static("./quizwiz"));
+
+app.use(function(req, res, next) {
+  res.header("Content-Security-Policy", "img-src 'self'");
+  next();
+});
 
 //cookie
 app.use(
