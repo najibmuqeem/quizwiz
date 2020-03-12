@@ -76,7 +76,7 @@ const getQuizzes = function(user_id) {
                     WHERE number_of_questions IS NOT NULL
                     AND number_of_answers IS NOT NULL
                     `;
-  if (user_id) {
+  if (user_id && Number(user_id) !== 3) {
     queryString += `AND user_id = $1 `;
   }
   queryString += `GROUP BY
@@ -90,7 +90,7 @@ const getQuizzes = function(user_id) {
                     is_public
                   ORDER BY id DESC;`;
 
-  if (user_id) {
+  if (user_id && Number(user_id) !== 3) {
     return pool.query(queryString, [user_id]);
   } else {
     return pool.query(queryString);
