@@ -35,7 +35,7 @@ app.use(
     outputStyle: "expanded"
   })
 );
-app.use(express.static("public"));
+app.use("/static", express.static(path.join(__dirname, "public")));
 
 //cookie
 app.use(
