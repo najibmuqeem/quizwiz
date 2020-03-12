@@ -96,7 +96,7 @@ $(() => {
       user_id = null;
       currentUserID = null;
       loggedInUser = null;
-      renderQuizForm();
+      $("#username").focus();
       return;
     }
 
