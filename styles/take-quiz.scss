@@ -1,14 +1,16 @@
-/******** Customizations ********/
+// Extend page height on large screens
 @media screen and (min-width: 768px) {
   html {
     height: 100%;
   }
 }
 
+// section with question text
 .question {
     padding-bottom: 29px;
 }
 
+// countdown timer
 #timerHeading {
   display: inline-block;
   width: 7rem;
