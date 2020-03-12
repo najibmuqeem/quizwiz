@@ -117,6 +117,7 @@ const getRandomQuiz = function() {
     `
     SELECT *
     FROM quizzes
+    WHERE is_public = true
     ORDER BY RANDOM()
     LIMIT 1;
     `
