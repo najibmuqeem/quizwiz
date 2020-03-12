@@ -28,11 +28,17 @@ INSERT INTO questions (quiz_id, question) VALUES (5, 'What do narwhals consume?'
 INSERT INTO questions (quiz_id, question) VALUES (5, 'Why are narwhals hunted?');
 INSERT INTO questions (quiz_id, question) VALUES (5, 'Where are narwhals primarily located?');
 
-INSERT INTO questions (quiz_id, question) VALUES (6, 'Who beat Hillary Clinton in the 2016 US pesidential election?');
+/* INSERT INTO questions (quiz_id, question) VALUES (6, 'Who beat Hillary Clinton in the 2016 US pesidential election?');
 INSERT INTO questions (quiz_id, question) VALUES (6, 'Who owns Trump Tower?');
 INSERT INTO questions (quiz_id, question) VALUES (6, 'Who made a cameo in Home Alone 2: Lost in New York?');
 INSERT INTO questions (quiz_id, question) VALUES (6, 'Who was the POTUS when Qasem Soleimani was killed?');
-INSERT INTO questions (quiz_id, question) VALUES (6, 'Who is the spouse of Melania Trump?');
+INSERT INTO questions (quiz_id, question) VALUES (6, 'Who is the spouse of Melania Trump?'); */
+
+INSERT INTO questions (quiz_id, question) VALUES (6, 'What is <p></p>?');
+INSERT INTO questions (quiz_id, question) VALUES (6, 'Which is bigger size <h1> or <h2>?');
+INSERT INTO questions (quiz_id, question) VALUES (6, 'Whic tag adds line break?');
+INSERT INTO questions (quiz_id, question) VALUES (6, 'What is HTML?');
+INSERT INTO questions (quiz_id, question) VALUES (6, 'Which tag creates ordered list?');
 
 INSERT INTO questions (quiz_id, question) VALUES (7, 'In which anime does the protagonist''s sister turn into a demon?');
 INSERT INTO questions (quiz_id, question) VALUES (7, 'Which anime character makes use of a technique called ''Rasengan?''');
@@ -61,3 +67,14 @@ INSERT INTO questions (quiz_id, question) VALUES (9, 'Which tag is used to denot
 INSERT INTO questions (quiz_id, question) VALUES (9, 'Where should <script> tags go?');
 INSERT INTO questions (quiz_id, question) VALUES (9, 'Which is the correct way to assign a value to an ''id'' key in an object ''obj''? The object is empty to begin with.');
 INSERT INTO questions (quiz_id, question) VALUES (9, 'In which way can you NOT denote a function?');
+
+INSERT INTO questions (quiz_id, question,number_of_answers) VALUES (10, 'What is the use of ls command?',3);
+INSERT INTO questions (quiz_id, question,number_of_answers) VALUES (10, 'What is the output of pwd command?',3);
+INSERT INTO questions (quiz_id, question,number_of_answers) VALUES (10, 'What is the use of cat command?',3);
+INSERT INTO questions (quiz_id, question,number_of_answers) VALUES (10, 'What is cd..?',3);
+
+INSERT INTO questions (quiz_id, question,number_of_answers) VALUES (11, 'What is always coming, but never arrives?',3);
+INSERT INTO questions (quiz_id, question,number_of_answers) VALUES (11, 'What is it that lives if it is fed, and dies if you give it a drink?',3);
+INSERT INTO questions (quiz_id, question,number_of_answers) VALUES (11, 'What can one catch that is not thrown?',3);
+INSERT INTO questions (quiz_id, question,number_of_answers) VALUES (11, 'What is it that goes up, but never comes down?',3);
+INSERT INTO questions (quiz_id, question,number_of_answers) VALUES (11, 'Who is bigger, Mr. Bigger, Mrs. Bigger, or their baby',3);

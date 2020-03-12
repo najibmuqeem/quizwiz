@@ -123,7 +123,7 @@ INSERT INTO options (question_id, option, is_correct) VALUES (25, 'South of Sout
 INSERT INTO options (question_id, option, is_correct) VALUES (25, 'North of Russia', false);
 INSERT INTO options (question_id, option, is_correct) VALUES (25, 'Sub-African Antarctic', false);
 
-INSERT INTO options (question_id, option, is_correct) VALUES (26, 'Donald J. Trump', true);
+/* INSERT INTO options (question_id, option, is_correct) VALUES (26, 'Donald J. Trump', true);
 INSERT INTO options (question_id, option, is_correct) VALUES (26, 'Kevin Guertin', false);
 INSERT INTO options (question_id, option, is_correct) VALUES (26, 'Raho Mohamed', false);
 INSERT INTO options (question_id, option, is_correct) VALUES (26, 'Sebastian Lynch', false);
@@ -146,7 +146,32 @@ INSERT INTO options (question_id, option, is_correct) VALUES (29, 'Rahul A. Mitr
 INSERT INTO options (question_id, option, is_correct) VALUES (30, 'Donald J. Trump', true);
 INSERT INTO options (question_id, option, is_correct) VALUES (30, 'Victor Yu', false);
 INSERT INTO options (question_id, option, is_correct) VALUES (30, 'Asmaa Ali', false);
-INSERT INTO options (question_id, option, is_correct) VALUES (30, 'Altair Ioffe', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (30, 'Altair Ioffe', false); */
+
+INSERT INTO options (question_id, option, is_correct) VALUES (26, 'None of these', true);
+INSERT INTO options (question_id, option, is_correct) VALUES (26, 'heading', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (26, 'input', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (26, 'button', false);
+
+INSERT INTO options (question_id, option, is_correct) VALUES (27, 'h1', true);
+INSERT INTO options (question_id, option, is_correct) VALUES (27, 'h2', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (27, 'equal', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (27, 'None of these', false);
+
+INSERT INTO options (question_id, option, is_correct) VALUES (28, 'br', true);
+INSERT INTO options (question_id, option, is_correct) VALUES (28, 'break', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (28, 'newline', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (28, 'p', false);
+
+INSERT INTO options (question_id, option, is_correct) VALUES (29, 'Hyper Text Markup Language', true);
+INSERT INTO options (question_id, option, is_correct) VALUES (29, 'Hyper Text Main Language', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (29, 'Hyper Text Markup Link', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (29, 'None of these', false);
+
+INSERT INTO options (question_id, option, is_correct) VALUES (30, 'ol', true);
+INSERT INTO options (question_id, option, is_correct) VALUES (30, 'ul', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (30, 'list', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (30, 'orderedlist', false);
 
 INSERT INTO options (question_id, option, is_correct) VALUES (31, 'Demon Slayer: Kimetsu no Yaiba', true);
 INSERT INTO options (question_id, option, is_correct) VALUES (31, 'Pokemon', false);
@@ -272,3 +297,40 @@ INSERT INTO options (question_id, option, is_correct) VALUES (55, 'function(data
 INSERT INTO options (question_id, option, is_correct) VALUES (55, 'const func = (data) => {};', false);
 INSERT INTO options (question_id, option, is_correct) VALUES (55, 'function func(data) {}', false);
 INSERT INTO options (question_id, option, is_correct) VALUES (55, 'let func = function(data) {}', false);
+
+INSERT INTO options (question_id, option, is_correct) VALUES (56, 'list files and folders', true);
+INSERT INTO options (question_id, option, is_correct) VALUES (56, 'list files only', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (56, 'list folders only', false);
+
+INSERT INTO options (question_id, option, is_correct) VALUES (57, 'absolute path of current directory', true);
+INSERT INTO options (question_id, option, is_correct) VALUES (57, 'relative path of current directory', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (57, 'absolute path of home directory', false);
+
+INSERT INTO options (question_id, option, is_correct) VALUES (58, 'display the contents of a file', true);
+INSERT INTO options (question_id, option, is_correct) VALUES (58, 'delete file', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (58, 'compute the size of a file', false);
+
+INSERT INTO options (question_id, option, is_correct) VALUES (59, 'parent directory', true);
+INSERT INTO options (question_id, option, is_correct) VALUES (59, 'current directory', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (59, 'home directory', false);
+
+INSERT INTO options (question_id, option, is_correct) VALUES (60, 'Tomorrow', true);
+INSERT INTO options (question_id, option, is_correct) VALUES (60, 'Today', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (60, 'Yesterday', false);
+
+INSERT INTO options (question_id, option, is_correct) VALUES (61, 'fire', true);
+INSERT INTO options (question_id, option, is_correct) VALUES (61, 'water', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (61, 'snake', false);
+
+INSERT INTO options (question_id, option, is_correct) VALUES (62, 'cold', true);
+INSERT INTO options (question_id, option, is_correct) VALUES (62, 'Not possible', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (62, 'football', false);
+
+INSERT INTO options (question_id, option, is_correct) VALUES (63, 'age', true);
+INSERT INTO options (question_id, option, is_correct) VALUES (63, 'rain', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (63, 'steps', false);
+
+INSERT INTO options (question_id, option, is_correct) VALUES (64, 'baby', true);
+INSERT INTO options (question_id, option, is_correct) VALUES (64, 'Mr. Bigger', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (64, 'Mrs. Bigger', false);
+
