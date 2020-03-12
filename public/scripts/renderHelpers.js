@@ -478,7 +478,7 @@ const buildNavbar = () => {
     <!-- Brand logo and nav burger -->
     <div class="navbar-brand">
       <a class="navbar-item" onclick="fetchAndRenderQuizzes(${currentUserID})">
-        <img src="https://i.ibb.co/0fNw0NX/logo-2.png" alt="quiz-wiz-logo">
+        <img src="../docs/logo-2.png" alt="quiz-wiz-logo">
       </a>
       <a
         role="button"
