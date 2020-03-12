@@ -64,13 +64,13 @@ exports.getUsersWithPlaysOnQuiz = getUsersWithPlaysOnQuiz;
 const getQuizzes = function(user_id) {
   let queryString = `SELECT
                       quiz_id as id,
-                      quizzes.title as title,
-                      quizzes.description as description,
-                      quizzes.picture_url as picture_url,
-                      quizzes.number_of_questions as number_of_questions,
-                      quizzes.number_of_plays as number_of_plays,
-                      quizzes.user_id as user_id,
-                      quizzes.is_public as is_public
+                      quizzes.title,
+                      quizzes.description,
+                      quizzes.picture_url,
+                      quizzes.number_of_questions,
+                      quizzes.number_of_plays,
+                      quizzes.user_id,
+                      quizzes.is_public
                     FROM questions
                     JOIN quizzes ON quizzes.id = quiz_id
                     WHERE number_of_questions IS NOT NULL
