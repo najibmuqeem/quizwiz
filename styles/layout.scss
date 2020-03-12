@@ -55,6 +55,7 @@ $scheme-invert: $orange-light;
 
   a {
     padding-top: .3rem;
+    padding-bottom: 0;
 
     img {
       width: 220px;
@@ -64,6 +65,10 @@ $scheme-invert: $orange-light;
 
   }
 
+}
+
+.navbar-menu {
+  border-bottom: 2px solid $primary;
 }
 
 .tile {
