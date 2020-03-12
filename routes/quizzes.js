@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const database = require("../db/database");
-
 module.exports = () => {
   // Get quizzes
   router.get("/", (req, res) => {
@@ -26,7 +25,6 @@ module.exports = () => {
       user_id: req.body.user_id,
       is_public: req.body.is_public
     };
-
     database
       .createNewQuiz(params)
       .then(data => {
@@ -77,7 +75,6 @@ module.exports = () => {
   });
 
   //Get a single quiz
-
   router.get("/:id", (req, res) => {
     database
       .getQuiz(req.params.id)
