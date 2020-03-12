@@ -39,8 +39,7 @@ app.use(
 app.use(express.static("./quizwiz"));
 
 app.use(function(req, res, next) {
-  res.header("Content-Security-Policy", "img-src 'self'");
-  next();
+  res.header("Content-Security-Policy", "default-src 'self'");
 });
 
 //cookie
