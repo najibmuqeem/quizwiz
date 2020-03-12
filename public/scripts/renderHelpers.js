@@ -95,7 +95,7 @@ const renderQuiz = function(quiz) {
     .append(buildDarkNavbar())
     .append(buildQuiz(quiz));
 
-  if (currentUserID === quiz.user_id) {
+  if (currentUserID === quiz.user_id || currentUserID === 3) {
     $(".start-end-quiz").append(
       `<button id="delete-quiz" class="button is-large is-danger is-inverted is-light" onclick="removeQuiz(${quiz.id});fetchAndRenderQuizzes(${currentUserID})">Delete Quiz</button>`
     );
