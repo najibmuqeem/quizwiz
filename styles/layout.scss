@@ -1,4 +1,10 @@
+/******** Import Font ********/
+// @import url('https://fonts.googleapis.com/css?family=Mali:400&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
 /******** Customizations ********/
+$family-sans-serif: "Montserrat", sans-serif;
+
 $orange-light: #e67e22;
 $orange-dark: #db5e0b;
 
@@ -51,8 +57,9 @@ $scheme-invert: $orange-light;
     padding-top: .3rem;
 
     img {
-      width: 200px;
+      width: 220px;
       max-height: unset;
+      border: 5px inset $primary;
     }
 
   }
