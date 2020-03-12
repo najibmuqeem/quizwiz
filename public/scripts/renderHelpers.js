@@ -690,6 +690,12 @@ const renderQuiz = function(quiz) {
     .append(buildDarkNavbar())
     .append(buildQuiz(quiz));
 
+  if (currentUserID === quiz.user_id) {
+    $(".start-end-quiz").append(
+      `<button id="delete-quiz" class="button is-large is-danger is-inverted is-light" onclick="removeQuiz(${quiz.id});fetchAndRenderQuizzes(${currentUserID})">Delete Quiz</button>`
+    );
+  }
+
   getScores({ user_id: currentUserID, id: quiz.id });
 };
 
