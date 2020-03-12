@@ -9,7 +9,7 @@ INSERT INTO quizzes (title, description, picture_url, number_of_questions, user_
 INSERT INTO quizzes (title, description, picture_url, number_of_questions, user_id, is_public) VALUES ('Neethu''s Narwhals', 'Enjoy this amazing quiz on Neethus favorite Narwhals!', 'https://c402277.ssl.cf1.rackcdn.com/photos/14875/images/magazine_hero/Medium_WW248926.jpg?1513623521', 5, 5, false);
 
 /* INSERT INTO quizzes (title, description, picture_url, number_of_questions, user_id) VALUES ('TRUMP 2020', 'OUR LORD AND SAVIOR', 'https://i1.wp.com/www.nationalreview.com/wp-content/uploads/2019/10/donald-trump-marine-one.jpg?fit=789%2C460&ssl=1', 5, 3); */
-INSERT INTO quizzes (title, description, picture_url, number_of_questions, user_id) VALUES ('HTML', 'Tags', 'https://cdn.pixabay.com/photo/2018/05/08/21/28/html5-3384014_960_720.png', 5, 3);
+INSERT INTO quizzes (title, description, picture_url, number_of_questions, user_id) VALUES ('HTML', 'Tags', 'https://img.favpng.com/23/1/21/web-development-responsive-web-design-advanced-css-cascading-style-sheets-html-png-favpng-M7sVvRLfHDNvNRSJBdnNzs6Xi.jpg', 5, 3);
 
 INSERT INTO quizzes (title, description, picture_url, number_of_questions, user_id) VALUES ('Anime', 'How much of a weeb are you?', 'https://i.ytimg.com/vi/yd0VwPQ0k40/maxresdefault.jpg', 12, 3);
 
