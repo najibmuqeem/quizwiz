@@ -356,7 +356,7 @@ const buildQuiz = function(quiz) {
       })">
         <strong>Start Quiz</strong>
       </a>
-      <a class="button is-primary is-inverted is-outlined is-large share-button" data-clipboard-text="Check out this awesome quiz on http://localhost:8080?quiz=${
+      <a class="button is-primary is-inverted is-outlined is-large share-button" data-clipboard-text="Check out this awesome quiz on https://quizwizz.herokuapp.com/?quiz=${
         quiz.id
       }">
         <strong>Share This Quiz</strong>
@@ -404,7 +404,7 @@ const buildEndPage = quizInfo => {
       <p class="is-size-3 has-text-black">You scored ${currentScore}/${quizInfo.number_of_questions}</p>
 
       <!-- Share/Home button -->
-      <a class="button is-primary is-inverted is-large share-button" data-clipboard-text="See if you can beat me on this quiz: http://localhost:8080?quiz=${quizInfo.id}&user=${loggedInUser}&score=${currentScore}/${quizInfo.number_of_questions}">
+      <a class="button is-primary is-inverted is-large share-button" data-clipboard-text="See if you can beat me on this quiz: https://quizwizz.herokuapp.com/?quiz=${quizInfo.id}&user=${loggedInUser}&score=${currentScore}/${quizInfo.number_of_questions}">
         <strong>Share Your Result</strong>
       </a>
       <a class="button is-primary is-inverted is-outlined is-large" onclick="fetchAndRenderQuizzes(${currentUserID})">
