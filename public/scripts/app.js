@@ -71,21 +71,18 @@ $(() => {
     fetchAndRenderQuizzes(currentUserID);
   });
 
+  // adds quiz to database and prepares page for receiving questions and options
   $("body").on("submit", "#create-quiz", e => {
     e.preventDefault();
     const form = $("#create-quiz")[0];
-
     const title = form.title.value;
     const description = form.description.value;
     const picture_url = form.picture.value;
     const number_of_questions = form.questions.value;
     const number_of_options = form.options.value;
+
     let is_public;
-    if ($("#public").prop("checked")) {
-      is_public = true;
-    } else {
-      is_public = false;
-    }
+    $("#public").prop("checked") ? (is_public = true) : (is_public = false);
     let user_id;
     if ($("#current-user-id")[0]) {
       user_id = $("#current-user-id")[0].textContent;
@@ -189,6 +186,7 @@ $(() => {
   });
 });
 
+// clears user input
 const clearInputValues = function() {
   $("input").val("");
   $("textarea").val("");
