@@ -55,3 +55,9 @@ INSERT INTO questions (quiz_id, question) VALUES (8, 'Which North African seapor
 INSERT INTO questions (quiz_id, question) VALUES (8, 'Which is the only vowel on a QWERTY keyboard that is not on the top line of letters?');
 INSERT INTO questions (quiz_id, question) VALUES (8, 'What is the most popular drink in the world that does not contain alcohol?');
 INSERT INTO questions (quiz_id, question) VALUES (8, 'Globe and Jerusalem are types of what?');
+
+INSERT INTO questions (quiz_id, question) VALUES (9, 'Which will result in an error given a defined constant ''text'' of length ''text.length''?');
+INSERT INTO questions (quiz_id, question) VALUES (9, 'Which tag is used to denote in-line JavaScript?');
+INSERT INTO questions (quiz_id, question) VALUES (9, 'Where should <script> tags go?');
+INSERT INTO questions (quiz_id, question) VALUES (9, 'Which is the correct way to assign a value to an ''id'' key in an object ''obj''? The object is empty to begin with.');
+INSERT INTO questions (quiz_id, question) VALUES (9, 'In which way can you NOT denote a function?');

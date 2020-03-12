@@ -247,3 +247,28 @@ INSERT INTO options (question_id, option, is_correct) VALUES (50, 'artichoke', t
 INSERT INTO options (question_id, option, is_correct) VALUES (50, 'broccoli', false);
 INSERT INTO options (question_id, option, is_correct) VALUES (50, 'lettuce', false);
 INSERT INTO options (question_id, option, is_correct) VALUES (50, 'fish', false);
+
+INSERT INTO options (question_id, option, is_correct) VALUES (51, 'text[text.length] = ''s'';', true);
+INSERT INTO options (question_id, option, is_correct) VALUES (51, 'text ? console.log(text) : alert("No text!")', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (51, 'var s = text[text.length - 1];', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (51, 'const addS = text => text += ''s''', false);
+
+INSERT INTO options (question_id, option, is_correct) VALUES (52, '< script >', true);
+INSERT INTO options (question_id, option, is_correct) VALUES (52, '< javascript >', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (52, '< js >', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (52, '< src >', false);
+
+INSERT INTO options (question_id, option, is_correct) VALUES (53, '< head > or < body >', true);
+INSERT INTO options (question_id, option, is_correct) VALUES (53, '< head > only', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (53, '< body > only', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (53, 'anywhere in < html >', false);
+
+INSERT INTO options (question_id, option, is_correct) VALUES (54, 'obj["id"] = "value"', true);
+INSERT INTO options (question_id, option, is_correct) VALUES (54, 'obj.id = "value"', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (54, 'obj[id] = "value";', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (54, 'obj."id" = "value"', false);
+
+INSERT INTO options (question_id, option, is_correct) VALUES (55, 'function(data) = func {}', true);
+INSERT INTO options (question_id, option, is_correct) VALUES (55, 'const func = (data) => {};', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (55, 'function func(data) {}', false);
+INSERT INTO options (question_id, option, is_correct) VALUES (55, 'let func = function(data) {}', false);
