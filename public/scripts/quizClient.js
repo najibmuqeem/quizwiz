@@ -8,6 +8,15 @@ const fetchAndRenderQuizzes = function() {
   });
 };
 
+const fetchAndRenderUserQuizzes = function(user_id) {
+  $.ajax({
+    type: "GET",
+    url: `/api/quizzes/single/${user_id}`,
+    success: renderUserQuizzes,
+    dataType: "json"
+  });
+};
+
 // Get user given username
 const getUserWithUsername = function(username) {
   $.ajax({
