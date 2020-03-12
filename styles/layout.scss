@@ -45,6 +45,20 @@ $scheme-invert: $orange-light;
   }
 }
 
+.navbar-brand {
+
+  a {
+    padding-top: .3rem;
+
+    img {
+      width: 200px;
+      max-height: unset;
+    }
+
+  }
+
+}
+
 .tile {
   cursor: pointer;
 }
