@@ -645,6 +645,8 @@ const renderUserQuizzes = function(quizzes) {
 
 // Renders a question and associated options
 const renderQuestion = questionAndOptions => {
+  questionAndOptions.sort((a, b) => a.question_id - b.question_id);
+
   if (questionAndOptions.length === 1) {
     const quizInfo = {
       id: questionAndOptions[0].quiz_id,
