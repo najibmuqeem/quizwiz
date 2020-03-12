@@ -18,7 +18,10 @@ Enjoy!
 
 ## Final Product
 
-Screenshots here
+!["Quiz Wiz home page"](screenshots/home-page.png)
+!["Taking a quiz"](screenshots/take-quiz.png)
+!["Finished quiz"](screenshots/share-result.png)
+!["Creating a quiz"](screenshots/create-quiz.png)
 
 ## Technology
 
