@@ -1,5 +1,4 @@
 /******** Import Font ********/
-// @import url('https://fonts.googleapis.com/css?family=Mali:400&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 
 /******** Customizations ********/
@@ -69,6 +68,13 @@ $scheme-invert: $orange-light;
 
 .navbar-menu {
   border-bottom: 2px solid $primary;
+  font-weight: bold;
+}
+
+.navbar.is-dark {
+  a {
+    padding-bottom: .3rem;
+  }
 }
 
 .tile {
