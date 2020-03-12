@@ -404,7 +404,7 @@ const buildEndPage = quizInfo => {
       <p class="is-size-3 has-text-black">You scored ${currentScore}/${quizInfo.number_of_questions}</p>
 
       <!-- Share/Home button -->
-      <a class="button is-primary is-inverted is-large share-button" data-clipboard-text="See if you can beat me on this quiz: http://localhost:8080?quiz=${quizInfo.id}&user=${loggedInUser}&score=${currentScore}/${quizInfo.number_of_questions}">
+      <a class="button is-primary is-inverted is-large share-button" data-clipboard-text="See if you can beat me on this quiz: https://quizwizz.herokuapp.com/?quiz=${quizInfo.id}&user=${loggedInUser}&score=${currentScore}/${quizInfo.number_of_questions}">
         <strong>Share Your Result</strong>
       </a>
       <a class="button is-primary is-inverted is-outlined is-large" onclick="fetchAndRenderQuizzes(${currentUserID})">
