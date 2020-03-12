@@ -36,7 +36,7 @@ app.use(
   })
 );
 
-app.use(express.static("./quizwiz"));
+app.use(express.static("public"));
 
 //cookie
 app.use(
