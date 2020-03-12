@@ -374,6 +374,7 @@ const buildQuiz = function(quiz) {
       </div>
     </section>
   </main>`;
+    $("#my-quizzes").show();
   } else {
     singleQuiz += `<!-- Previous scores -->
       <div class="previous-attempts">
@@ -383,6 +384,7 @@ const buildQuiz = function(quiz) {
       </div>
     </section>
   </main>`;
+    $("#my-quizzes").hide();
   }
 
   return singleQuiz;
@@ -421,6 +423,7 @@ const buildEndPage = quizInfo => {
 
   </main>`;
     storeScore(quizInfo.id, currentUserID, currentScore);
+    $("#my-quizzes").show();
   } else {
     endHTML += `<!-- Previous scores -->
       <div class="previous-attempts">
@@ -430,6 +433,7 @@ const buildEndPage = quizInfo => {
       </div>
     </section>
   </main>`;
+    $("#my-quizzes").hide();
   }
   questionNumber = 0;
   currentScore = 0;
@@ -515,6 +519,7 @@ const buildNavbar = () => {
         <p>Welcome, ${loggedInUser} <span id="current-user-id">${currentUserID}</span> </p> &nbsp; <button id="logoutButton" class="button is-primary is-light" action="renderLoginNav()">Logout</button>
          </div>
        </div>`;
+    $("#my-quizzes").show();
   } else {
     navHTML += `<!-- Right side nav items -->
         <div class="navbar-end">
@@ -531,6 +536,7 @@ const buildNavbar = () => {
         </div>
       </div>
     </nav>`;
+    $("#my-quizzes").hide();
   }
   return navHTML;
 };
@@ -611,6 +617,8 @@ const renderQuizzes = function(quizzes) {
       .append(`<a id="my-quizzes" class="navbar-item" onclick="fetchAndRenderUserQuizzes(${currentUserID})">
        My Quizzes
      </a>`);
+  } else {
+    $("#my-quizzes").hide();
   }
 };
 
@@ -630,6 +638,8 @@ const renderUserQuizzes = function(quizzes) {
       .append(`<a id="my-quizzes" class="navbar-item" onclick="fetchAndRenderUserQuizzes(${currentUserID})">
        My Quizzes
      </a>`);
+  } else {
+    $("#my-quizzes").hide();
   }
 };
 
@@ -735,6 +745,8 @@ const renderQuizForm = () => {
       .append(`<a id="my-quizzes" class="navbar-item" onclick="fetchAndRenderUserQuizzes(${currentUserID})">
        My Quizzes
      </a>`);
+  } else {
+    $("#my-quizzes").hide();
   }
 };
 
@@ -754,6 +766,8 @@ const userLoggedIn = function(data) {
       .append(`<a id="my-quizzes" class="navbar-item" onclick="fetchAndRenderUserQuizzes(${currentUserID})">
        My Quizzes
      </a>`);
+  } else {
+    $("#my-quizzes").hide();
   }
 };
 
