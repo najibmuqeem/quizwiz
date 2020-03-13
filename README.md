@@ -18,10 +18,11 @@ Enjoy!
 
 ## Final Product
 
-!["Quiz Wiz home page"](screenshots/home-page.png)
-!["Taking a quiz"](screenshots/take-quiz.png)
-!["Finished quiz"](screenshots/share-result.png)
-!["Creating a quiz"](screenshots/create-quiz.png)
+!["Quiz Wiz home page"](screenshots/home-page.png "Home Page")
+!["Taking a quiz"](screenshots/take-quiz.png "Take Quiz")
+!["Select Option"](screenshots/select-option.png "Select an option")
+!["Finished quiz"](screenshots/share-result.png "Share Result")
+!["Creating a quiz"](screenshots/create-quiz.png "Create Quiz")
 
 ## Technology
 
