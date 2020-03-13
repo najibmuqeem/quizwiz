@@ -315,7 +315,7 @@ const getScores = function(user_id, quiz_id) {
 exports.getScores = getScores;
 
 //returns object with keys score and number_of_questions
-const getUserHighestScoreOnQuiz = function(user_id, quiz_id) {
+const getUserHighScore = function(user_id, quiz_id) {
   return pool.query(
     `
     SELECT score, quizzes.number_of_questions
@@ -328,7 +328,7 @@ const getUserHighestScoreOnQuiz = function(user_id, quiz_id) {
     [user_id, quiz_id]
   );
 };
-exports.getUserHighestScoreOnQuiz = getUserHighestScoreOnQuiz;
+exports.getUserHighScore = getUserHighScore;
 
 //returns object with keys score and number_of_questions
 const getHighestScoreOnQuiz = function(quiz_id) {
