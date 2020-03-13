@@ -102,9 +102,10 @@ const renderQuiz = function(quiz) {
   }
 
   getScores({ user_id: currentUserID, id: quiz.id });
+  getHighScore(currentUserID, quiz.id);
 };
 
-// Rends scores for a specific user
+// Renders scores for a specific user
 const renderScores = function(scores) {
   if (scores.length === 0) {
     $(
@@ -120,6 +121,13 @@ const renderScores = function(scores) {
   }
 };
 
+// Renders high score for a specific user
+const renderHighScore = function(score) {
+  $(".previous-attempts > ul").append(
+    `<h4 class="title-is-4 has-text-white">Your high score:</h4> <li>${score.score}/${score.number_of_questions}</li>`
+  );
+};
+
 // Renders the end page shown after user completes a quiz
 const renderEndPage = quizData => {
   $("html").removeClass("quiz-background");
@@ -129,6 +137,7 @@ const renderEndPage = quizData => {
     .append(buildEndPage(quizData));
 
   getScores({ user_id: currentUserID, id: quizData.id });
+  getHighScore(currentUserID, quiz.id);
 };
 
 // Renders the page that shows another user's result of a quiz

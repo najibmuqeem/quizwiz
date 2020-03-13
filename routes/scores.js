@@ -16,6 +16,19 @@ module.exports = () => {
       });
   });
 
+  // Get user high score
+  router.get("/high/:id/:qid", (req, res) => {
+    database
+      .getUserHighScore(req.params.id, req.params.qid)
+      .then(data => {
+        const score = data.rows[0];
+        res.json(score);
+      })
+      .catch(err => {
+        res.status(500).json({ error: err.message });
+      });
+  });
+
   // Get scores
   router.get("/:id/:qid", (req, res) => {
     database
