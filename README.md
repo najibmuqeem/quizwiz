@@ -37,6 +37,10 @@ Enjoy!
 - Express.js
 - PostgreSQL
 
+#### Dependencies
+- cookie-session
+- body-parser
+
 ## Features
 
 #### Take a Quiz
