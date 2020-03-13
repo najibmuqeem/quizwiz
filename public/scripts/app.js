@@ -152,7 +152,7 @@ $(() => {
     clickTrack = true; // Updating clickTrack when user selects an answer
     const userAnswer = event.target.innerText;
     const correctAnswer = currentOptions.filter(option => option.is_correct)[0]
-      .option;
+      .option.trim();
 
     if (userAnswer === correctAnswer) {
       currentScore++;
@@ -163,7 +163,7 @@ $(() => {
         return (
           $(this)
             .children()
-            .text() === userAnswer
+            .text().trim() === userAnswer
         );
       })
       .css("backgroundColor", "#e74c3c");
@@ -173,7 +173,7 @@ $(() => {
         return (
           $(this)
             .children()
-            .text() === correctAnswer
+            .text().trim() === correctAnswer
         );
       })
       .css("backgroundColor", "#2ecc71");
