@@ -102,7 +102,6 @@ const renderQuiz = function(quiz) {
   }
 
   getScores({ user_id: currentUserID, id: quiz.id });
-  getHighScore(currentUserID, quiz.id);
 };
 
 // Renders scores for a specific user
@@ -137,7 +136,6 @@ const renderEndPage = quizData => {
     .append(buildEndPage(quizData));
 
   getScores({ user_id: currentUserID, id: quizData.id });
-  getHighScore(currentUserID, quiz.id);
 };
 
 // Renders the page that shows another user's result of a quiz

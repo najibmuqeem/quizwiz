@@ -58,7 +58,6 @@ const setFlags = function() {
   clickTrack = false;
 };
 
-
 /*
 |
 | BUILDING FUNCTIONS
@@ -397,6 +396,12 @@ const buildQuiz = function(quiz) {
       </div>
     </section>
   </main>`;
+
+    let qid = quiz.id;
+    let uid = currentUserID;
+    setTimeout(() => {
+      getHighScore(uid, qid);
+    }, 20);
     $("#my-quizzes").show();
   } else {
     singleQuiz += `<!-- Previous scores -->
@@ -446,6 +451,11 @@ const buildEndPage = quizInfo => {
 
   </main>`;
     storeScore(quizInfo.id, currentUserID, currentScore);
+    let qid = quizInfo.id;
+    let uid = currentUserID;
+    setTimeout(() => {
+      getHighScore(uid, qid);
+    }, 20);
     $("#my-quizzes").show();
   } else {
     endHTML += `<!-- Previous scores -->
