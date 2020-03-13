@@ -169,7 +169,7 @@ const userLoggedIn = function(data) {
 
   if (loggedInUser) {
     const loggedIn = `<div  id="loggedIn" class="columns is-vcentered">
-    <p>Welcome, ${loggedInUser} <span id="current-user-id">${currentUserID}</span> </p>  &nbsp; <button id="logoutButton" class="button is-primary" action="renderLoginNav()">Logout</button>
+    <p>Welcome, ${loggedInUser} <span id="current-user-id">${currentUserID}</span> </p>  &nbsp; <button id="logoutButton" class="button is-primary is-light" action="renderLoginNav()">Logout</button>
 
     </div>
   </div>`;
