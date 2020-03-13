@@ -8,7 +8,7 @@ Come in, play and prove your knowledge.
 
 ## Contributors
 
-[Najib Muqeem](https://github.com/najibmuqeem) -- [Berk Ozer](https://github.com/berk-ozer) -- [Neethu MS](https://github.com/neethu-msr)
+[Najib Muqeem](https://github.com/najibmuqeem) -- [Berk Ozer](https://github.com/berk-ozer) -- [Neethu MS](https://github.com/neethu-ms)
 
 ## Quick Start
 
@@ -56,4 +56,3 @@ If you want it only for yourself, you can uncheck 'public'. Now, only people who
 You can share any quiz you want. Just click 'Share This Quiz' and pass your friend the link.
 
 You can also share your result in a quiz. Click 'Share Your Result' after you complete a quiz, pass the link, and your friend can see how smart you are.
-
